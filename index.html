@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anak Bos Troika — Simulation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="game" aria-label="Anak Bos Troika game simulation">
+    <header class="hud">
+      <div>
+        <h1>Anak Bos <span>Troika</span></h1>
+        <p id="status">Preparing simulation…</p>
+      </div>
+      <div class="controls">
+        <label>Simulation <select id="simulation"></select></label>
+        <label>Speed <input id="speed" type="range" min="1" max="9" value="5"><output id="speed-value">5</output></label>
+        <button id="replay" type="button">Replay</button>
+      </div>
+    </header>
+
+    <section class="zone player-one">
+      <div class="zone-label"><span>PLAYER 1</span><small id="p1-count">0 cards</small></div>
+      <div id="p1" class="card-row" aria-label="Player 1 hand"></div>
+    </section>
+    <section class="zone discard-zone">
+      <div class="zone-label"><span>DISCARD PILE</span><small id="discard-count">0 cards</small></div>
+      <div id="discard" class="card-row" aria-label="Discard pile"></div>
+    </section>
+    <section class="zone player-two">
+      <div class="zone-label"><span>PLAYER 2</span><small id="p2-count">0 cards</small></div>
+      <div id="p2" class="card-row" aria-label="Player 2 hand"></div>
+    </section>
+    <div id="draw-pile" aria-hidden="true"><img src="cards-back/back.png" alt=""></div>
+    <div id="callout" aria-live="polite"></div>
+    <div id="animation-layer" aria-hidden="true"></div>
+  </main>
+  <script src="simulation.js"></script>
+</body>
+</html>
