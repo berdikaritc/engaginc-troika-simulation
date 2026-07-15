@@ -11,8 +11,8 @@
   --teal: #00f2fe;
   --teal-glow: rgba(0, 242, 254, 0.2);
   
-  --card-w: 130px;
-  --card-h: 202px;
+  --card-w: 150px;
+  --card-h: 233px;
   --canvas-w: 720px;
   --canvas-h: 1080px;
   
@@ -610,10 +610,17 @@ kbd {
   border: 1px solid rgba(255, 255, 255, 0.12);
   overflow: hidden;
   box-sizing: border-box;
+  pointer-events: auto; /* enable interactions like hovering */
   /* GPU acceleration */
   transform: translateZ(0);
   backface-visibility: hidden;
   will-change: left, top, transform, box-shadow;
+}
+
+.card:hover {
+  transform: translateY(-20px) scale(1.05) translateZ(0);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--gold-glow);
+  /* DO NOT set z-index! This preserves the right-on-top order so it doesn't cover the card on its right */
 }
 
 /* Subtle border glow or lift on highlight (discarding) */

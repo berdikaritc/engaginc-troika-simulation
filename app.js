@@ -528,7 +528,7 @@ function layoutCards(animate = true) {
   const drawDur = state.drawDuration / speed;
   const discDur = state.discardDuration / speed;
   
-  const cardWidth = 130;
+  const cardWidth = 150;
   const canvasWidth = 720;
   const staggerFactor = 7; // spacing is ~1/7th width
 
@@ -544,8 +544,8 @@ function layoutCards(animate = true) {
     const isMoving = card.isMoving;
     
     const left = p1Start + idx * p1S;
-    const top = 150 + (44 - (isHighlighted ? 25 : 0)); // shifts up on highlight
-    const zIndex = isMoving ? 1000 : (10 + idx); // lift moving card to top z-index
+    const top = 150 + (28 - (isHighlighted ? 25 : 0)); // shifts up on highlight (centered vertically: (290 - 233)/2 = 28.5px)
+    const zIndex = isMoving ? (1000 + idx) : (10 + idx); // lift moving card to top z-index (preserve order)
 
     if (animate) {
       el.style.transition = `left ${drawDur}s cubic-bezier(0.25, 0.8, 0.25, 1), top ${drawDur}s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s, box-shadow 0.3s`;
@@ -582,8 +582,8 @@ function layoutCards(animate = true) {
     const isMoving = card.isMoving;
     
     const left = p2Start + idx * p2S;
-    const top = 750 + (44 - (isHighlighted ? 25 : 0)); // shifts up on highlight
-    const zIndex = isMoving ? 1000 : (10 + idx);
+    const top = 750 + (28 - (isHighlighted ? 25 : 0)); // shifts up on highlight
+    const zIndex = isMoving ? (1000 + idx) : (10 + idx);
 
     if (animate) {
       el.style.transition = `left ${drawDur}s cubic-bezier(0.25, 0.8, 0.25, 1), top ${drawDur}s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s, box-shadow 0.3s`;
@@ -627,8 +627,8 @@ function layoutCards(animate = true) {
     const isMoving = card.isMoving;
     
     const left = discStart + idx * discS;
-    const top = 440 + 54; // Centered vertically in 310px area: (310 - 202)/2 = 54px
-    const zIndex = isMoving ? 1000 : (10 + idx);
+    const top = 440 + 38; // Centered vertically in 310px area: (310 - 233)/2 = 38.5px
+    const zIndex = isMoving ? (1000 + idx) : (10 + idx);
 
     if (animate) {
       el.style.transition = `left ${discDur}s cubic-bezier(0.25, 0.8, 0.25, 1), top ${discDur}s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s, box-shadow 0.3s`;

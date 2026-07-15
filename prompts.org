@@ -15,13 +15,13 @@ From top to bottom:
   logo/logo.png), and turn/step information, and nothing else. The logo
   positioning should be absolute so it does not move to the left or right
   whenever the information displayed is changed.
-- P1's hand: then P1's hand which will occupy almost 1/3 of vertical area of the
+- P1's hand: then P1's hand which will occupy about 1/3 of vertical area of the
   screen. The cards put in this hand should not overlap or cover the top area or
   the discard pile.
-- discard pile: discard pile which will also occupy almost 1/3 of vertical area
+- discard pile: discard pile which will also occupy about 1/3 of vertical area
   of the screen. The cards put in this pile should not overlap or cover the
   cards in P1's hand or P2's hand.
-- P2's hand: P2's hand which will also occupy almost 1/3 of vertical area of the
+- P2's hand: P2's hand which will also occupy about 1/3 of vertical area of the
   screen. The cards put in this pile should not overlap or cover the cards in
   discard pile.
 
@@ -31,16 +31,16 @@ The labels for the areas should not be covered by the cards. Maybe put the
 labels far on the right side.
 
 The players' hands will be displayed in accordeon style with fixed spacing between
-cards (~1/7 width of the card). The leftmost card will be the bottommost card,
+cards (~1/6 width of the card). The leftmost card will be the bottommost card,
 and subsequent cards on the right are cards that are on top of the previous
 cards (cards to their left).
 
 The discard pile will be displayed in accordeon style with initial spacing
-between cards of ~1/7 width of the card, but as more cards are put into the
+between cards of ~1/6 width of the card, but as more cards are put into the
 discard pile, this spacing will be reduced gradually. When there are 12 to 19
-cards on the discard pile, the spacing is reduced to ~1/9 width of the card.
+cards on the discard pile, the spacing is reduced to ~1/8 width of the card.
 When there are 20 or more cards on the discard pile, the spacing is reduced to
-~1/11 width of the card.
+~1/10 width of the card.
 
 ** The cards
 the following are all the card names: 1-grape 2-grape 3-grape 1-orange 2-orange
@@ -356,3 +356,16 @@ I think the problem is that the cards are too large.
 
 Also, the labels are still covered/overlaps with the cards. Move the labels to
 outside the area where the cards will be placed.
+* [2026-07-15 Wed] Prompt 1T1AG.2
+Enlarge the cards a bit, while still making sure the cards in the P1's hand and
+P2's hand and discard pile do not overlap.
+
+Make sure that when a player discard cards and the cards are animated into the
+discard pile, the z-order is maintained: the topleft card is the bottommost and
+subsequent cards on the right are on top of it. All topleft symbols on all the
+cards should still be visible during animation, hovering, and placement into
+final position.
+
+ # tetep gak ada yg dibenerin kayaknya
+* [2026-07-15 Wed] Prompt 1T1AG.2-question
+what if i want to change the simulation data from S1 to, say, S2, which part should i change?
