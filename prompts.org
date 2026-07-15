@@ -1,0 +1,510 @@
+* [2026-07-15 Wed] prompt 1
+i'm making a html+css+javascript-based card game play simulation animation that
+will be recorded using a desktop recorder like simplescreenrecorder on linux to
+produce a video animation (the video will be portrait 720x1080).
+
+the name of the card game is "Anak Bos Troika" (Troika for short).
+
+the simulation will be for 2 players.
+
+layout of the screen:
+- the very top will be title, turn information.
+- then Player 1's hand which will occupy almost 1/3 of vertical area of the screen.
+- then discard pile which will also occupy almost 1/3 of vertical area of the screen.
+- then Player 2's hand which will also occupy almost 1/3 of vertical area of the screen.
+
+all the players' hand as well as discard pile will be displayed in accordeon
+style. the topmost card will be on the right (so the bottommost card will be on
+the left). make sure the top left part of each card is visible to let viewers
+see the symbols on the card and know what card it is even though not the whole
+of the card is visible.
+
+when there are more than 20 cards on the discard pile, the bottom cards can be
+"compressed" (stacked vertically) so only a maximum of 20 cards is shown in
+accordeon style.
+
+the following are all the card names:
+1-grape
+2-grape
+3-grape
+1-orange
+2-orange
+3-orange
+1-watermelon
+2-watermelon
+3-watermelon
+1-golf ball
+2-golf ball
+3-golf ball
+1-tennis ball
+2-tennis ball
+3-tennis ball
+1-basket ball
+2-basket ball
+3-basket ball
+1-house roof
+2-house roof
+3-house roof
+1-tent
+2-tent
+3-tent
+1-pyramid
+2-pyramid
+3-pyramid
+1-cake slice
+2-cake slice
+3-cake slice
+1-pizza slice
+2-pizza slice
+3-pizza slice
+1-jelly
+2-jelly
+3-jelly
+1-handphone
+2-handphone
+3-handphone
+1-tv
+2-tv
+3-tv
+1-laptop
+2-laptop
+3-laptop
+1-swimming trunk
+2-swimming trunk
+3-swimming trunk
+1-cloth hanger
+2-cloth hanger
+3-cloth hanger
+1-hat
+2-hat
+3-hat
+1-table
+2-table
+3-table
+1-cupboard
+2-cupboard
+3-cupboard
+1-bed
+2-bed
+3-bed
+1-paper airplane
+2-paper airplane
+3-paper airplane
+1-dice
+2-dice
+3-dice
+1-alphabet block
+2-alphabet block
+3-alphabet block
+1-the triangle
+2-the triangle
+3-the triangle
+1-drum
+2-drum
+3-drum
+1-piano
+2-piano
+3-piano
+wildcard max 1
+wildcard max 2
+wildcard max 3
+wildcard max 4
+wildcard max 5
+wildcard max 6
+wildcard tux 1
+wildcard tux 2
+wildcard tux 3
+wildcard tux 4
+wildcard tux 5
+wildcard tux 6
+wildcard+cut lyx 1
+wildcard+cut lyx 2
+wildcard+cut lyx 3
+wildcard+cut lyx 4
+wildcard+cut lyx 5
+wildcard+cut lyx 6
+
+i want to be able to specify a list of simulations in a javascript array.
+
+for each of a single emulation, i want to be able to specify the initial state
+and a list of turns.
+
+the initial state will list the cards on each pile at the beginning of the game.
+there are 4 different "piles": P1 (P1's hand, which will be shown in an
+accordeon style to make sure the top left part of each card is visible to let
+viewers see the symbols on the card and know what card it is), P2 (P2's hand),
+DRAW (the draw pile, which is not shown in the display, but when a player is
+drawing from the draw pile, the card will be animated from the left of the
+screen to the P1's hand), DISCARD (the discard pile, which is also shown in an
+accordeon style to let viewers identify each card).
+
+in the array that represent list of cards, the first element will be the topmost
+card on the pile. In the draw pile, that first element will be the first to be
+drawn.
+
+i'll give you example of a simulation (let's call it S1).
+
+the initial state is:
+
+  "DRAW": [
+     // the first element of the array will be the topmost card of the pile
+     // and will be drawn first
+     '1-swimming trunk',
+     'wildcard+cut WC4',
+     'wildcard W9',
+     '3-pyramid',
+     '1-house roof',
+     '2-laptop',
+     '2-pizza slice',
+     '3-golf ball',
+     '3-tv',
+     '1-table',
+     'wildcard W5',
+     'wildcard W10',
+     '2-watermelon',
+     '1-pyramid',
+     '3-drum',
+     '1-tent',
+     '3-tennis ball',
+     'wildcard W3',
+     'wildcard W12',
+     '2-swimming trunk',
+     '2-golf ball',
+     'wildcard+cut WC2',
+     '1-watermelon',
+     '1-hat',
+     '1-piano',
+     '1-golf ball',
+     '3-paper airplane',
+     '3-watermelon',
+     '1-basket ball',
+     '2-tennis ball',
+     '3-jelly',
+     '2-bed',
+     '3-pizza slice',
+     '1-jelly',
+     '2-jelly',
+     '1-bed',
+     '3-tent',
+     '1-tv',
+     '2-cloth hanger',
+     '3-grape',
+     '3-dice',
+     'wildcard+cut WC1',
+     'wildcard W11',
+     '2-pyramid',
+     '1-orange',
+     '3-orange',
+     '3-basket ball',
+     '2-house roof',
+     'wildcard+cut WC5',
+     'wildcard+cut WC6',
+     '2-cupboard',
+     '2-handphone',
+     '3-cupboard',
+     '2-dice',
+     '2-piano',
+     '2-grape',
+     '1-the triangle',
+     'wildcard W7',
+     '3-piano',
+     'wildcard W2',
+     '1-pizza slice',
+     'wildcard W6',
+     '2-alphabet block',
+     '1-paper airplane',
+     '3-table',
+     'wildcard W4',
+     'wildcard+cut WC3',
+     '3-swimming trunk',
+     '2-cake slice',
+     '1-tennis ball',
+     '2-tent',
+     'wildcard W8',
+     '3-the triangle',
+     '3-cloth hanger',
+     '3-hat',
+     '2-hat',
+     '1-alphabet block',
+     '3-alphabet block',
+     '3-cake slice',
+     '1-laptop',
+     '1-grape',
+     '2-the triangle',
+     '2-orange',
+     '2-paper airplane',
+     'wildcard W1',
+     '1-dice',
+     '2-drum',
+     '1-drum',
+     '1-cake slice',
+     '3-handphone',
+     '2-basket ball',
+     '3-laptop',
+     '1-cloth hanger',
+     '2-table',
+     '3-bed',
+     '1-handphone',
+     '1-cupboard',
+     '2-tv',
+     '3-house roof'],
+
+   "P1": [],
+
+   "P2": [],
+
+   "DISCARD": [],
+
+   meaning all cards are in the draw pile. P1, P2, DISCARD are all empty.
+
+1. the first turn consists of one step: drawing 9 cards to each player (first
+   card to P1, then second card to P2, then third card to P1, and so on). I want
+   to be able to specify the turn as list of cards to move/animate, each entry
+   will be of this format: [CARDNAME, SOURCE_PILE, TARGET_PILE]. Where
+   SOURCE_PILE and TARGET_PILE is pile name. for the first turn this will be:
+
+   // turn 1:
+   {
+     "steps": [
+       {
+          "summary": "Each player is drawn 9 cards",
+
+          "moves": [
+            // note that the movement of cards is ordered, so subsequent
+            // card moved to the same target pile will be on top of the
+            // previously moved card .
+
+            ['1-swimming trunk', 'DRAW', 'P1'],
+            ['wildcard+cut WC4', 'DRAW', 'P2']
+            ['wildcard W9', 'DRAW', 'P1'],
+            ['3-pyramid', 'DRAW', 'P2'],
+            ['1-house roof', 'DRAW', 'P1'],
+            ['2-laptop', 'DRAW', 'P2'],
+            ['2-pizza slice', 'DRAW', 'P1'],
+            ['3-golf ball', 'DRAW', 'P2'],
+            ['3-tv', 'DRAW', 'P1'],
+            ['1-table', 'DRAW', 'P2'],
+            ['wildcard W5', 'DRAW', 'P1'],
+            ['wildcard W10', 'DRAW', 'P2'],
+            ['2-watermelon', 'DRAW', 'P1'],
+            ['1-pyramid', 'DRAW', 'P2'],
+            ['3-drum', 'DRAW', 'P1'],
+            ['1-tent', 'DRAW', 'P2'],
+            ['3-tennis ball', 'DRAW', 'P1'],
+            ['wildcard W3', 'DRAW', 'P2'],
+          ]
+        }
+     ]
+   } // end of turn 1 specification
+
+2. the second turn consists of 4 separate steps. first, P1 discard a group of
+   cards from his hand to the discard pile and call his discarded card group.
+   second, P1 draws another 3 card from the draw pile. third, P2 continue by
+   discarding a group of card from his hand to the discard pile and call his
+   discarded card group. fourth, P2 draws 3 cards from the draw pile.
+
+   so the second turn will be specified like this:
+
+   // turn 2
+   {
+     "steps": [
+
+       // step 1
+       {
+         "summary": "P1 discards",
+         "call": "medium",
+         "moves": [
+           ['2-pizza slice', 'P1', 'DISCARD'],
+           ['3-tv', 'P1', 'DISCARD'],
+           ['3-drum', 'P1', 'DISCARD'],
+           ['3-tennis ball', 'P1', 'DISCARD']
+         ],
+       },
+
+       // step 2
+       {
+         "summary": "P1 draws",
+         "moves": [
+           ['wildcard W12', 'DRAW', 'P1'],
+           ['2-swimming trunk', 'DRAW', 'P1'],
+           ['2-golf ball', 'DRAW', 'P1']
+         ]
+       },
+
+       // step 3
+       {
+         "summary": "P2 discards",
+         "call": "3",
+         "moves": [
+           ['3-golf ball', 'P2', 'DISCARD'],
+           ['wildcard W10', 'P2', 'DISCARD'],
+           ['3-pyramid', 'P2', 'DISCARD']
+         ]
+       },
+
+       // step 4
+       {
+         "summary": "P2 draws",
+         "moves": [
+           ['wildcard+cut WC2', 'DRAW', 'P2'],
+           ['1-watermelon', 'DRAW', 'P2'],
+           ['1-hat', 'DRAW', 'P2']
+         ]
+       }
+     ], // end steps specification
+   } // end of turn specification
+
+The third turn:
+
+   // turn 3
+   {
+     "steps": [
+
+       // step 1
+       {
+         "summary": "P1 discards",
+         "call": "triangle",
+         "moves": [
+           ['2-swimming trunk', 'P1', 'DISCARD']
+           ['1-house roof', 'P1', 'DISCARD'],
+           ['1-swimming trunk', 'P1', 'DISCARD'],
+         ]
+       },
+
+       // step 2
+       {
+         "summary": "P1 draws",
+         "moves": [
+           ['1-piano', 'DRAW', 'P1'],
+           ['1-golf ball', 'DRAW', 'P1'],
+           ['3-paper airplane', 'DRAW', 'P1']
+         ]
+       },
+
+       // step 3
+       {
+         "summary": "P2 discards",
+         "call": "1",
+         "moves": [
+           ['1-swimming trunk', 'P2', 'DISCARD'],
+           ['1-table', 'P2', 'DISCARD'],
+           ['1-pyramid', 'P2', 'DISCARD'],
+           ['1-tent', 'P2', 'DISCARD'],
+           ['1-watermelon', 'P2', 'DISCARD'],
+           ['wildcard W3', 'P2', 'DISCARD'],
+           ['1-hat', 'P2', 'DISCARD']
+         ]
+       },
+
+       // step 4
+       {
+         "summary": "P2 draws",
+         "moves": [
+           ['3-watermelon', 'DRAW', 'P2'],
+           ['1-basket ball', 'DRAW', 'P2'],
+           ['2-tennis ball', 'DRAW', 'P2']
+         ]
+       }
+     ] // end steps specification
+   } // end of turn specification
+
+The fourth turn:
+
+   // turn 4
+   {
+     "steps": [
+
+       // step 1
+       {
+         "summary": "P1 discards",
+         "call": "triangle",
+         "moves": [
+           ['2-swimming trunk', 'P1', 'DISCARD']
+           ['1-house roof', 'P1', 'DISCARD'],
+           ['1-swimming trunk', 'P1', 'DISCARD'],
+         ]
+       },
+
+       // step 2
+       {
+         "summary": "P1 draws",
+         "moves": [
+           ['1-piano', 'DRAW', 'P1'],
+           ['1-golf ball', 'DRAW', 'P1'],
+           ['3-paper airplane', 'DRAW', 'P1']
+         ]
+       },
+
+       // step 3
+       {
+         "summary": "P2 discards",
+         "call": "1",
+         "moves": [
+           ['1-swimming trunk', 'P2', 'DISCARD'],
+           ['1-table', 'P2', 'DISCARD'],
+           ['1-pyramid', 'P2', 'DISCARD'],
+           ['1-tent', 'P2', 'DISCARD'],
+           ['1-watermelon', 'P2', 'DISCARD'],
+           ['wildcard W3', 'P2', 'DISCARD'],
+           ['1-hat', 'P2', 'DISCARD']
+         ]
+       },
+
+       // step 4
+       {
+         "summary": "P2 draws",
+         "moves": [
+           ['3-watermelon', 'DRAW', 'P2'],
+           ['1-basket ball', 'DRAW', 'P2'],
+           ['2-tennis ball', 'DRAW', 'P2']
+         ]
+       }
+     ] // end steps specification
+   } // end of turn specification
+
+the images for the front side of the cards are in cards-front/ subdirectory,
+with the PNG files named "CARDNAME.png".
+
+the image for the back side of the cards is in cards-back/back.png. but i don't
+think the back side will be used as all animation will show the front side.
+
+i want to be able to specify somewhere which simulation to run (in this example,
+S1).
+
+i also want to be able to specify the speed of animation from e.g. 1 to 9 (1 is
+very slow, 9 is very fast, the default is 5; from here on whenever i specify the
+number of seconds of some animation, it should be assumed at the speed of 5).
+
+animation style:
+- when animating a player drawing cards from the draw pile (including the first
+  turn where all the players are dealt 9 cards each) each card should be
+  animated separately in order. the animation should be smooth and each card
+  movement from the draw pile (left of the screen) to its final position in the
+  player's hand should take about 1.5 seconds. there should not be a delay
+  between moving of one card to another. so for the first card, it should be
+  animated from the left of the screen (the draw pile) to the leftmost of P1's
+  hand. then the second card drawn is from the draw pile to the leftmost of P2's
+  hand. then the third card drawn is from the draw pile to the right of the
+  previous card of P1's hand. and so on. make sure when animating the card, the
+  card has not appeared in P1's hand. it should come from the draw pile.
+
+- when animating a player discarding his group of cards, first all the cards
+  that will be moved in his hand should be highlighted, then the call is
+  displayed on the screen, e.g. "medium" for about 3 seconds, then all the cards
+  is moved/animated going to the discard pile all at once. the animation should
+  be smooth. the movement from the player's hand to the final position in the
+  discard pile should take about 1.5 seconds.
+
+  the cards on the discard pile should also be displayed like a player's hand:
+  the bottommost card is on the left and the next card on top of it is on its
+  right. make sure the symbols on the topleft area of each card is visible.
+
+- before each player discards, there should be a delay of 3 seconds.
+
+- the first turn is displayed instantly, that is, at the start of animation the
+  hands of both players have already been drawn.
+
+- do not show the back of the card anywhere.
+
+when index.html is loaded, it should wait for 3.5 seconds, then start the
+animation.
