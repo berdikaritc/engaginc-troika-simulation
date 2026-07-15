@@ -8,7 +8,7 @@ the name of the card game is "Anak Bos Troika" (Troika for short).
 
 the simulation will be for 2 players (P1 and P2).
 
-** Layout of the screen
+** Layout of the screen & appearance
 From top to bottom:
 
 - the very top will contain title (use logo file logo/logo.png), and turn/step
@@ -22,15 +22,17 @@ From top to bottom:
 - then P2's hand which will also occupy almost 1/3 of vertical area of the
   screen.
 
-** Appearance of the hands/pile
-all the players' hand as well as discard pile will be displayed in accordeon
-style. the topmost card will be on the right (so the bottommost card will be on
-the left). make sure the top left part of each card is visible to let viewers
-see the symbols on the card and know what card it is even though not the whole
-of the card is visible.
+The players' hands will be displayed in accordeon style with fixed spacing between
+cards (~1/7 width of the card). The leftmost card will be the bottommost card,
+and subsequent cards on the right are cards that are on top of the previous
+cards (cards to their left).
 
-as there are more and more cards put into the discard pile, the accordeon should
-be more and more compressed, e.g. the cards are placed closer to one another.
+The discard pile will be displayed in accordeon style with initial spacing
+between cards of ~1/7 width of the card, but as more cards are put into the
+discard pile, this spacing will be reduced gradually. When there are 12 to 19
+cards on the discard pile, the spacing is reduced to ~1/9 width of the card.
+When there are 20 or more cards on the discard pile, the spacing is reduced to
+~1/11 width of the card.
 
 ** The cards
 the following are all the card names: 1-grape 2-grape 3-grape 1-orange 2-orange
@@ -313,7 +315,13 @@ the cards on the discard pile should also be displayed like a player's hand: the
 bottommost card is on the left and the next card on top of it is on its right.
 make sure the symbols on the topleft area of each card is visible.
 
+Do not draw any card that symbolizes the draw pile. The draw pile is not
+visible. Only when drawing form the draw pile should a card appear and moves
+smoothly to the target position.
+
 there should be a delay of 2 seconds before each step starts.
 
 when index.html is loaded, it should wait for 3.5 seconds, then start the
 animation.
+* [2026-07-15 Wed] Prompt 1.2
+# males deh kalo pas jadi gini trus gak sesuai kemauan kita, ngubah2nya males
