@@ -25,6 +25,8 @@ From top to bottom:
   screen. The cards put in this pile should not overlap or cover the cards in
   discard pile.
 
+Width of card should be 150.
+
 Try to conserve vertical space.
 
 The labels for the areas should not be covered by the cards. Maybe put the
@@ -355,6 +357,17 @@ I think the problem is that the cards are too large.
 
 Also, the labels are still covered/overlaps with the cards. Move the labels to
 outside the area where the cards will be placed.
+
+# i'm switching to antigravity. first impression of agy: more verbose and asking
+# more for permissions. but the result is better: size of animation better fits
+# 720x1080, there are << and >> buttons to go through the states. hasil animasi
+# ok tapi ada glitch sedikit.
+
+# but the frustrating thing about using vibecoding: everything is random,
+# between each run nama variabel bakal bisa beda2x, dari sim jadi simulation,
+# ntar ini itu bisa beda2 kecil semua. jadi begitu dapat yg bagus, udah bagus.
+# kalo dapat yg jelek memolesnya jadi bagus capek. enakan one-shot sih lebih
+# clean. ngedit2 lewat prompt berikutnya itu hit and miss.
 * [2026-07-15 Wed] Prompt 1T1AG.2
 Enlarge the cards a bit, while still making sure the cards in the P1's hand and
 P2's hand and discard pile do not overlap.
@@ -368,5 +381,7 @@ final position.
  # kartu katanya digedein sih di js na 130 jadi 150. tapi yg problem z-order
  # masih belum. gw mau coba start over dan ganti prompt, tapi kalo gagal gw akan
  # revert ke sini.
+
+ # UPDATE: kok hasilnya sama ya.
 * [2026-07-15 Wed] Prompt 1T1AG.2-question
 what if i want to change the simulation data from S1 to, say, S2, which part should i change?

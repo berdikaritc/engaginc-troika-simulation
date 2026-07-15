@@ -1,0 +1,11 @@
+{
+  "name": "troika-simulation",
+  "version": "1.0.0",
+  "description": "Anak Bos Troika simulation animation board",
+  "scripts": {
+    "dev": "python3 -m http.server 8080"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
