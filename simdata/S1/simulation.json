@@ -1,0 +1,421 @@
+{
+   "turns" : [
+      {
+         "steps" : [
+            {
+               "moves" : [
+                  [
+                     "2-laptop",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-orange",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard max 1",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-handphone",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard+tux lyx 6",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "wildcard+tux lyx 2",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "1-jelly",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-drum",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "2-tennis ball",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-golf ball",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard tux 4",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "wildcard tux 6",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard tux 1",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "wildcard max 2",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard tux 2",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-bed",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "3-basket ball",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-dice",
+                     "DRAW",
+                     "P2"
+                  ]
+               ],
+               "summary" : "INITIAL DRAW"
+            }
+         ]
+      },
+      {
+         "steps" : [
+            {
+               "call" : "ROUND",
+               "moves" : [
+                  [
+                     "3-basket ball",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-jelly",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-tennis ball",
+                     "P1",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "PLAYER 1 DISCARDS GROUP: ROUND"
+            },
+            {
+               "moves" : [
+                  [
+                     "1-watermelon",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-house roof",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-laptop",
+                     "DRAW",
+                     "P1"
+                  ]
+               ],
+               "summary" : "PLAYER 1 DRAWS ANOTHER 3 CARDS"
+            },
+            {
+               "call" : "2",
+               "moves" : [
+                  [
+                     "2-orange",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-drum",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-golf ball",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-dice",
+                     "P2",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "PLAYER 2 DISCARDS GROUP: 2"
+            },
+            {
+               "moves" : [
+                  [
+                     "2-jelly",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "1-cake slice",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "3-the triangle",
+                     "DRAW",
+                     "P2"
+                  ]
+               ],
+               "summary" : "PLAYER 2 DRAWS ANOTHER 3 CARDS"
+            }
+         ]
+      },
+      {
+         "steps" : [
+            {
+               "call" : "RECTANGLE",
+               "moves" : [
+                  [
+                     "2-laptop",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "wildcard max 1",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "3-laptop",
+                     "P1",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "PLAYER 1 DISCARDS GROUP: RECTANGLE"
+            },
+            {
+               "moves" : [
+                  [
+                     "1-basket ball",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-hat",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-house roof",
+                     "DRAW",
+                     "P1"
+                  ]
+               ],
+               "summary" : "PLAYER 1 DRAWS ANOTHER 3 CARDS"
+            },
+            {
+               "call" : "RECTANGLE",
+               "moves" : [
+                  [
+                     "1-bed",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "wildcard max 2",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-handphone",
+                     "P2",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "PLAYER 2 DISCARDS GROUP: RECTANGLE"
+            },
+            {
+               "moves" : [
+                  [
+                     "wildcard tux 5",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "1-alphabet block",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "1-tv",
+                     "DRAW",
+                     "P2"
+                  ]
+               ],
+               "summary" : "PLAYER 2 DRAWS ANOTHER 3 CARDS"
+            }
+         ]
+      },
+      {
+         "steps" : [
+            {
+               "call" : "1",
+               "moves" : [
+                  [
+                     "1-watermelon",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-basket ball",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-house roof",
+                     "P1",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "PLAYER 1 DISCARDS GROUP: 1"
+            },
+            {
+               "moves" : [
+                  [
+                     "3-alphabet block",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "wildcard tux 3",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-cloth hanger",
+                     "DRAW",
+                     "P1"
+                  ]
+               ],
+               "summary" : "PLAYER 1 DRAWS ANOTHER 3 CARDS"
+            },
+            {
+               "call" : "1",
+               "moves" : [
+                  [
+                     "1-cake slice",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-alphabet block",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-tv",
+                     "P2",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "PLAYER 2 DISCARDS GROUP: 1"
+            },
+            {
+               "moves" : [
+                  [
+                     "1-cupboard",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "2-watermelon",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "3-grape",
+                     "DRAW",
+                     "P2"
+                  ]
+               ],
+               "summary" : "PLAYER 2 DRAWS ANOTHER 3 CARDS"
+            }
+         ]
+      },
+      {
+         "steps" : [
+            {
+               "call" : "9 COLORS",
+               "moves" : [
+                  [
+                     "wildcard+tux lyx 6",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "wildcard tux 4",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "wildcard tux 1",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "wildcard tux 2",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "wildcard tux 3",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-house roof",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-hat",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "3-alphabet block",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-cloth hanger",
+                     "P1",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "PLAYER 1 DISCARDS SERIES: 9 COLORS"
+            }
+         ]
+      }
+   ]
+}
