@@ -9,11 +9,18 @@ the name of the card game is "Anak Bos Troika" (Troika for short).
 the simulation will be for 2 players (P1 and P2).
 
 ** Layout of the screen
+From top to bottom:
+
 - the very top will contain title (use logo file logo/logo.png), and turn/step
   information, and nothing else.
-- then Player 1's hand which will occupy almost 1/3 of vertical area of the screen.
-- then discard pile which will also occupy almost 1/3 of vertical area of the screen.
-- then Player 2's hand which will also occupy almost 1/3 of vertical area of the screen.
+- then P1's hand which will occupy almost 1/3 of vertical area of the
+  screen.
+- then some clearance ~1/10 vertical area to separate P1's hand with discard pile.
+- then discard pile which will also occupy almost 1/3 of vertical area of the
+  screen.
+- then some clearance ~1/10 vertical area to separate P2's hand with discard pile.
+- then P2's hand which will also occupy almost 1/3 of vertical area of the
+  screen.
 
 ** Appearance of the hands/pile
 all the players' hand as well as discard pile will be displayed in accordeon
@@ -22,111 +29,26 @@ the left). make sure the top left part of each card is visible to let viewers
 see the symbols on the card and know what card it is even though not the whole
 of the card is visible.
 
-when there are more than 16 cards on the discard pile, the bottom cards can be
-"compressed" (stacked vertically) so only a maximum of 16 cards is shown in
-accordeon style.
+as there are more and more cards put into the discard pile, the accordeon should
+be more and more compressed, e.g. the cards are placed closer to one another.
 
 ** The cards
-the following are all the card names:
-1-grape
-2-grape
-3-grape
-1-orange
-2-orange
-3-orange
-1-watermelon
-2-watermelon
-3-watermelon
-1-golf ball
-2-golf ball
-3-golf ball
-1-tennis ball
-2-tennis ball
-3-tennis ball
-1-basket ball
-2-basket ball
-3-basket ball
-1-house roof
-2-house roof
-3-house roof
-1-tent
-2-tent
-3-tent
-1-pyramid
-2-pyramid
-3-pyramid
-1-cake slice
-2-cake slice
-3-cake slice
-1-pizza slice
-2-pizza slice
-3-pizza slice
-1-jelly
-2-jelly
-3-jelly
-1-handphone
-2-handphone
-3-handphone
-1-tv
-2-tv
-3-tv
-1-laptop
-2-laptop
-3-laptop
-1-swimming trunk
-2-swimming trunk
-3-swimming trunk
-1-cloth hanger
-2-cloth hanger
-3-cloth hanger
-1-hat
-2-hat
-3-hat
-1-table
-2-table
-3-table
-1-cupboard
-2-cupboard
-3-cupboard
-1-bed
-2-bed
-3-bed
-1-paper airplane
-2-paper airplane
-3-paper airplane
-1-dice
-2-dice
-3-dice
-1-alphabet block
-2-alphabet block
-3-alphabet block
-1-the triangle
-2-the triangle
-3-the triangle
-1-drum
-2-drum
-3-drum
-1-piano
-2-piano
-3-piano
-wildcard max 1
-wildcard max 2
-wildcard max 3
-wildcard max 4
-wildcard max 5
-wildcard max 6
-wildcard tux 1
-wildcard tux 2
-wildcard tux 3
-wildcard tux 4
-wildcard tux 5
-wildcard tux 6
-wildcard+cut lyx 1
-wildcard+cut lyx 2
-wildcard+cut lyx 3
-wildcard+cut lyx 4
-wildcard+cut lyx 5
-wildcard+cut lyx 6
+the following are all the card names: 1-grape 2-grape 3-grape 1-orange 2-orange
+3-orange 1-watermelon 2-watermelon 3-watermelon 1-golf ball 2-golf ball 3-golf
+ball 1-tennis ball 2-tennis ball 3-tennis ball 1-basket ball 2-basket ball
+3-basket ball 1-house roof 2-house roof 3-house roof 1-tent 2-tent 3-tent
+1-pyramid 2-pyramid 3-pyramid 1-cake slice 2-cake slice 3-cake slice 1-pizza
+slice 2-pizza slice 3-pizza slice 1-jelly 2-jelly 3-jelly 1-handphone
+2-handphone 3-handphone 1-tv 2-tv 3-tv 1-laptop 2-laptop 3-laptop 1-swimming
+trunk 2-swimming trunk 3-swimming trunk 1-cloth hanger 2-cloth hanger 3-cloth
+hanger 1-hat 2-hat 3-hat 1-table 2-table 3-table 1-cupboard 2-cupboard
+3-cupboard 1-bed 2-bed 3-bed 1-paper airplane 2-paper airplane 3-paper airplane
+1-dice 2-dice 3-dice 1-alphabet block 2-alphabet block 3-alphabet block 1-the
+triangle 2-the triangle 3-the triangle 1-drum 2-drum 3-drum 1-piano 2-piano
+3-piano wildcard max 1 wildcard max 2 wildcard max 3 wildcard max 4 wildcard max
+5 wildcard max 6 wildcard tux 1 wildcard tux 2 wildcard tux 3 wildcard tux 4
+wildcard tux 5 wildcard tux 6 wildcard+cut lyx 1 wildcard+cut lyx 2 wildcard+cut
+lyx 3 wildcard+cut lyx 4 wildcard+cut lyx 5 wildcard+cut lyx 6
 
 ** The simulation data
 An example simulation data is in simdata/S1/simulation.json file.
@@ -264,105 +186,97 @@ discarding a group of card from his hand to the discard pile and call his
 discarded card group. fourth, P2 draws 3 cards from the draw pile. From the
 simulation data:
 
-      {
-         "steps" : [
-            {
-               "moves" : [
-                  [
-                     "2-laptop",
-                     "DRAW",
-                     "P1"
-                  ],
-                  [
-                     "2-orange",
-                     "DRAW",
-                     "P2"
-                  ],
-                  [
-                     "wildcard max 1",
-                     "DRAW",
-                     "P1"
-                  ],
-                  [
-                     "1-handphone",
-                     "DRAW",
-                     "P2"
-                  ],
-                  [
-                     "wildcard+tux lyx 6",
-                     "DRAW",
-                     "P1"
-                  ],
-                  [
-                     "wildcard+tux lyx 2",
-                     "DRAW",
-                     "P2"
-                  ],
-                  [
-                     "1-jelly",
-                     "DRAW",
-                     "P1"
-                  ],
-                  [
-                     "2-drum",
-                     "DRAW",
-                     "P2"
-                  ],
-                  [
-                     "2-tennis ball",
-                     "DRAW",
-                     "P1"
-                  ],
-                  [
-                     "2-golf ball",
-                     "DRAW",
-                     "P2"
-                  ],
-                  [
-                     "wildcard tux 4",
-                     "DRAW",
-                     "P1"
-                  ],
-                  [
-                     "wildcard tux 6",
-                     "DRAW",
-                     "P2"
-                  ],
-                  [
-                     "wildcard tux 1",
-                     "DRAW",
-                     "P1"
-                  ],
-                  [
-                     "wildcard max 2",
-                     "DRAW",
-                     "P2"
-                  ],
-                  [
-                     "wildcard tux 2",
-                     "DRAW",
-                     "P1"
-                  ],
-                  [
-                     "1-bed",
-                     "DRAW",
-                     "P2"
-                  ],
-                  [
-                     "3-basket ball",
-                     "DRAW",
-                     "P1"
-                  ],
-                  [
-                     "2-dice",
-                     "DRAW",
-                     "P2"
-                  ]
-               ],
-               "summary" : "INITIAL DRAW"
-            }
-         ]
-      },
+        {
+            "steps" : [
+                {
+                    "call" : "ROUND",
+                    "moves" : [
+                        [
+                            "3-basket ball",
+                            "P1",
+                            "DISCARD"
+                        ],
+                        [
+                            "1-jelly",
+                            "P1",
+                            "DISCARD"
+                        ],
+                        [
+                            "2-tennis ball",
+                            "P1",
+                            "DISCARD"
+                        ]
+                    ],
+                    "summary" : "PLAYER 1 DISCARDS GROUP: ROUND"
+                },
+                {
+                    "moves" : [
+                        [
+                            "1-watermelon",
+                            "DRAW",
+                            "P1"
+                        ],
+                        [
+                            "2-house roof",
+                            "DRAW",
+                            "P1"
+                        ],
+                        [
+                            "3-laptop",
+                            "DRAW",
+                            "P1"
+                        ]
+                    ],
+                    "summary" : "PLAYER 1 DRAWS ANOTHER 3 CARDS"
+                },
+                {
+                    "call" : "2",
+                    "moves" : [
+                        [
+                            "2-orange",
+                            "P2",
+                            "DISCARD"
+                        ],
+                        [
+                            "2-drum",
+                            "P2",
+                            "DISCARD"
+                        ],
+                        [
+                            "2-golf ball",
+                            "P2",
+                            "DISCARD"
+                        ],
+                        [
+                            "2-dice",
+                            "P2",
+                            "DISCARD"
+                        ]
+                    ],
+                    "summary" : "PLAYER 2 DISCARDS GROUP: 2"
+                },
+                {
+                    "moves" : [
+                        [
+                            "2-jelly",
+                            "DRAW",
+                            "P2"
+                        ],
+                        [
+                            "1-cake slice",
+                            "DRAW",
+                            "P2"
+                        ],
+                        [
+                            "3-the triangle",
+                            "DRAW",
+                            "P2"
+                        ]
+                    ],
+                    "summary" : "PLAYER 2 DRAWS ANOTHER 3 CARDS"
+                }
+            ]
+        },
 
 ** the card images
 the images for the front side of the cards are in cards-front/ subdirectory,
@@ -376,10 +290,9 @@ simdata/S2/simulation.json.
 ** animation style
 when animating a player drawing cards from the draw pile (including the first
 turn where all the players are dealt 9 cards each) each card should be animated
-separately in order. the animation should be smooth and each card movement from
-the draw pile (left of the screen) to its final position in the player's hand
-should take about 1.5 seconds. Except the initial draw (turn 1) should be fast,
-each card movement should only take about 0.2 seconds.
+separately in order. the animation should be smooth (60fps) and each card
+movement from the draw pile (left of the screen) to its final position in the
+player's hand should take about 1.5 seconds.
 
 There should not be a delay between moving of one card to another. so for the
 first card, it should be animated from the left of the screen (the draw pile) to
@@ -400,8 +313,7 @@ the cards on the discard pile should also be displayed like a player's hand: the
 bottommost card is on the left and the next card on top of it is on its right.
 make sure the symbols on the topleft area of each card is visible.
 
-before each player discards, there should be a delay of 3 seconds simulating the
-player thinking.
+there should be a delay of 2 seconds before each step starts.
 
 when index.html is loaded, it should wait for 3.5 seconds, then start the
 animation.

@@ -57,22 +57,24 @@ for my $step0 (@steps0) {
         my ($from, $to);
         if ($turn_letter eq 'A') {
             $rest =~ /DISCARDS (\w+): ([^.]+)/ or die;
-            $step->{summary} = "PLAYER 1 DISCARDS $1: $2";
-            $step->{call} = $2;
+            $step->{summary} = "P1 DISCARDS $1: $2";
+            $step->{call} = "P1 CALLS: $2";
+            $step->{call} .= ". P1 WINS." if $rest =~ /WIN/;
             $from = 'P1';
             $to = 'DISCARD';
         } elsif ($turn_letter eq 'B') {
-            $step->{summary} = "PLAYER 1 DRAWS ANOTHER 3 CARDS";
+            $step->{summary} = "P1 DRAWS ANOTHER 3 CARDS";
             $from = 'DRAW';
             $to = 'P1';
         } elsif ($turn_letter eq 'C') {
             $rest =~ /DISCARDS (\w+): ([^.]+)/ or die;
-            $step->{summary} = "PLAYER 2 DISCARDS $1: $2";
-            $step->{call} = $2;
+            $step->{summary} = "P2 DISCARDS $1: $2";
+            $step->{call} = "P2 CALLS: $2";
+            $step->{call} .= ". P2 WINS." if $rest =~ /WIN/;
             $from = 'P2';
             $to = 'DISCARD';
         } elsif ($turn_letter eq 'D') {
-            $step->{summary} = "PLAYER 2 DRAWS ANOTHER 3 CARDS";
+            $step->{summary} = "P2 DRAWS ANOTHER 3 CARDS";
             $from = 'DRAW';
             $to = 'P2';
         } else {
