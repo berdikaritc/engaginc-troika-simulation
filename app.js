@@ -1,670 +1,779 @@
-// Anak Bos Troika - Card Play Simulation Engine
-
-// State Variables
 let simulationData = null;
-let allSteps = [];
-let currentStepIndex = 0;
-let isPlaying = false;
-let playbackSpeed = 1.0;
-let isStepRunning = false;
-let startTimer = null;
+let nextCardId = 1;
 
-// Piles
-let p1Hand = [];
-let p2Hand = [];
-let discardPile = [];
+let state = {
+  p1: [],      // Array of { id, name, element, highlighted, isMoving }
+  p2: [],      // Array of { id, name, element, highlighted, isMoving }
+  discard: [], // Array of { id, name, element, highlighted, isMoving }
+  
+  currentTurnIndex: 0,
+  currentStepIndex: 0,
+  currentMoveIndex: 0,
+  
+  isPlaying: false,
+  isWaitingForNextStep: false,
+  isWaitingForCall: false,
+  autoAdvance: true,
+  
+  // Settings (seconds)
+  playbackSpeed: 1.0,
+  drawDuration: 1.5,
+  discardDuration: 1.5,
+  staggerDelay: 1.5, // 1.5s is fully sequential (no overlap), lower values allow stagger/overlap
+  stepDelay: 2.0,
+  initialDelay: 3.5,
+  callDuration: 3.0,
+};
 
-// DOM Card Elements mapping: cardName -> div element
-const cards = {};
-const highlightedCards = new Set();
-
-// Layout configuration
-const CARD_WIDTH = 150;
-const CARD_HEIGHT = 233;
-const SPACING_HAND = 25; // 1/6 of 150px
-const DRAW_X = -200;
-const P1_Y = 163.5;
-const DISCARD_Y = 483.5;
-const P2_Y = 803.5;
+let activeTimeouts = [];
 
 // DOM Elements
-const gameBoard = document.getElementById('game-board');
+const sidebar = document.getElementById('sidebar');
+const btnShowSidebar = document.getElementById('btn-show-sidebar');
+const btnHideSidebar = document.getElementById('btn-hide-sidebar');
+const btnPlay = document.getElementById('btn-play');
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
+const btnRestart = document.getElementById('btn-restart');
+const btnLoad = document.getElementById('btn-load');
+const simCaseInput = document.getElementById('sim-case');
+const stepListContainer = document.getElementById('step-list');
+const slideSpeed = document.getElementById('slide-speed');
+const valSpeed = document.getElementById('val-speed');
+const slideStagger = document.getElementById('slide-stagger');
+const valStagger = document.getElementById('val-stagger');
+const btnToggleAuto = document.getElementById('btn-toggle-auto');
+
+const turnDisplay = document.getElementById('turn-display');
+const summaryDisplay = document.getElementById('summary-display');
 const cardsLayer = document.getElementById('cards-layer');
-const controlPanel = document.getElementById('control-panel');
-const appWrapper = document.querySelector('.app-wrapper');
-
-const simSelector = document.getElementById('sim-selector');
-const loadSimBtn = document.getElementById('load-sim-btn');
-const playPauseBtn = document.getElementById('play-pause-btn');
-const stepPrevBtn = document.getElementById('step-prev-btn');
-const stepNextBtn = document.getElementById('step-next-btn');
-const restartBtn = document.getElementById('restart-btn');
-const speedSlider = document.getElementById('speed-slider');
-const speedVal = document.getElementById('speed-val');
-const stepsList = document.getElementById('steps-list');
-
-const turnNumEl = document.getElementById('turn-num');
-const stepNumEl = document.getElementById('step-num');
-const stepSummaryEl = document.getElementById('step-summary');
-const progressBar = document.getElementById('progress-bar');
-
 const callOverlay = document.getElementById('call-overlay');
-const callSpeaker = document.getElementById('call-speaker');
-const callValue = document.getElementById('call-value');
+const callOverlayTitle = document.getElementById('call-overlay-title');
+const callOverlayText = document.getElementById('call-overlay-text');
+const toastEl = document.getElementById('toast');
 
-const loadingOverlay = document.getElementById('loading-overlay');
-const loaderText = document.getElementById('loader-text');
-const loadingProgressBar = document.getElementById('loading-progress-bar');
-const statusBadge = document.getElementById('status-badge');
-const showControlsTrigger = document.getElementById('show-controls-trigger');
-const hideBtn = document.getElementById('hide-btn');
+// Initialize App
+setupEventListeners();
+loadSimulation(simCaseInput.value.trim());
 
-// Utility: Sleep
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms / playbackSpeed));
-}
 
-// Get URL parameters
-function getQueryParam(name) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(name);
-}
-
-// 1. Initial Entry Point
-async function init() {
-  const initialSim = getQueryParam('sim') || 'S1';
-  simSelector.value = initialSim;
-  
-  // Set up event listeners
-  setupEventListeners();
-  
-  // Load simulation
-  await loadSimulation(initialSim);
-}
-
-// 2. Load and Prepare Simulation
-async function loadSimulation(simName) {
-  if (startTimer) {
-    clearTimeout(startTimer);
-    startTimer = null;
+// Load Simulation JSON
+async function loadSimulation(caseName) {
+  if (!caseName) {
+    showToast("Please enter a simulation name!");
+    return;
   }
-  isPlaying = false;
-  isStepRunning = false;
-  playPauseBtn.textContent = 'Start';
-  updateStatusDisplay('LOADING');
   
-  // Show loading screen
-  loadingOverlay.classList.remove('hidden');
-  loaderText.textContent = `Fetching simulation '${simName}' data...`;
-  loadingProgressBar.style.width = '0%';
+  showToast(`Loading simulation ${caseName}...`);
+  pause();
   
   try {
-    const response = await fetch(`simdata/${simName}/simulation.json`);
+    const response = await fetch(`simdata/${caseName}/simulation.json`);
     if (!response.ok) {
-      throw new Error(`Failed to load simdata/${simName}/simulation.json. Check if folder exists.`);
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-    
     simulationData = await response.json();
+    showToast(`Simulation ${caseName} loaded successfully!`);
     
-    // Process steps into flat array
-    allSteps = [];
-    simulationData.turns.forEach((turn, turnIdx) => {
-      turn.steps.forEach((step, stepIdx) => {
-        allSteps.push({
-          ...step,
-          turnIndex: turnIdx + 1,
-          stepIndexInTurn: stepIdx + 1,
-          totalStepsInTurn: turn.steps.length
-        });
-      });
-    });
+    buildStepList();
+    goToShowStep(0, 0);
     
-    // Find all unique card names
-    const uniqueCards = new Set();
-    allSteps.forEach(step => {
-      if (step.moves) {
-        step.moves.forEach(move => {
-          uniqueCards.add(move[0]);
-        });
-      }
-    });
-    
-    const cardsArray = Array.from(uniqueCards);
-    loaderText.textContent = `Preloading ${cardsArray.length} card images...`;
-    
-    // Preload images
-    let loadedCount = 0;
-    await Promise.all(cardsArray.map(cardName => {
-      return new Promise(resolve => {
-        const img = new Image();
-        img.src = `cards-front/${encodeURIComponent(cardName)}.png`;
-        img.onload = () => {
-          loadedCount++;
-          const percentage = (loadedCount / cardsArray.length) * 100;
-          loadingProgressBar.style.width = `${percentage}%`;
-          resolve();
-        };
-        img.onerror = () => {
-          console.warn(`Card image not found: cards-front/${cardName}.png`);
-          loadedCount++;
-          const percentage = (loadedCount / cardsArray.length) * 100;
-          loadingProgressBar.style.width = `${percentage}%`;
-          resolve(); // Resolve anyway
-        };
-      });
-    }));
-    
-    // Instantiate Card Elements
-    createCardElements(cardsArray);
-    
-    // Populate Sidebar Steps List
-    populateStepsList();
-    
-    // Hide loading overlay
-    loadingOverlay.classList.add('hidden');
-    
-    // Reset state
-    jumpToStep(0);
-    
-    // Wait for 3.5 seconds, then start playing automatically
-    updateStatusDisplay('WAITING (3.5s)');
-    let startDelay = 3500;
-    
-    startTimer = setTimeout(() => {
-      startTimer = null;
-      isPlaying = true;
-      playPauseBtn.textContent = 'Pause';
-      updateStatusDisplay('PLAYING');
-      runSimulationLoop();
-    }, startDelay);
-    
+    // Automatically trigger initial delay and start play
+    play();
   } catch (error) {
-    loaderText.textContent = `Error: ${error.message}`;
-    loadingProgressBar.style.width = '0%';
-    alert(`Error: ${error.message}`);
+    console.error("Error loading simulation JSON:", error);
+    showToast(`Failed to load: simdata/${caseName}/simulation.json`, true);
   }
 }
 
-// Create card DOM elements and register them
-function createCardElements(cardNames) {
-  cardsLayer.innerHTML = '';
-  // Reset registry
-  for (const prop in cards) delete cards[prop];
+// Build Step List Sidebar Checklist
+function buildStepList() {
+  stepListContainer.innerHTML = '';
+  if (!simulationData || !simulationData.turns) return;
   
-  cardNames.forEach(cardName => {
-    const cardEl = document.createElement('div');
-    cardEl.className = 'card';
-    cardEl.style.backgroundImage = `url('cards-front/${encodeURIComponent(cardName)}.png')`;
-    // Initial draw pile position
-    cardEl.style.transform = `translate(${DRAW_X}px, ${P1_Y}px)`;
-    cardEl.style.opacity = '0';
-    cardEl.style.display = 'none';
-    
-    cardsLayer.appendChild(cardEl);
-    cards[cardName] = cardEl;
+  simulationData.turns.forEach((turn, turnIdx) => {
+    turn.steps.forEach((step, stepIdx) => {
+      const item = document.createElement('div');
+      item.className = 'step-item';
+      item.id = `step-item-${turnIdx}-${stepIdx}`;
+      
+      const titleText = `Turn ${turnIdx + 1}, Step ${stepIdx + 1}`;
+      item.innerHTML = `
+        <div class="step-item-title">${titleText}</div>
+        <div class="step-item-summary">${step.summary || 'Move'}</div>
+      `;
+      
+      item.addEventListener('click', () => {
+        goToShowStep(turnIdx, stepIdx);
+      });
+      
+      stepListContainer.appendChild(item);
+    });
   });
 }
 
-// Populate steps list in control panel
-function populateStepsList() {
-  stepsList.innerHTML = '';
+// Update Step List Highlight in Sidebar
+function updateStepListHighlight() {
+  document.querySelectorAll('.step-item').forEach(el => el.classList.remove('active'));
   
-  allSteps.forEach((step, idx) => {
-    const item = document.createElement('div');
-    item.className = 'step-item';
-    item.id = `step-item-${idx}`;
-    
-    const meta = document.createElement('div');
-    meta.className = 'step-item-meta';
-    meta.textContent = `Turn ${step.turnIndex} • Step ${step.stepIndexInTurn}`;
-    
-    const summary = document.createElement('div');
-    summary.className = 'step-item-summary';
-    summary.textContent = step.summary;
-    
-    item.appendChild(meta);
-    item.appendChild(summary);
-    
-    item.addEventListener('click', () => {
-      if (isStepRunning) return; // Prevent clicking while animating
-      if (startTimer) {
-        clearTimeout(startTimer);
-        startTimer = null;
-      }
-      jumpToStep(idx);
-    });
-    
-    stepsList.appendChild(item);
-  });
+  const activeEl = document.getElementById(`step-item-${state.currentTurnIndex}-${state.currentStepIndex}`);
+  if (activeEl) {
+    activeEl.classList.add('active');
+    activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+}
+
+// Show Toast
+function showToast(message, isError = false) {
+  toastEl.textContent = message;
+  if (isError) {
+    toastEl.style.borderColor = "#ff4a4a";
+  } else {
+    toastEl.style.borderColor = "var(--gold)";
+  }
+  toastEl.classList.add('show');
+  
+  setTimeout(() => {
+    toastEl.classList.remove('show');
+  }, 3000);
 }
 
 // Setup Event Listeners
 function setupEventListeners() {
-  // Load simulation button
-  loadSimBtn.addEventListener('click', () => {
-    const name = simSelector.value.trim();
-    if (name) loadSimulation(name);
+  // Load Button
+  btnLoad.addEventListener('click', () => {
+    loadSimulation(simCaseInput.value.trim());
+  });
+  simCaseInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      loadSimulation(simCaseInput.value.trim());
+    }
+  });
+
+  // Play / Pause
+  btnPlay.addEventListener('click', togglePlay);
+  
+  // Prev / Next / Restart
+  btnPrev.addEventListener('click', stepBackward);
+  btnNext.addEventListener('click', stepForward);
+  btnRestart.addEventListener('click', restart);
+  
+  // Speed Slider
+  slideSpeed.addEventListener('input', (e) => {
+    const val = parseFloat(e.target.value);
+    state.playbackSpeed = val;
+    valSpeed.textContent = val.toFixed(2) + 'x';
+    // Dynamically adjust ongoing transitions if any
+    layoutCards(true);
   });
   
-  // Play / Pause button
-  playPauseBtn.addEventListener('click', () => {
-    if (startTimer) {
-      clearTimeout(startTimer);
-      startTimer = null;
+  // Stagger Slider
+  slideStagger.addEventListener('input', (e) => {
+    const val = parseFloat(e.target.value);
+    state.staggerDelay = val;
+    valStagger.textContent = val.toFixed(1) + 's';
+  });
+
+  // Auto Advance Toggle
+  btnToggleAuto.addEventListener('click', () => {
+    state.autoAdvance = !state.autoAdvance;
+    if (state.autoAdvance) {
+      btnToggleAuto.classList.add('active');
+      btnToggleAuto.textContent = 'Auto-Advance Steps';
+    } else {
+      btnToggleAuto.classList.remove('active');
+      btnToggleAuto.textContent = 'Manual Step Control';
+    }
+  });
+
+  // Sidebar visibility
+  btnHideSidebar.addEventListener('click', hideSidebar);
+  btnShowSidebar.addEventListener('click', showSidebar);
+
+  // Keyboard Shortcuts
+  window.addEventListener('keydown', (e) => {
+    // Prevent default scrolling for Space and Arrow keys when playing/navigating
+    if (['Space', 'ArrowLeft', 'ArrowRight', 'KeyR', 'KeyH'].includes(e.code)) {
+      if (document.activeElement.tagName === 'INPUT') return; // Don't intercept inputs
+      e.preventDefault();
     }
     
-    if (isPlaying) {
-      isPlaying = false;
-      playPauseBtn.textContent = 'Play';
-      updateStatusDisplay('PAUSED');
-    } else {
-      if (currentStepIndex >= allSteps.length) {
-        // Restart from beginning
-        jumpToStep(0);
-      }
-      isPlaying = true;
-      playPauseBtn.textContent = 'Pause';
-      updateStatusDisplay('PLAYING');
-      runSimulationLoop();
-    }
-  });
-  
-  // Step Prev Button
-  stepPrevBtn.addEventListener('click', () => {
-    if (isStepRunning) return;
-    if (startTimer) {
-      clearTimeout(startTimer);
-      startTimer = null;
-    }
-    if (currentStepIndex > 0) {
-      jumpToStep(currentStepIndex - 1);
-    }
-  });
-  
-  // Step Next Button
-  stepNextBtn.addEventListener('click', () => {
-    if (isStepRunning) return;
-    if (startTimer) {
-      clearTimeout(startTimer);
-      startTimer = null;
-    }
-    if (currentStepIndex < allSteps.length - 1) {
-      jumpToStep(currentStepIndex + 1);
-    }
-  });
-  
-  // Restart button
-  restartBtn.addEventListener('click', () => {
-    if (isStepRunning) return;
-    if (startTimer) {
-      clearTimeout(startTimer);
-      startTimer = null;
-    }
-    jumpToStep(0);
-  });
-  
-  // Speed slider
-  speedSlider.addEventListener('input', (e) => {
-    playbackSpeed = parseFloat(e.target.value);
-    speedVal.textContent = playbackSpeed.toFixed(2);
-    // Apply speed to css transition speed custom variable on board
-    gameBoard.style.setProperty('--speed', playbackSpeed);
-  });
-  
-  // Hide panel triggers
-  hideBtn.addEventListener('click', toggleControlPanel);
-  showControlsTrigger.addEventListener('click', toggleControlPanel);
-  
-  // Hotkey 'H'
-  document.addEventListener('keydown', (e) => {
-    if (e.key.toLowerCase() === 'h') {
-      // Don't trigger if typing in text inputs
-      if (document.activeElement.tagName !== 'INPUT') {
-        toggleControlPanel();
-      }
+    switch (e.code) {
+      case 'Space':
+        togglePlay();
+        break;
+      case 'ArrowLeft':
+        stepBackward();
+        break;
+      case 'ArrowRight':
+        stepForward();
+        break;
+      case 'KeyR':
+        restart();
+        break;
+      case 'KeyH':
+        toggleSidebar();
+        break;
     }
   });
 }
 
-function toggleControlPanel() {
-  appWrapper.classList.toggle('controls-hidden');
+// Sidebar Visibility Actions
+function hideSidebar() {
+  sidebar.classList.add('hidden');
+  btnShowSidebar.classList.remove('hidden');
 }
 
-// Update floating status badge
-function updateStatusDisplay(status) {
-  statusBadge.textContent = status.toUpperCase();
-  if (status.includes('playing')) {
-    statusBadge.style.color = 'var(--accent-blue)';
-    statusBadge.style.borderColor = 'rgba(0, 229, 255, 0.3)';
-  } else if (status.includes('paused')) {
-    statusBadge.style.color = '#fff';
-    statusBadge.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-  } else if (status.includes('completed')) {
-    statusBadge.style.color = 'var(--accent-gold)';
-    statusBadge.style.borderColor = 'rgba(255, 215, 0, 0.3)';
+function showSidebar() {
+  sidebar.classList.remove('hidden');
+  btnShowSidebar.classList.add('hidden');
+}
+
+function toggleSidebar() {
+  if (sidebar.classList.contains('hidden')) {
+    showSidebar();
   } else {
-    statusBadge.style.color = 'rgba(255, 255, 255, 0.5)';
-    statusBadge.style.borderColor = 'rgba(255, 255, 255, 0.05)';
+    hideSidebar();
   }
 }
 
-// 3. Jump to a Specific Step (Fast Forward State instantly)
-function jumpToStep(index) {
-  if (index < 0 || index >= allSteps.length) return;
+// Play / Pause Logic
+function togglePlay() {
+  if (state.isPlaying) {
+    pause();
+  } else {
+    play();
+  }
+}
+
+function play() {
+  if (state.isPlaying) return;
+  if (!simulationData) {
+    showToast("No simulation loaded!");
+    return;
+  }
   
-  isPlaying = false;
-  playPauseBtn.textContent = 'Play';
-  updateStatusDisplay('PAUSED');
+  state.isPlaying = true;
+  updatePlayPauseButton();
   
-  p1Hand = [];
-  p2Hand = [];
-  discardPile = [];
-  highlightedCards.clear();
+  // Start executing the current step
+  runCurrentStep();
+}
+
+function pause() {
+  if (!state.isPlaying) return;
   
-  // Reset all elements
-  Object.values(cards).forEach(el => {
-    el.style.display = 'none';
-    el.style.opacity = '0';
-    el.style.transition = 'none';
-    el.classList.remove('drawing', 'discarding', 'highlighted');
-  });
+  state.isPlaying = false;
+  updatePlayPauseButton();
   
-  // Fast forward card movements up to step index
-  for (let i = 0; i < index; i++) {
-    const step = allSteps[i];
-    if (step.moves) {
-      step.moves.forEach(([cardName, fromPile, toPile]) => {
-        // Update pile arrays
-        removeFromPile(cardName, fromPile);
-        addToPile(cardName, toPile);
+  // Clear all scheduled timeouts
+  activeTimeouts.forEach(clearTimeout);
+  activeTimeouts = [];
+  
+  // If paused during sequential deal, keep track of currentMoveIndex so we can resume
+  // If paused during waiting or call announcement, we reset state flags so they resume clean
+  state.isWaitingForNextStep = false;
+  state.isWaitingForCall = false;
+}
+
+function updatePlayPauseButton() {
+  if (state.isPlaying) {
+    btnPlay.classList.add('paused');
+    btnPlay.textContent = '⏸ PAUSE';
+  } else {
+    btnPlay.classList.remove('paused');
+    btnPlay.textContent = '▶ PLAY';
+  }
+}
+
+// Restart Logic
+function restart() {
+  if (!simulationData) return;
+  goToShowStep(0, 0);
+  play();
+  showToast("Simulation restarted!");
+}
+
+// Step Navigation
+function stepForward() {
+  if (!simulationData) return;
+  pause();
+  
+  let t = state.currentTurnIndex;
+  let s = state.currentStepIndex + 1;
+  
+  if (s >= simulationData.turns[t].steps.length) {
+    s = 0;
+    t++;
+  }
+  
+  if (t < simulationData.turns.length) {
+    goToShowStep(t, s);
+    showToast(`Stepped Forward to Turn ${t+1}, Step ${s+1}`);
+  } else {
+    showToast("Already at the end!");
+  }
+}
+
+function stepBackward() {
+  if (!simulationData) return;
+  pause();
+  
+  let t = state.currentTurnIndex;
+  let s = state.currentStepIndex - 1;
+  
+  if (s < 0) {
+    t--;
+    if (t >= 0) {
+      s = simulationData.turns[t].steps.length - 1;
+    }
+  }
+  
+  if (t >= 0) {
+    goToShowStep(t, s);
+    showToast(`Stepped Backward to Turn ${t+1}, Step ${s+1}`);
+  } else {
+    showToast("Already at the beginning!");
+  }
+}
+
+// Jump and snap state instantly to beginning of turnIndex, stepIndex
+function goToShowStep(turnIndex, stepIndex) {
+  // 1. Clear all active timers
+  activeTimeouts.forEach(clearTimeout);
+  activeTimeouts = [];
+  
+  // 2. Clear call overlay
+  hideCallOverlay();
+  
+  // 3. Clear all DOM elements from cards layer
+  cardsLayer.innerHTML = '';
+  
+  // 4. Reset state model
+  state.p1 = [];
+  state.p2 = [];
+  state.discard = [];
+  state.currentTurnIndex = turnIndex;
+  state.currentStepIndex = stepIndex;
+  state.currentMoveIndex = 0;
+  state.isWaitingForNextStep = false;
+  state.isWaitingForCall = false;
+  
+  nextCardId = 1;
+  
+  // 5. Recompute the cards state by applying all moves before the target step instantly
+  for (let t = 0; t <= turnIndex; t++) {
+    const turn = simulationData.turns[t];
+    const maxSteps = (t === turnIndex) ? stepIndex : turn.steps.length;
+    for (let s = 0; s < maxSteps; s++) {
+      const step = turn.steps[s];
+      step.moves.forEach(move => {
+        const [cardName, from, to] = move;
+        if (from === 'DRAW') {
+          // Draw card instantly
+          const cardId = nextCardId++;
+          const el = createCardElement(cardName);
+          const cardObj = { id: cardId, name: cardName, element: el, highlighted: false, isMoving: false };
+          cardsLayer.appendChild(el);
+          if (to === 'P1') state.p1.push(cardObj);
+          else if (to === 'P2') state.p2.push(cardObj);
+        } else {
+          // Discard card instantly
+          const hand = from === 'P1' ? state.p1 : state.p2;
+          const idx = hand.findIndex(c => c.name === cardName);
+          if (idx !== -1) {
+            const cardObj = hand[idx];
+            hand.splice(idx, 1);
+            cardObj.isMoving = false;
+            cardObj.highlighted = false;
+            state.discard.push(cardObj);
+          }
+        }
       });
     }
   }
   
-  currentStepIndex = index;
+  // 6. Draw current positions with transition animation disabled
+  layoutCards(false);
   
-  // Update step labels on screen
-  updateStepUI(allSteps[currentStepIndex]);
-  
-  // Update layout instantly without animations
-  updateLayout(false);
+  // 7. Update header texts
+  const currentTurn = simulationData.turns[turnIndex];
+  const currentStep = currentTurn.steps[stepIndex];
+  updateInfoBar(currentTurn, currentStep);
+  updateStepListHighlight();
+  updatePlayPauseButton();
 }
 
-function removeFromPile(cardName, pileName) {
-  if (pileName === 'P1') p1Hand = p1Hand.filter(c => c !== cardName);
-  else if (pileName === 'P2') p2Hand = p2Hand.filter(c => c !== cardName);
-  else if (pileName === 'DISCARD') discardPile = discardPile.filter(c => c !== cardName);
+// Create Card DOM Element
+function createCardElement(cardName) {
+  const el = document.createElement('div');
+  el.className = 'card';
+  el.style.backgroundImage = `url('cards-front/${cardName}.png')`;
+  el.style.transition = 'none';
+  return el;
 }
 
-function addToPile(cardName, pileName) {
-  if (pileName === 'P1') p1Hand.push(cardName);
-  else if (pileName === 'P2') p2Hand.push(cardName);
-  else if (pileName === 'DISCARD') discardPile.push(cardName);
+// Update Canvas Top Bar info
+function updateInfoBar(turn, step) {
+  turnDisplay.textContent = `TURN ${state.currentTurnIndex + 1} - STEP ${state.currentStepIndex + 1}`;
+  summaryDisplay.textContent = step.summary || '';
 }
 
-// Update dashboard text and step highlights in sidebar
-function updateStepUI(step) {
-  if (!step) return;
+// Highlight Discarding Cards
+function highlightDiscardingCards(moves) {
+  moves.forEach(move => {
+    const [cardName, from] = move;
+    const hand = from === 'P1' ? state.p1 : state.p2;
+    // Find the first matching card that isn't highlighted yet
+    const card = hand.find(c => c.name === cardName && !c.highlighted);
+    if (card) {
+      card.highlighted = true;
+    }
+  });
+  layoutCards(true);
+}
+
+// Show/Hide Call overlay
+function showCallOverlay(text) {
+  // Determine who calls
+  let caller = "P1";
+  if (text.startsWith("P2")) caller = "P2";
+  else if (text.startsWith("P1")) caller = "P1";
+  else if (state.currentStepIndex === 0 || state.currentStepIndex === 1) caller = "P1"; // Default fallbacks
+  else caller = "P2";
+
+  callOverlayTitle.textContent = `${caller} CALLS`;
   
-  turnNumEl.textContent = step.turnIndex;
-  stepNumEl.textContent = `${step.stepIndexInTurn}/${step.totalStepsInTurn}`;
-  stepSummaryEl.textContent = step.summary;
-  
-  // Update progress bar
-  const progressPercent = (currentStepIndex / (allSteps.length - 1)) * 100;
-  progressBar.style.width = `${progressPercent}%`;
-  
-  // Update sidebar active item
-  document.querySelectorAll('.step-item').forEach(el => el.classList.remove('active'));
-  const activeItem = document.getElementById(`step-item-${currentStepIndex}`);
-  if (activeItem) {
-    activeItem.classList.add('active');
-    activeItem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  // Extract call message (e.g. remove "P1 CALLS: " from text if present)
+  let cleanText = text;
+  if (text.includes("CALLS:")) {
+    cleanText = text.split("CALLS:")[1].trim();
+  } else if (text.includes("DISCARDS GROUP:")) {
+    cleanText = text.split("DISCARDS GROUP:")[1].trim();
   }
+  
+  callOverlayText.textContent = cleanText;
+  callOverlay.classList.add('visible');
 }
 
-// 4. Main Simulation Auto-Play Loop
-async function runSimulationLoop() {
-  while (currentStepIndex < allSteps.length && isPlaying) {
-    const step = allSteps[currentStepIndex];
+function hideCallOverlay() {
+  callOverlay.classList.remove('visible');
+}
+
+// Perform Discard moves
+function performDiscardMoves(moves) {
+  moves.forEach(move => {
+    const [cardName, from] = move;
+    const hand = from === 'P1' ? state.p1 : state.p2;
+    const idx = hand.findIndex(c => c.name === cardName && c.highlighted);
+    if (idx !== -1) {
+      const card = hand[idx];
+      hand.splice(idx, 1);
+      card.highlighted = false;
+      card.isMoving = true;
+      state.discard.push(card);
+    }
+  });
+  layoutCards(true);
+}
+
+// Finalize Discard Moves z-indexes after transition finishes
+function finalizeDiscardMoves() {
+  state.discard.forEach(c => c.isMoving = false);
+  layoutCards(false);
+}
+
+// Execute Draw Move
+function executeDrawMove(move) {
+  const [cardName, from, to] = move;
+  
+  const cardId = nextCardId++;
+  const el = createCardElement(cardName);
+  // Spawn at Draw Pile location (offscreen left)
+  el.style.left = '-185px';
+  el.style.top = '494px'; // centered with discard pile area
+  el.style.transition = 'none';
+  cardsLayer.appendChild(el);
+  
+  // Force browser layout pass
+  el.offsetHeight;
+  
+  const cardObj = {
+    id: cardId,
+    name: cardName,
+    element: el,
+    highlighted: false,
+    isMoving: true
+  };
+  
+  if (to === 'P1') {
+    state.p1.push(cardObj);
+  } else if (to === 'P2') {
+    state.p2.push(cardObj);
+  }
+  
+  layoutCards(true);
+}
+
+// Finalize Draw moves z-indexes after transition finishes
+function finalizeDrawMoves() {
+  state.p1.forEach(c => c.isMoving = false);
+  state.p2.forEach(c => c.isMoving = false);
+  layoutCards(false);
+}
+
+// Core card positioning engine
+function layoutCards(animate = true) {
+  const speed = state.playbackSpeed;
+  const drawDur = state.drawDuration / speed;
+  const discDur = state.discardDuration / speed;
+  
+  const cardWidth = 150;
+  const canvasWidth = 720;
+  const staggerFactor = 7; // spacing is ~1/7th width
+
+  // 1. Position Player 1 Hand
+  const p1Len = state.p1.length;
+  const p1S = cardWidth / staggerFactor;
+  const p1W = cardWidth + (p1Len - 1) * p1S;
+  const p1Start = (canvasWidth - p1W) / 2;
+
+  state.p1.forEach((card, idx) => {
+    const el = card.element;
+    const isHighlighted = card.highlighted;
+    const isMoving = card.isMoving;
     
-    updateStepUI(step);
-    
-    // Execute step animations
-    await executeStep(step);
-    
-    if (!isPlaying) break; // If paused during execution
-    
-    currentStepIndex++;
-    
-    if (currentStepIndex >= allSteps.length) {
-      isPlaying = false;
-      playPauseBtn.textContent = 'Restart';
-      updateStatusDisplay('completed');
-      break;
+    const left = p1Start + idx * p1S;
+    const top = 150 + (28 - (isHighlighted ? 25 : 0)); // shifts up on highlight (centered vertically: (290 - 233)/2 = 28.5px)
+    const zIndex = isMoving ? (1000 + idx) : (10 + idx); // lift moving card to top z-index (preserve order)
+
+    if (animate) {
+      el.style.transition = `left ${drawDur}s cubic-bezier(0.25, 0.8, 0.25, 1), top ${drawDur}s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s, box-shadow 0.3s`;
+    } else {
+      el.style.transition = 'none';
     }
     
-    // Delay before the next step starts: 2 seconds
-    updateStatusDisplay('waiting next step');
-    await sleep(2000);
+    el.style.left = `${left}px`;
+    el.style.top = `${top}px`;
+    el.style.zIndex = zIndex;
     
-    if (isPlaying) {
-      updateStatusDisplay('PLAYING');
+    if (isHighlighted) {
+      el.classList.add('highlighted');
+    } else {
+      el.classList.remove('highlighted');
     }
+    
+    if (isMoving) {
+      el.classList.add('in-flight');
+    } else {
+      el.classList.remove('in-flight');
+    }
+  });
+
+  // 2. Position Player 2 Hand
+  const p2Len = state.p2.length;
+  const p2S = cardWidth / staggerFactor;
+  const p2W = cardWidth + (p2Len - 1) * p2S;
+  const p2Start = (canvasWidth - p2W) / 2;
+
+  state.p2.forEach((card, idx) => {
+    const el = card.element;
+    const isHighlighted = card.highlighted;
+    const isMoving = card.isMoving;
+    
+    const left = p2Start + idx * p2S;
+    const top = 750 + (28 - (isHighlighted ? 25 : 0)); // shifts up on highlight
+    const zIndex = isMoving ? (1000 + idx) : (10 + idx);
+
+    if (animate) {
+      el.style.transition = `left ${drawDur}s cubic-bezier(0.25, 0.8, 0.25, 1), top ${drawDur}s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s, box-shadow 0.3s`;
+    } else {
+      el.style.transition = 'none';
+    }
+    
+    el.style.left = `${left}px`;
+    el.style.top = `${top}px`;
+    el.style.zIndex = zIndex;
+
+    if (isHighlighted) {
+      el.classList.add('highlighted');
+    } else {
+      el.classList.remove('highlighted');
+    }
+    
+    if (isMoving) {
+      el.classList.add('in-flight');
+    } else {
+      el.classList.remove('in-flight');
+    }
+  });
+
+  // 3. Position Discard Pile (with dynamic spacing based on pile count)
+  const discLen = state.discard.length;
+  let discStaggerFactor = 7;
+  
+  if (discLen >= 20) {
+    discStaggerFactor = 11; // 20+ cards -> ~1/11th card width spacing
+  } else if (discLen >= 12) {
+    discStaggerFactor = 9;  // 12-19 cards -> ~1/9th card width spacing
   }
+  
+  const discS = cardWidth / discStaggerFactor;
+  const discW = cardWidth + (discLen - 1) * discS;
+  const discStart = (canvasWidth - discW) / 2;
+
+  state.discard.forEach((card, idx) => {
+    const el = card.element;
+    const isMoving = card.isMoving;
+    
+    const left = discStart + idx * discS;
+    const top = 440 + 38; // Centered vertically in 310px area: (310 - 233)/2 = 38.5px
+    const zIndex = isMoving ? (1000 + idx) : (10 + idx);
+
+    if (animate) {
+      el.style.transition = `left ${discDur}s cubic-bezier(0.25, 0.8, 0.25, 1), top ${discDur}s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s, box-shadow 0.3s`;
+    } else {
+      el.style.transition = 'none';
+    }
+    
+    el.style.left = `${left}px`;
+    el.style.top = `${top}px`;
+    el.style.zIndex = zIndex;
+    
+    el.classList.remove('highlighted');
+    
+    if (isMoving) {
+      el.classList.add('in-flight');
+    } else {
+      el.classList.remove('in-flight');
+    }
+  });
 }
 
-// 5. Execute Step Animations
-async function executeStep(step) {
-  isStepRunning = true;
-  const moves = step.moves || [];
+// Master Step Execution Engine
+function runCurrentStep() {
+  if (!state.isPlaying || !simulationData) return;
+  
+  const turn = simulationData.turns[state.currentTurnIndex];
+  const step = turn.steps[state.currentStepIndex];
+  
+  // 1. Update Top Info Display
+  updateInfoBar(turn, step);
+  updateStepListHighlight();
+  
+  const isFirstStep = (state.currentTurnIndex === 0 && state.currentStepIndex === 0 && state.currentMoveIndex === 0);
+  const delay = isFirstStep ? state.initialDelay : state.stepDelay;
+  
+  state.isWaitingForNextStep = true;
+  
+  // 2. Wait stepDelay (or initialDelay) before starting step movements
+  const stepStartTimer = setTimeout(() => {
+    state.isWaitingForNextStep = false;
+    executeStepContent(step);
+  }, (delay / state.playbackSpeed) * 1000);
+  
+  activeTimeouts.push(stepStartTimer);
+}
+
+// Execute the moves/announcements inside the step
+function executeStepContent(step) {
+  const speed = state.playbackSpeed;
   
   if (step.call) {
-    // DISCARD GROUP STEP WITH CALL
-    gameBoard.className = 'game-board mode-discarding';
+    // DISCARD STEP
+    // A. Highlight the discarding cards immediately
+    highlightDiscardingCards(step.moves);
     
-    // A. Highlight only the cards in the player's hand that are being discarded
-    const discardedCards = moves.filter(m => m[1] === 'P1' || m[1] === 'P2').map(m => m[0]);
+    // B. Show the Call Overlay
+    showCallOverlay(step.call);
+    state.isWaitingForCall = true;
     
-    discardedCards.forEach(c => highlightedCards.add(c));
-    updateLayout(true); // Redraw with highlights
-    
-    // B. Display the call text for 3 seconds
-    const speaker = step.call.includes('P1') ? 'PLAYER 1 CALLS' : (step.call.includes('P2') ? 'PLAYER 2 CALLS' : 'CALL ANNOUNCED');
-    const callVal = step.call.replace(/P[12] CALLS:\s*/i, '');
-    
-    callSpeaker.textContent = speaker;
-    callValue.textContent = callVal;
-    callOverlay.classList.add('active');
-    
-    await sleep(3000); // 3 seconds overlay display
-    
-    callOverlay.classList.remove('active');
-    
-    // Remove highlights as they start moving
-    discardedCards.forEach(c => highlightedCards.delete(c));
-    
-    // C. Move cards to discard pile one by one (sequential delay: 0.75 seconds)
-    for (let i = 0; i < moves.length; i++) {
-      const [cardName, fromPile, toPile] = moves[i];
+    // C. Wait callDuration (3 seconds default)
+    const callTimer = setTimeout(() => {
+      state.isWaitingForCall = false;
+      hideCallOverlay();
       
-      // Update state
-      removeFromPile(cardName, fromPile);
-      addToPile(cardName, toPile);
+      // D. Animate the cards to the discard pile simultaneously
+      performDiscardMoves(step.moves);
       
-      // Update card transition class
-      const el = cards[cardName];
-      if (el) {
-        el.className = 'card discarding';
-      }
+      // E. Wait for the discard transition to finish (1.5 seconds)
+      const transitionTimer = setTimeout(() => {
+        finalizeDiscardMoves();
+        advanceStep();
+      }, (state.discardDuration / speed) * 1000);
       
-      updateLayout(true);
-      
-      await sleep(750); // Each card starts moving 0.75s after the previous
-    }
+      activeTimeouts.push(transitionTimer);
+    }, (state.callDuration / speed) * 1000);
     
-    // Wait for the final card to finish its transition (0.75s total duration)
-    await sleep(750);
+    activeTimeouts.push(callTimer);
     
   } else {
-    // DRAW STEP (Or normal move step without call)
-    gameBoard.className = 'game-board mode-drawing';
+    // DRAWING STEP
+    // Draw cards one by one based on state.currentMoveIndex
+    const remainingMoves = step.moves.slice(state.currentMoveIndex);
+    const stagger = state.staggerDelay / speed;
     
-    // Move cards with stagger (stagger interval: 200ms)
-    for (let i = 0; i < moves.length; i++) {
-      const [cardName, fromPile, toPile] = moves[i];
+    remainingMoves.forEach((move, index) => {
+      const moveTimer = setTimeout(() => {
+        if (!state.isPlaying) return;
+        
+        executeDrawMove(move);
+        state.currentMoveIndex++;
+        
+        // If this is the last card in the step
+        if (state.currentMoveIndex === step.moves.length) {
+          // Wait for this last card's animation to finish
+          const finalizeTimer = setTimeout(() => {
+            finalizeDrawMoves();
+            advanceStep();
+          }, (state.drawDuration / speed) * 1000);
+          
+          activeTimeouts.push(finalizeTimer);
+        }
+      }, index * stagger * 1000);
       
-      // If card is drawn from DRAW, prepare it offscreen first
-      if (fromPile === 'DRAW') {
-        initDrawingCard(cardName, toPile);
-      }
-      
-      removeFromPile(cardName, fromPile);
-      addToPile(cardName, toPile);
-      
-      const el = cards[cardName];
-      if (el) {
-        el.className = 'card drawing';
-      }
-      
-      updateLayout(true);
-      
-      await sleep(200); // Stagger interval of 200ms between draws
-    }
-    
-    // Wait for the final card to land (1.5s total duration minus last stagger)
-    await sleep(1500);
+      activeTimeouts.push(moveTimer);
+    });
   }
-  
-  isStepRunning = false;
 }
 
-// 6. Prepares drawing card position offscreen on the left
-function initDrawingCard(cardName, toPile) {
-  const el = cards[cardName];
-  if (!el) return;
+// Move to next step or next turn
+function advanceStep() {
+  if (!state.isPlaying) return;
   
-  // Align Y coordinate to match destination pile for horizontal entry
-  let startY = P1_Y;
-  if (toPile === 'P2') {
-    startY = P2_Y;
-  } else if (toPile === 'DISCARD') {
-    startY = DISCARD_Y;
+  state.currentMoveIndex = 0;
+  state.currentStepIndex++;
+  
+  const currentTurn = simulationData.turns[state.currentTurnIndex];
+  
+  if (state.currentStepIndex >= currentTurn.steps.length) {
+    state.currentStepIndex = 0;
+    state.currentTurnIndex++;
   }
   
-  el.style.transition = 'none';
-  el.classList.remove('drawing', 'discarding', 'highlighted');
-  
-  // Position offscreen on the left, set translucent
-  el.style.transform = `translate(${DRAW_X}px, ${startY}px)`;
-  el.style.opacity = '0';
-  el.style.display = 'block';
-  el.style.zIndex = '1000'; // Make drawing card overlap other cards
-  
-  // Force browser layout reflow
-  void el.offsetWidth;
-  
-  // Fade in
-  el.style.opacity = '1';
-}
-
-// 7. Calculate layouts and update card transform values
-function updateLayout(animate = true) {
-  // Update Player 1 Hand layout
-  p1Hand.forEach((cardName, index) => {
-    const el = cards[cardName];
-    if (!el) return;
+  // Check if simulation ended
+  if (state.currentTurnIndex >= simulationData.turns.length) {
+    state.isPlaying = false;
+    state.currentTurnIndex = simulationData.turns.length - 1;
     
-    if (!animate) {
-      el.style.transition = 'none';
-      el.className = 'card';
-    }
-    el.style.display = 'block';
-    el.style.opacity = '1';
+    // Set step index to last step of last turn
+    const lastTurnIdx = simulationData.turns.length - 1;
+    const lastTurn = simulationData.turns[lastTurnIdx];
+    state.currentStepIndex = lastTurn.steps.length - 1;
     
-    const N = p1Hand.length;
-    const W = (N - 1) * SPACING_HAND + CARD_WIDTH;
-    const startX = (720 - W) / 2;
-    
-    const isHighlighted = highlightedCards.has(cardName);
-    const x = startX + index * SPACING_HAND;
-    const y = isHighlighted ? (P1_Y - 30) : P1_Y;
-    const scaleStr = isHighlighted ? ' scale(1.08)' : '';
-    const rotateStr = isHighlighted ? ' rotate(2deg)' : '';
-    
-    el.style.transform = `translate(${x}px, ${y}px)${scaleStr}${rotateStr}`;
-    el.style.zIndex = isHighlighted ? (200 + index) : (10 + index);
-    
-    if (isHighlighted) {
-      el.classList.add('highlighted');
-    } else {
-      el.classList.remove('highlighted');
-    }
-  });
-  
-  // Update Player 2 Hand layout
-  p2Hand.forEach((cardName, index) => {
-    const el = cards[cardName];
-    if (!el) return;
-    
-    if (!animate) {
-      el.style.transition = 'none';
-      el.className = 'card';
-    }
-    el.style.display = 'block';
-    el.style.opacity = '1';
-    
-    const N = p2Hand.length;
-    const W = (N - 1) * SPACING_HAND + CARD_WIDTH;
-    const startX = (720 - W) / 2;
-    
-    const isHighlighted = highlightedCards.has(cardName);
-    const x = startX + index * SPACING_HAND;
-    const y = isHighlighted ? (P2_Y - 30) : P2_Y;
-    const scaleStr = isHighlighted ? ' scale(1.08)' : '';
-    const rotateStr = isHighlighted ? ' rotate(-2deg)' : '';
-    
-    el.style.transform = `translate(${x}px, ${y}px)${scaleStr}${rotateStr}`;
-    el.style.zIndex = isHighlighted ? (200 + index) : (10 + index);
-    
-    if (isHighlighted) {
-      el.classList.add('highlighted');
-    } else {
-      el.classList.remove('highlighted');
-    }
-  });
-  
-  // Update Discard Pile layout
-  const M = discardPile.length;
-  let discardSpacing = SPACING_HAND; // ~1/6 card width (25px)
-  
-  if (M >= 20) {
-    discardSpacing = 15; // ~1/10 card width (15px)
-  } else if (M >= 12) {
-    discardSpacing = 18.75; // ~1/8 card width (18.75px)
+    updatePlayPauseButton();
+    updateStepListHighlight();
+    showToast("Simulation Complete!");
+    return;
   }
   
-  discardPile.forEach((cardName, index) => {
-    const el = cards[cardName];
-    if (!el) return;
-    
-    if (!animate) {
-      el.style.transition = 'none';
-      el.className = 'card';
-    }
-    el.style.display = 'block';
-    el.style.opacity = '1';
-    
-    const W = (M - 1) * discardSpacing + CARD_WIDTH;
-    const startX = (720 - W) / 2;
-    const x = startX + index * discardSpacing;
-    const y = DISCARD_Y;
-    
-    el.style.transform = `translate(${x}px, ${y}px)`;
-    el.style.zIndex = 10 + index;
-    el.classList.remove('highlighted');
-  });
+  // If Manual Control, pause automatically after each step
+  if (!state.autoAdvance) {
+    pause();
+    updateStepListHighlight();
+    showToast(`Step completed. Paused. Click Play to continue.`);
+    return;
+  }
+  
+  runCurrentStep();
 }
-
-// Run engine initialization
-window.addEventListener('DOMContentLoaded', init);

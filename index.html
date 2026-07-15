@@ -4,142 +4,133 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anak Bos Troika - Simulation Animation</title>
+  <!-- SEO Tags -->
+  <meta name="description" content="E-sports style card game simulation animation for Anak Bos Troika (Troika for short) featuring portrait 720x1080 capture area.">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Cinzel:wght@600;800;900&display=swap" rel="stylesheet">
+  <!-- Style -->
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-
-  <!-- App Wrapper containing Controls Sidebar and 720x1080 Board -->
-  <div class="app-wrapper">
-    
-    <!-- Sidebar Control Panel (Press 'H' to toggle) -->
-    <aside class="control-panel" id="control-panel">
+  <div class="app-layout">
+    <!-- Sidebar Controls -->
+    <aside class="control-panel" id="sidebar">
       <div class="panel-header">
-        <h2>TROIKA CONTROL</h2>
-        <p class="shortcut-tip">Press <kbd>H</kbd> to hide panel for recording</p>
+        <h1>TROIKA SIMULATOR</h1>
+        <p class="subtitle">E-Sports Capture Board</p>
       </div>
 
-      <div class="panel-group">
-        <label for="sim-selector">Simulation Folder:</label>
+      <div class="control-group">
+        <label for="sim-case">Simulation Case</label>
         <div class="input-row">
-          <input type="text" id="sim-selector" value="S1" placeholder="e.g. S1, S2">
-          <button id="load-sim-btn">Load</button>
+          <input type="text" id="sim-case" value="S1" placeholder="e.g. S1">
+          <button id="btn-load" class="btn-primary">Load</button>
         </div>
       </div>
 
-      <div class="panel-group">
-        <label>Playback Control:</label>
-        <div class="button-row">
-          <button id="play-pause-btn" class="primary-btn">Start</button>
-          <button id="step-prev-btn" title="Previous Step">◀</button>
-          <button id="step-next-btn" title="Next Step">▶</button>
-          <button id="restart-btn" title="Restart Simulation">↺</button>
+      <div class="control-group">
+        <label>Playback State</label>
+        <div class="playback-controls">
+          <button id="btn-prev" class="btn-icon" title="Previous Step (Left Arrow)">⏮</button>
+          <button id="btn-play" class="btn-play-pause" title="Play / Pause (Space)">▶ PLAY</button>
+          <button id="btn-next" class="btn-icon" title="Next Step (Right Arrow)">⏭</button>
+          <button id="btn-restart" class="btn-icon" title="Restart Simulation (R)">↺</button>
         </div>
       </div>
 
-      <div class="panel-group">
-        <label for="speed-slider">Speed: <span id="speed-val">1.0</span>x</label>
-        <input type="range" id="speed-slider" min="0.25" max="3" step="0.25" value="1">
-      </div>
+      <div class="control-group">
+        <div class="slider-container">
+          <div class="slider-header">
+            <span>Playback Speed</span>
+            <span id="val-speed">1.0x</span>
+          </div>
+          <input type="range" id="slide-speed" min="0.25" max="4.0" step="0.25" value="1.0">
+        </div>
 
-      <div class="panel-group steps-list-group">
-        <label>Simulation Steps:</label>
-        <div class="steps-list" id="steps-list">
-          <!-- Populated by JS -->
-          <div class="empty-list-msg">No simulation loaded</div>
+        <div class="slider-container">
+          <div class="slider-header">
+            <span>Deal Stagger Delay</span>
+            <span id="val-stagger">1.5s</span>
+          </div>
+          <input type="range" id="slide-stagger" min="0.1" max="1.5" step="0.1" value="1.5" title="Delay between drawing consecutive cards (1.5s = fully sequential)">
+        </div>
+        
+        <div class="toggle-container">
+          <button id="btn-toggle-auto" class="btn-toggle active">Auto-Advance Steps</button>
         </div>
       </div>
 
+      <div class="control-group scrollable-list-container">
+        <label>Simulation Steps</label>
+        <div class="step-list" id="step-list">
+          <!-- Dynamically populated steps -->
+        </div>
+      </div>
+
+      <div class="keyboard-shortcuts">
+        <h3>Keyboard Shortcuts</h3>
+        <ul>
+          <li><kbd>Space</kbd> Play / Pause</li>
+          <li><kbd>←</kbd> / <kbd>→</kbd> Prev / Next Step</li>
+          <li><kbd>R</kbd> Restart</li>
+          <li><kbd>H</kbd> Hide/Show Sidebar</li>
+        </ul>
+      </div>
+      
       <div class="panel-footer">
-        <button id="hide-btn" class="text-btn">Hide Controls Panel</button>
+        <button id="btn-hide-sidebar" class="btn-secondary">Hide Sidebar (Capture Mode)</button>
       </div>
     </aside>
 
-    <!-- The 720x1080 Board (Exactly recorded area) -->
-    <main class="game-board" id="game-board">
-      
-      <!-- Top Logo + Info Area -->
-      <header class="top-bar">
-        <!-- Logo (Absolutely Positioned) -->
-        <div class="logo-container">
-          <img src="logo/logo.png" alt="Anak Bos Troika Logo" class="logo-img">
-        </div>
-        
-        <!-- Info Display Dashboard (Center-Right) -->
-        <div class="info-dashboard">
-          <div class="info-row">
-            <span class="info-label">TURN</span>
-            <span class="info-value" id="turn-num">-</span>
-            <span class="info-divider">|</span>
-            <span class="info-label">STEP</span>
-            <span class="info-value" id="step-num">-</span>
+    <!-- Floating Toggle Button (Visible when sidebar is hidden) -->
+    <button id="btn-show-sidebar" class="btn-floating-toggle hidden" title="Show Sidebar (H)">⚙</button>
+
+    <!-- Canvas (Capture Viewport) -->
+    <main class="canvas-container">
+      <div class="recording-canvas" id="canvas">
+        <!-- Top Logo & Info Area -->
+        <div class="canvas-header">
+          <div class="logo-container">
+            <img src="logo/logo.png" alt="Anak Bos Troika" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="logo-fallback" style="display:none;">ANAK BOS TROIKA</div>
           </div>
-          <div class="summary-row" id="step-summary">Loading...</div>
-          
-          <!-- Sleek progress bar -->
-          <div class="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
+          <div class="info-container">
+            <div class="turn-title" id="turn-display">TURN 1</div>
+            <div class="step-summary" id="summary-display">INITIAL DRAW</div>
           </div>
         </div>
-      </header>
 
-      <!-- Section Dividers -->
-      <div class="section-divider" id="divider-top-p1"></div>
-      <div class="section-divider" id="divider-p1-discard"></div>
-      <div class="section-divider" id="divider-discard-p2"></div>
+        <!-- Regions (Faint guides, vertical labels) -->
+        <div class="region region-p1">
+          <div class="area-label">Player 1 Hand</div>
+        </div>
 
-      <!-- Section Labels (Right Side) -->
-      <div class="section-label" id="label-p1">
-        <span class="bullet p1-bullet">●</span> Player 1 Hand
-      </div>
-      <div class="section-label" id="label-discard">
-        <span class="bullet discard-bullet">●</span> Discard Pile
-      </div>
-      <div class="section-label" id="label-p2">
-        <span class="bullet p2-bullet">●</span> Player 2 Hand
-      </div>
+        <div class="region region-discard">
+          <div class="area-label">Discard Pile</div>
+        </div>
 
-      <!-- Card container (All cards are spawned here and absolute-positioned relative to game-board) -->
-      <div class="cards-layer" id="cards-layer">
-        <!-- Cards injected by JS -->
-      </div>
+        <div class="region region-p2">
+          <div class="area-label">Player 2 Hand</div>
+        </div>
 
-      <!-- Call Announcement Overlay -->
-      <div class="call-overlay" id="call-overlay">
-        <div class="call-card">
-          <div class="call-speaker" id="call-speaker">PLAYER 1 CALLS</div>
-          <div class="call-value" id="call-value">ROUND</div>
+        <!-- Cards Layer -->
+        <div id="cards-layer" class="cards-layer"></div>
+
+        <!-- Call Announcement Overlay -->
+        <div class="call-overlay" id="call-overlay">
+          <div class="call-overlay-title" id="call-overlay-title">P1 CALLS</div>
+          <div class="call-overlay-text" id="call-overlay-text">ROUND</div>
         </div>
       </div>
-
-      <!-- Loading Screen Overlay -->
-      <div class="loading-overlay" id="loading-overlay">
-        <div class="loader-content">
-          <div class="loader-spinner"></div>
-          <h2 class="loader-title">ANAK BOS TROIKA</h2>
-          <p class="loader-text" id="loader-text">Loading simulation data...</p>
-          <div class="loading-progress-container">
-            <div class="loading-progress-bar" id="loading-progress-bar"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Floating status badge -->
-      <div class="status-badge" id="status-badge">READY</div>
-
-      <!-- Show Controls trigger when hidden -->
-      <button class="show-controls-trigger" id="show-controls-trigger" title="Show Controls (Press 'H')">
-        ⚙ Controls
-      </button>
     </main>
-
   </div>
 
-  <!-- Scripts -->
-  <script src="app.js"></script>
+  <!-- Toast Notification System -->
+  <div id="toast" class="toast"></div>
+
+  <!-- JavaScript module -->
+  <script type="module" src="app.js"></script>
 </body>
 </html>

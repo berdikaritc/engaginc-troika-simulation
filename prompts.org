@@ -368,6 +368,7 @@ outside the area where the cards will be placed.
 # ntar ini itu bisa beda2 kecil semua. jadi begitu dapat yg bagus, udah bagus.
 # kalo dapat yg jelek memolesnya jadi bagus capek. enakan one-shot sih lebih
 # clean. ngedit2 lewat prompt berikutnya itu hit and miss.
+
 * [2026-07-15 Wed] Prompt 1T1AG.2
 Enlarge the cards a bit, while still making sure the cards in the P1's hand and
 P2's hand and discard pile do not overlap.
@@ -383,5 +384,7 @@ final position.
  # revert ke sini.
 
  # UPDATE: kok hasilnya sama ya.
+ # UPDATE: i take it back, take 2 ternyata significantly worse. animasi jadi
+ #   gak mulus, setiap call LAYAR DIBLUR, wtf. gw revert ah.
 * [2026-07-15 Wed] Prompt 1T1AG.2-question
 what if i want to change the simulation data from S1 to, say, S2, which part should i change?
