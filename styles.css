@@ -1,5 +1,6 @@
 :root {
-  --card-width: clamp(112px, 21vw, 150px);
+  /* The height cap keeps a whole card inside every pile on a 720×1080 capture. */
+  --card-width: clamp(70px, min(16vw, 13vh), 118px);
   --ink: #fff8e8;
   --shadow: 0 8px 18px rgb(13 28 48 / 35%);
 }
@@ -67,11 +68,12 @@ body {
 
 .pile {
   position: absolute;
-  top: 32px;
+  /* This is a dedicated card area; the label is outside it. */
+  top: 36px;
   right: 0;
   bottom: 0;
   left: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 .game-card, .flying-card {
   position: absolute;
@@ -107,5 +109,3 @@ body {
 }
 .call-overlay.visible { display: block; animation: call-in .25s ease-out; }
 @keyframes call-in { from { opacity: 0; transform: translate(-50%, -50%) scale(.7); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
-
-@media (max-height: 700px) { :root { --card-width: clamp(90px, 18vw, 125px); } }

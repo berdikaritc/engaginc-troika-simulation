@@ -323,5 +323,26 @@ there should be a delay of 2 seconds before each step starts.
 
 when index.html is loaded, it should wait for 3.5 seconds, then start the
 animation.
-* [2026-07-15 Wed] Prompt 1.2
+* [2026-07-15 Wed] Prompt 1T6.2
 # males deh kalo pas jadi gini trus gak sesuai kemauan kita, ngubah2nya males
+The most important bug: not all the cards highlighted are the cards that are
+being discarded.
+
+Make the logo position fixed instead of moving left and right after each change
+of message.
+
+Do not make the label of P1, DISCARD, P2 be covered by the cards. Put it above
+the cards.
+
+Do not make P1's hand, discard pile, P2's hand overlap with one another. There
+should be a space separating them.
+
+Do not make cards in P1's hand cover the logo.
+* [2026-07-15 Wed] Prompt 1T6.3
+This is worse, the cards in the hands and the discard pile are now clipped so
+the upper part and lower part are not visible.
+
+I think the problem is that the cards are too large.
+
+Also, the labels are still covered/overlaps with the cards. Move the labels to
+outside the area where the cards will be placed.

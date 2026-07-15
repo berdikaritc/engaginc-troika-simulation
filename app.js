@@ -20,9 +20,8 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const cardUrl = card => `cards-front/${encodeURIComponent(card)}.png`;
 function cardWidth() {
   // Custom properties retain their `clamp()` text in getComputedStyle, so resolve
-  // the same responsive rule here for precise flight destinations.
-  if (window.innerHeight < 700) return Math.min(125, Math.max(90, window.innerWidth * 0.18));
-  return Math.min(150, Math.max(112, window.innerWidth * 0.21));
+  // the same width-and-height bounded rule here for precise flight destinations.
+  return Math.min(118, Math.max(70, Math.min(window.innerWidth * 0.16, window.innerHeight * 0.13)));
 }
 
 function spacingFor(pileName, count) {
