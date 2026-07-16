@@ -8,7 +8,9 @@
 
 2. buka proses emacs *baru* berisi draw.txt, p1.txt, p2.txt, discard.txt secara
    bersampingan, dan aktifkan auto-revert-mode utk semua buffer:
-   (global-auto-revert-mode 1) dan M-x eval-buffer
+   (global-auto-revert-mode 1) dan M-x eval-buffer:
+
+   emacs --eval '(global-auto-revert-mode 1)' draw.txt p1.txt p2.txt discard.txt
 
 3a. p1 discard dengan cara menandai di awal baris dengan "x ". jika ingin
     mengubah urutan beri angka mis: "x1 " akan dipilih dulu (paling bawah), lalu
@@ -33,3 +35,6 @@
     sleep 3; ../../scripts/sim02c-p2-discard && ../../scripts/sim02d-p2-draw
 
 04. lanjutkan dengan turn berikutnya, sampai salah satu pemain menang, tandai callnya mis: # GROUP: SMALL. WIN.
+
+catatan: paling cepat bikin 4-6 turn bisa sekitar 5 menit, sudah dengan commit2x
+per turn. kalo cepat mis cuma 3 turn bisa cuma 2-3 menit.

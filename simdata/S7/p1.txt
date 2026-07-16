@@ -1,0 +1,8 @@
+wildcard max 2
+1-laptop (gadget, rectangle, red, medium)
+1-tennis ball (sports, round, green, medium)
+2-pizza slice (food, triangle, yellow, medium)
+wildcard+cut lyx 2
+3-grape (fruit, round, purple, small)
+1-tv (gadget, rectangle, black, medium)
+2-cupboard (furniture, rectangle, brown, large)

@@ -1,0 +1,9 @@
+1-dice (toy, rectangle, red, small)
+3-paper airplane (toy, triangle, yellow, small)
+3-handphone (gadget, rectangle, black, small)
+2-alphabet block (toy, rectangle, green, small)
+1-the triangle (music, triangle, white, medium)
+3-orange (fruit, round, orange, medium)
+3-cloth hanger (fashion, triangle, blue, large)
+1-paper airplane (toy, triangle, yellow, small)
+wildcard+cut lyx 3

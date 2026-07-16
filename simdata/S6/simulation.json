@@ -1,0 +1,158 @@
+{
+   "turns" : [
+      {
+         "steps" : [
+            {
+               "moves" : [
+                  [
+                     "wildcard tux 6",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-dice",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "2-bed",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-paper airplane",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "2-pyramid",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-handphone",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard tux 1",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-alphabet block",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "2-piano",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-the triangle",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard max 1",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-orange",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "3-laptop",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-cloth hanger",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "3-grape",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-paper airplane",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "1-cake slice",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "wildcard+cut lyx 3",
+                     "DRAW",
+                     "P2"
+                  ]
+               ],
+               "summary" : "INITIAL DRAW"
+            }
+         ]
+      },
+      {
+         "steps" : [
+            {
+               "call" : "P1 CALLS: 9 CATEGORIES. P1 WINS.",
+               "moves" : [
+                  [
+                     "wildcard tux 1",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "wildcard max 1",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "wildcard tux 6",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-bed",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-pyramid",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-piano",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "3-laptop",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "3-grape",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-cake slice",
+                     "P1",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "P1 DISCARDS SERIES: 9 CATEGORIES"
+            }
+         ]
+      }
+   ]
+}

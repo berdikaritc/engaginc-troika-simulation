@@ -1,0 +1,244 @@
+{
+   "turns" : [
+      {
+         "steps" : [
+            {
+               "moves" : [
+                  [
+                     "2-piano",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-cupboard",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard+cut lyx 1",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "wildcard tux 1",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard max 1",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-pyramid",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "2-swimming trunk",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-the triangle",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "1-drum",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "wildcard max 4",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard tux 4",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "wildcard tux 3",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "2-cloth hanger",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-alphabet block",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "1-jelly",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-watermelon",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "3-swimming trunk",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-alphabet block",
+                     "DRAW",
+                     "P2"
+                  ]
+               ],
+               "summary" : "INITIAL DRAW"
+            }
+         ]
+      },
+      {
+         "steps" : [
+            {
+               "call" : "P1 CALLS: BLUE",
+               "moves" : [
+                  [
+                     "2-swimming trunk",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-drum",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-cloth hanger",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "3-swimming trunk",
+                     "P1",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "P1 DISCARDS GROUP: BLUE"
+            },
+            {
+               "moves" : [
+                  [
+                     "1-tent",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-handphone",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-orange",
+                     "DRAW",
+                     "P1"
+                  ]
+               ],
+               "summary" : "P1 DRAWS ANOTHER 3 CARDS"
+            },
+            {
+               "call" : "P2 CALLS: 3",
+               "moves" : [
+                  [
+                     "3-pyramid",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "3-the triangle",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "3-watermelon",
+                     "P2",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "P2 DISCARDS GROUP: 3"
+            },
+            {
+               "moves" : [
+                  [
+                     "2-pyramid",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard max 3",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard max 5",
+                     "DRAW",
+                     "P2"
+                  ]
+               ],
+               "summary" : "P2 DRAWS ANOTHER 3 CARDS"
+            }
+         ]
+      },
+      {
+         "steps" : [
+            {
+               "call" : "P1 CALLS: 8 CATEGORIES. P1 WINS.",
+               "moves" : [
+                  [
+                     "1-orange",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-piano",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-jelly",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-tent",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "wildcard+cut lyx 1",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "wildcard max 1",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "wildcard tux 4",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-handphone",
+                     "P1",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "P1 DISCARDS SERIES: 8 CATEGORIES"
+            }
+         ]
+      }
+   ]
+}

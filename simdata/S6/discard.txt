@@ -1,0 +1,9 @@
+1-cake slice (food, triangle, orange, small)
+3-grape (fruit, round, purple, small)
+3-laptop (gadget, rectangle, red, medium)
+2-piano (music, rectangle, black, large)
+2-pyramid (building, triangle, brown, large)
+2-bed (furniture, rectangle, white, large)
+wildcard tux 6
+wildcard max 1
+wildcard tux 1

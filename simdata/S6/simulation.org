@@ -1,0 +1,30 @@
+# TURN 1 - INITIAL DRAW
+wildcard tux 6
+1-dice (toy, rectangle, red, small)
+2-bed (furniture, rectangle, white, large)
+3-paper airplane (toy, triangle, yellow, small)
+2-pyramid (building, triangle, brown, large)
+3-handphone (gadget, rectangle, black, small)
+wildcard tux 1
+2-alphabet block (toy, rectangle, green, small)
+2-piano (music, rectangle, black, large)
+1-the triangle (music, triangle, white, medium)
+wildcard max 1
+3-orange (fruit, round, orange, medium)
+3-laptop (gadget, rectangle, red, medium)
+3-cloth hanger (fashion, triangle, blue, large)
+3-grape (fruit, round, purple, small)
+1-paper airplane (toy, triangle, yellow, small)
+1-cake slice (food, triangle, orange, small)
+wildcard+cut lyx 3
+
+# TURN 2A - P1 DISCARDS SERIES: 9 CATEGORIES. WINS.
+wildcard tux 1
+wildcard max 1
+wildcard tux 6
+2-bed (furniture, rectangle, white, large)
+2-pyramid (building, triangle, brown, large)
+2-piano (music, rectangle, black, large)
+3-laptop (gadget, rectangle, red, medium)
+3-grape (fruit, round, purple, small)
+1-cake slice (food, triangle, orange, small)

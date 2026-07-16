@@ -1,0 +1,546 @@
+{
+   "turns" : [
+      {
+         "steps" : [
+            {
+               "moves" : [
+                  [
+                     "2-cupboard",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-the triangle",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "3-table",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-house roof",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard+cut lyx 6",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-watermelon",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "2-orange",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-dice",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "1-paper airplane",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-dice",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "1-tennis ball",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-pyramid",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "3-laptop",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-handphone",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "3-grape",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-hat",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "1-orange",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-golf ball",
+                     "DRAW",
+                     "P2"
+                  ]
+               ],
+               "summary" : "INITIAL DRAW"
+            }
+         ]
+      },
+      {
+         "steps" : [
+            {
+               "call" : "P1 CALLS: MEDIUM",
+               "moves" : [
+                  [
+                     "3-table",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-orange",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-tennis ball",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "3-laptop",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-orange",
+                     "P1",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "P1 DISCARDS GROUP: MEDIUM"
+            },
+            {
+               "moves" : [
+                  [
+                     "3-cloth hanger",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-piano",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "wildcard max 5",
+                     "DRAW",
+                     "P1"
+                  ]
+               ],
+               "summary" : "P1 DRAWS ANOTHER 3 CARDS"
+            },
+            {
+               "call" : "P2 CALLS: 1",
+               "moves" : [
+                  [
+                     "1-the triangle",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-dice",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-handphone",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-golf ball",
+                     "P2",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "P2 DISCARDS GROUP: 1"
+            },
+            {
+               "moves" : [
+                  [
+                     "3-pizza slice",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard+cut lyx 5",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "2-tennis ball",
+                     "DRAW",
+                     "P2"
+                  ]
+               ],
+               "summary" : "P2 DRAWS ANOTHER 3 CARDS"
+            }
+         ]
+      },
+      {
+         "steps" : [
+            {
+               "call" : "P1 CALLS: SMALL",
+               "moves" : [
+                  [
+                     "1-paper airplane",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "wildcard max 5",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "3-grape",
+                     "P1",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "P1 DISCARDS GROUP: SMALL"
+            },
+            {
+               "moves" : [
+                  [
+                     "2-basket ball",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-golf ball",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "1-table",
+                     "DRAW",
+                     "P1"
+                  ]
+               ],
+               "summary" : "P1 DRAWS ANOTHER 3 CARDS"
+            },
+            {
+               "call" : "P2 CALLS: 3",
+               "moves" : [
+                  [
+                     "3-house roof",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "3-watermelon",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "3-dice",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "3-pizza slice",
+                     "P2",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "P2 DISCARDS GROUP: 3"
+            },
+            {
+               "moves" : [
+                  [
+                     "1-pyramid",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "2-grape",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "2-cloth hanger",
+                     "DRAW",
+                     "P2"
+                  ]
+               ],
+               "summary" : "P2 DRAWS ANOTHER 3 CARDS"
+            }
+         ]
+      },
+      {
+         "steps" : [
+            {
+               "call" : "P1 PASSES",
+               "moves" : [],
+               "summary" : "P1 PASSES"
+            },
+            {
+               "moves" : [
+                  [
+                     "2-paper airplane",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-drum",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "wildcard max 4",
+                     "DRAW",
+                     "P1"
+                  ]
+               ],
+               "summary" : "P1 DRAWS ANOTHER 3 CARDS"
+            },
+            {
+               "call" : "P2 CALLS: TRIANGLE",
+               "moves" : [
+                  [
+                     "2-pyramid",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-pyramid",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-cloth hanger",
+                     "P2",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "P2 DISCARDS GROUP: TRIANGLE"
+            },
+            {
+               "moves" : [
+                  [
+                     "2-pizza slice",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "2-cake slice",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "1-jelly",
+                     "DRAW",
+                     "P2"
+                  ]
+               ],
+               "summary" : "P2 DRAWS ANOTHER 3 CARDS"
+            }
+         ]
+      },
+      {
+         "steps" : [
+            {
+               "call" : "P1 CALLS: 6 CATEGORIES",
+               "moves" : [
+                  [
+                     "3-cloth hanger",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-piano",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-basket ball",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "1-table",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "wildcard max 4",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-paper airplane",
+                     "P1",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "P1 DISCARDS SERIES: 6 CATEGORIES"
+            },
+            {
+               "moves" : [
+                  [
+                     "1-laptop",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-hat",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "2-tent",
+                     "DRAW",
+                     "P1"
+                  ]
+               ],
+               "summary" : "P1 DRAWS ANOTHER 3 CARDS"
+            },
+            {
+               "call" : "P2 CALLS: 2",
+               "moves" : [
+                  [
+                     "2-hat",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-tennis ball",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-grape",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-pizza slice",
+                     "P2",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-cake slice",
+                     "P2",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "P2 DISCARDS GROUP: 2"
+            },
+            {
+               "moves" : [
+                  [
+                     "3-tent",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "3-alphabet block",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "3-tennis ball",
+                     "DRAW",
+                     "P2"
+                  ]
+               ],
+               "summary" : "P2 DRAWS ANOTHER 3 CARDS"
+            }
+         ]
+      },
+      {
+         "steps" : [
+            {
+               "call" : "P1 CALLS: 2",
+               "moves" : [
+                  [
+                     "2-cupboard",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-golf ball",
+                     "P1",
+                     "DISCARD"
+                  ],
+                  [
+                     "2-tent",
+                     "P1",
+                     "DISCARD"
+                  ]
+               ],
+               "summary" : "P1 DISCARDS GROUP: 2"
+            },
+            {
+               "moves" : [
+                  [
+                     "2-handphone",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "3-golf ball",
+                     "DRAW",
+                     "P1"
+                  ],
+                  [
+                     "wildcard max 6",
+                     "DRAW",
+                     "P1"
+                  ]
+               ],
+               "summary" : "P1 DRAWS ANOTHER 3 CARDS"
+            },
+            {
+               "call" : "P2 PASSES",
+               "moves" : [],
+               "summary" : "P2 PASSES"
+            },
+            {
+               "moves" : [
+                  [
+                     "1-pizza slice",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "wildcard max 2",
+                     "DRAW",
+                     "P2"
+                  ],
+                  [
+                     "3-cupboard",
+                     "DRAW",
+                     "P2"
+                  ]
+               ],
+               "summary" : "P2 DRAWS ANOTHER 3 CARDS"
+            }
+         ]
+      }
+   ]
+}

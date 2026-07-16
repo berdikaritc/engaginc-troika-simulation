@@ -1,0 +1,60 @@
+1-orange (fruit, round, orange, medium)
+wildcard tux 4
+wildcard tux 5
+2-jelly (food, round, purple, small)
+2-handphone (gadget, rectangle, black, small)
+2-golf ball (sports, round, white, small)
+2-drum (music, round, blue, medium)
+wildcard max 5
+2-house roof (building, triangle, red, large)
+2-swimming trunk (fashion, triangle, blue, small)
+wildcard+cut lyx 4
+3-golf ball (sports, round, white, small)
+wildcard tux 3
+3-laptop (gadget, rectangle, red, medium)
+2-tent (building, triangle, yellow, large)
+3-tent (building, triangle, yellow, large)
+1-cake slice (food, triangle, orange, small)
+3-alphabet block (toy, rectangle, green, small)
+wildcard tux 2
+2-tv (gadget, rectangle, black, medium)
+1-basket ball (sports, round, orange, large)
+3-tennis ball (sports, round, green, medium)
+1-grape (fruit, round, purple, small)
+3-drum (music, round, blue, medium)
+wildcard+cut lyx 1
+1-watermelon (fruit, round, green, large)
+3-bed (furniture, rectangle, white, large)
+3-cloth hanger (fashion, triangle, blue, large)
+1-bed (furniture, rectangle, white, large)
+2-bed (furniture, rectangle, white, large)
+1-dice (toy, rectangle, red, small)
+1-pyramid (building, triangle, brown, large)
+wildcard+cut lyx 6
+3-house roof (building, triangle, red, large)
+wildcard tux 6
+3-basket ball (sports, round, orange, large)
+1-golf ball (sports, round, white, small)
+3-jelly (food, round, purple, small)
+2-paper airplane (toy, triangle, yellow, small)
+2-cloth hanger (fashion, triangle, blue, large)
+1-the triangle (music, triangle, white, medium)
+1-hat (fashion, round, purple, medium)
+wildcard tux 1
+1-cupboard (furniture, rectangle, brown, large)
+1-handphone (gadget, rectangle, black, small)
+wildcard max 4
+3-piano (music, rectangle, black, large)
+1-alphabet block (toy, rectangle, green, small)
+1-house roof (building, triangle, red, large)
+wildcard+cut lyx 5
+wildcard max 3
+1-tent (building, triangle, yellow, large)
+wildcard+cut lyx 3
+1-table (furniture, rectangle, brown, medium)
+3-hat (fashion, round, purple, medium)
+2-piano (music, rectangle, black, large)
+3-paper airplane (toy, triangle, yellow, small)
+1-drum (music, round, blue, medium)
+3-orange (fruit, round, orange, medium)
+3-handphone (gadget, rectangle, black, small)

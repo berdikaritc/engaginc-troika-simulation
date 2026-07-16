@@ -1,0 +1,102 @@
+# TURN 1 - INITIAL DRAW
+wildcard+cut lyx 3
+3-piano (music, rectangle, black, large)
+1-dice (toy, rectangle, red, small)
+wildcard+cut lyx 5
+1-paper airplane (toy, triangle, yellow, small)
+2-house roof (building, triangle, red, large)
+1-hat (fashion, round, purple, medium)
+2-pizza slice (food, triangle, yellow, medium)
+1-laptop (gadget, rectangle, red, medium)
+1-the triangle (music, triangle, white, medium)
+3-pizza slice (food, triangle, yellow, medium)
+wildcard max 5
+3-swimming trunk (fashion, triangle, blue, small)
+2-hat (fashion, round, purple, medium)
+2-alphabet block (toy, rectangle, green, small)
+1-tennis ball (sports, round, green, medium)
+2-tv (gadget, rectangle, black, medium)
+2-swimming trunk (fashion, triangle, blue, small)
+
+# TURN 2A - P1 DISCARDS GROUP: 1
+1-dice (toy, rectangle, red, small)
+1-paper airplane (toy, triangle, yellow, small)
+1-hat (fashion, round, purple, medium)
+1-laptop (gadget, rectangle, red, medium)
+
+# TURN 2B - P1 DRAWS
+wildcard+cut lyx 1
+2-table (furniture, rectangle, brown, medium)
+2-paper airplane (toy, triangle, yellow, small)
+
+# TURN 2C - P2 DISCARDS GROUP: MEDIUM
+2-pizza slice (food, triangle, yellow, medium)
+1-the triangle (music, triangle, white, medium)
+2-hat (fashion, round, purple, medium)
+1-tennis ball (sports, round, green, medium)
+
+# TURN 2D - P2 DRAWS
+1-cloth hanger (fashion, triangle, blue, large)
+1-cake slice (food, triangle, orange, small)
+2-tennis ball (sports, round, green, medium)
+
+# TURN 3A - P1 DISCARDS GROUP: MEDIUM
+3-pizza slice (food, triangle, yellow, medium)
+2-tv (gadget, rectangle, black, medium)
+2-table (furniture, rectangle, brown, medium)
+
+# TURN 3B - P1 DRAWS
+3-golf ball (sports, round, white, small)
+3-grape (fruit, round, purple, small)
+wildcard+cut lyx 4
+
+# TURN 3C - P2 DISCARDS GROUP: 2
+2-house roof (building, triangle, red, large)
+2-swimming trunk (fashion, triangle, blue, small)
+2-tennis ball (sports, round, green, medium)
+
+# TURN 3D - P2 DRAWS
+3-jelly (food, round, purple, small)
+2-piano (music, rectangle, black, large)
+3-alphabet block (toy, rectangle, green, small)
+
+# TURN 4A - P1 DISCARDS GROUP: ROUND
+wildcard+cut lyx 1
+3-golf ball (sports, round, white, small)
+3-grape (fruit, round, purple, small)
+
+# TURN 4B - P1 DRAWS
+2-the triangle (music, triangle, white, medium)
+3-laptop (gadget, rectangle, red, medium)
+2-tent (building, triangle, yellow, large)
+
+# TURN 4C - P2 DISCARDS GROUP: 7 COLORS.
+3-jelly (food, round, purple, small)
+3-piano (music, rectangle, black, large)
+wildcard+cut lyx 5
+wildcard max 5
+1-cloth hanger (fashion, triangle, blue, large)
+1-cake slice (food, triangle, orange, small)
+3-alphabet block (toy, rectangle, green, small)
+
+# TURN 4D - P2 DRAWS
+3-cloth hanger (fashion, triangle, blue, large)
+1-drum (music, round, blue, medium)
+2-handphone (gadget, rectangle, black, small)
+
+# TURN 5A - P1 DISCARDS GROUP: SMALL
+3-swimming trunk (fashion, triangle, blue, small)
+2-alphabet block (toy, rectangle, green, small)
+2-paper airplane (toy, triangle, yellow, small)
+
+# TURN 5B - P1 DRAWS
+wildcard tux 1
+1-house roof (building, triangle, red, large)
+1-handphone (gadget, rectangle, black, small)
+
+# TURN 5C - P2PASSES
+
+# TURN 5D - P2 DRAWS
+wildcard max 6
+wildcard tux 6
+2-drum (music, round, blue, medium)

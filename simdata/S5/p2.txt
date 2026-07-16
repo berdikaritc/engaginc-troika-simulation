@@ -1,0 +1,7 @@
+2-drum (music, round, blue, medium)
+wildcard tux 6
+wildcard max 6
+2-handphone (gadget, rectangle, black, small)
+1-drum (music, round, blue, medium)
+3-cloth hanger (fashion, triangle, blue, large)
+2-piano (music, rectangle, black, large)

@@ -1,0 +1,9 @@
+wildcard max 5
+wildcard max 3
+2-pyramid (building, triangle, brown, large)
+1-alphabet block (toy, rectangle, green, small)
+2-alphabet block (toy, rectangle, green, small)
+wildcard tux 3
+wildcard max 4
+wildcard tux 1
+1-cupboard (furniture, rectangle, brown, large)

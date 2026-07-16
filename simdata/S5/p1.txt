@@ -1,0 +1,8 @@
+1-handphone (gadget, rectangle, black, small)
+1-house roof (building, triangle, red, large)
+wildcard tux 1
+2-tent (building, triangle, yellow, large)
+3-laptop (gadget, rectangle, red, medium)
+2-the triangle (music, triangle, white, medium)
+wildcard+cut lyx 4
+wildcard+cut lyx 3
