@@ -1,8 +1,8 @@
+wildcard max 4
+wildcard+cut lyx 1
+3-cake slice (food, triangle, orange, small)
 1-pyramid (building, triangle, brown, large)
-2-orange (fruit, round, orange, medium)
 3-tennis ball (sports, round, green, medium)
 wildcard+cut lyx 4
-2-house roof (building, triangle, red, large)
 wildcard max 2
 3-piano (music, rectangle, black, large)
-2-pyramid (building, triangle, brown, large)

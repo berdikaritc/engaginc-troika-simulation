@@ -1,3 +1,10 @@
+2-grape (fruit, round, purple, small)
+2-golf ball (sports, round, white, small)
+2-basket ball (sports, round, orange, large)
+2-dice (toy, rectangle, red, small)
+2-orange (fruit, round, orange, medium)
+2-house roof (building, triangle, red, large)
+2-pyramid (building, triangle, brown, large)
 2-laptop (gadget, rectangle, red, medium)
 wildcard tux 2
 2-table (furniture, rectangle, brown, medium)

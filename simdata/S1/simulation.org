@@ -79,3 +79,24 @@ wildcard tux 2
 1-house roof (building, triangle, red, large)
 2-golf ball (sports, round, white, small)
 2-grape (fruit, round, purple, small)
+
+# TURN 5A - P1 DISCARDS GROUP: 2
+2-pyramid (building, triangle, brown, large)
+2-house roof (building, triangle, red, large)
+2-orange (fruit, round, orange, medium)
+
+# TURN 5B - P1 DRAWS
+3-cake slice (food, triangle, orange, small)
+wildcard+cut lyx 1
+wildcard max 4
+
+# TURN 5C - P2 DISCARDS GROUP: 2
+2-dice (toy, rectangle, red, small)
+2-basket ball (sports, round, orange, large)
+2-golf ball (sports, round, white, small)
+2-grape (fruit, round, purple, small)
+
+# TURN 5D - P2 DRAWS
+1-tent (building, triangle, yellow, large)
+3-dice (toy, rectangle, red, small)
+2-swimming trunk (fashion, triangle, blue, small)
