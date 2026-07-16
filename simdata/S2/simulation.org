@@ -1,0 +1,42 @@
+# TURN 1 - INITIAL DRAW
+2-cupboard (furniture, rectangle, brown, large)
+1-the triangle (music, triangle, white, medium)
+3-table (furniture, rectangle, brown, medium)
+3-house roof (building, triangle, red, large)
+wildcard+cut lyx 6
+3-watermelon (fruit, round, green, large)
+2-orange (fruit, round, orange, medium)
+1-dice (toy, rectangle, red, small)
+1-paper airplane (toy, triangle, yellow, small)
+3-dice (toy, rectangle, red, small)
+1-tennis ball (sports, round, green, medium)
+2-pyramid (building, triangle, brown, large)
+3-laptop (gadget, rectangle, red, medium)
+1-handphone (gadget, rectangle, black, small)
+3-grape (fruit, round, purple, small)
+2-hat (fashion, round, purple, medium)
+1-orange (fruit, round, orange, medium)
+1-golf ball (sports, round, white, small)
+
+# TURN 2A - P1 DISCARDS GROUP: MEDIUM
+3-table (furniture, rectangle, brown, medium)
+2-orange (fruit, round, orange, medium)
+1-tennis ball (sports, round, green, medium)
+3-laptop (gadget, rectangle, red, medium)
+1-orange (fruit, round, orange, medium)
+
+# TURN 2B - P1 DRAWS
+3-cloth hanger (fashion, triangle, blue, large)
+2-piano (music, rectangle, black, large)
+wildcard max 5
+
+# TURN 2C - P2 DISCARDS GROUP: 1
+1-the triangle (music, triangle, white, medium)
+1-dice (toy, rectangle, red, small)
+1-handphone (gadget, rectangle, black, small)
+1-golf ball (sports, round, white, small)
+
+# TURN 2D - P2 DRAWS
+3-pizza slice (food, triangle, yellow, medium)
+wildcard+cut lyx 5
+2-tennis ball (sports, round, green, medium)

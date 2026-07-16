@@ -1,0 +1,75 @@
+1-table (furniture, rectangle, brown, medium)
+2-golf ball (sports, round, white, small)
+2-basket ball (sports, round, orange, large)
+2-cloth hanger (fashion, triangle, blue, large)
+2-grape (fruit, round, purple, small)
+1-pyramid (building, triangle, brown, large)
+wildcard max 4
+3-drum (music, round, blue, medium)
+2-paper airplane (toy, triangle, yellow, small)
+1-jelly (food, round, purple, small)
+2-cake slice (food, triangle, orange, small)
+2-pizza slice (food, triangle, yellow, medium)
+2-tent (building, triangle, yellow, large)
+3-hat (fashion, round, purple, medium)
+1-laptop (gadget, rectangle, red, medium)
+3-tennis ball (sports, round, green, medium)
+3-alphabet block (toy, rectangle, green, small)
+3-tent (building, triangle, yellow, large)
+wildcard max 6
+3-golf ball (sports, round, white, small)
+2-handphone (gadget, rectangle, black, small)
+3-cupboard (furniture, rectangle, brown, large)
+wildcard max 2
+1-pizza slice (food, triangle, yellow, medium)
+1-drum (music, round, blue, medium)
+2-drum (music, round, blue, medium)
+2-table (furniture, rectangle, brown, medium)
+3-basket ball (sports, round, orange, large)
+2-swimming trunk (fashion, triangle, blue, small)
+2-alphabet block (toy, rectangle, green, small)
+wildcard tux 3
+1-basket ball (sports, round, orange, large)
+1-bed (furniture, rectangle, white, large)
+3-bed (furniture, rectangle, white, large)
+2-watermelon (fruit, round, green, large)
+wildcard+cut lyx 2
+3-orange (fruit, round, orange, medium)
+3-swimming trunk (fashion, triangle, blue, small)
+3-tv (gadget, rectangle, black, medium)
+1-piano (music, rectangle, black, large)
+wildcard tux 5
+1-swimming trunk (fashion, triangle, blue, small)
+wildcard tux 4
+1-house roof (building, triangle, red, large)
+1-grape (fruit, round, purple, small)
+2-laptop (gadget, rectangle, red, medium)
+2-dice (toy, rectangle, red, small)
+1-cupboard (furniture, rectangle, brown, large)
+wildcard+cut lyx 3
+1-watermelon (fruit, round, green, large)
+wildcard+cut lyx 1
+1-tv (gadget, rectangle, black, medium)
+3-the triangle (music, triangle, white, medium)
+2-the triangle (music, triangle, white, medium)
+wildcard tux 1
+2-bed (furniture, rectangle, white, large)
+wildcard max 3
+3-jelly (food, round, purple, small)
+1-tent (building, triangle, yellow, large)
+wildcard tux 6
+2-tv (gadget, rectangle, black, medium)
+wildcard+cut lyx 4
+1-alphabet block (toy, rectangle, green, small)
+2-house roof (building, triangle, red, large)
+3-pyramid (building, triangle, brown, large)
+wildcard max 1
+wildcard tux 2
+3-cake slice (food, triangle, orange, small)
+1-hat (fashion, round, purple, medium)
+3-piano (music, rectangle, black, large)
+3-paper airplane (toy, triangle, yellow, small)
+3-handphone (gadget, rectangle, black, small)
+1-cloth hanger (fashion, triangle, blue, large)
+2-jelly (food, round, purple, small)
+1-cake slice (food, triangle, orange, small)

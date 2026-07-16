@@ -1,0 +1,8 @@
+2-tennis ball (sports, round, green, medium)
+wildcard+cut lyx 5
+3-pizza slice (food, triangle, yellow, medium)
+2-hat (fashion, round, purple, medium)
+2-pyramid (building, triangle, brown, large)
+3-dice (toy, rectangle, red, small)
+3-watermelon (fruit, round, green, large)
+3-house roof (building, triangle, red, large)
