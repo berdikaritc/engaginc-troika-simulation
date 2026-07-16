@@ -1,7 +1,7 @@
-2-tent (building, triangle, yellow, large)
+wildcard max 6
+3-golf ball (sports, round, white, small)
+2-handphone (gadget, rectangle, black, small)
 3-hat (fashion, round, purple, medium)
 1-laptop (gadget, rectangle, red, medium)
 3-drum (music, round, blue, medium)
-2-golf ball (sports, round, white, small)
 wildcard+cut lyx 6
-2-cupboard (furniture, rectangle, brown, large)

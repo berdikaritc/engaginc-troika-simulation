@@ -1,3 +1,6 @@
+3-cupboard (furniture, rectangle, brown, large)
+wildcard max 2
+1-pizza slice (food, triangle, yellow, medium)
 3-tennis ball (sports, round, green, medium)
 3-alphabet block (toy, rectangle, green, small)
 3-tent (building, triangle, yellow, large)

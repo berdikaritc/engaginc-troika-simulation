@@ -103,3 +103,20 @@ wildcard max 4
 3-tent (building, triangle, yellow, large)
 3-alphabet block (toy, rectangle, green, small)
 3-tennis ball (sports, round, green, medium)
+
+# TURN 6A - P1 DISCARDS GROUP: 2
+2-cupboard (furniture, rectangle, brown, large)
+2-golf ball (sports, round, white, small)
+2-tent (building, triangle, yellow, large)
+
+# TURN 6B - P1 DRAWS
+2-handphone (gadget, rectangle, black, small)
+3-golf ball (sports, round, white, small)
+wildcard max 6
+
+# TURN 6C - P2PASSES
+
+# TURN 6D - P2 DRAWS
+1-pizza slice (food, triangle, yellow, medium)
+wildcard max 2
+3-cupboard (furniture, rectangle, brown, large)

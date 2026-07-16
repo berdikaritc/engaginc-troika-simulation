@@ -1,9 +1,3 @@
-wildcard max 6
-3-golf ball (sports, round, white, small)
-2-handphone (gadget, rectangle, black, small)
-3-cupboard (furniture, rectangle, brown, large)
-wildcard max 2
-1-pizza slice (food, triangle, yellow, medium)
 1-drum (music, round, blue, medium)
 2-drum (music, round, blue, medium)
 2-table (furniture, rectangle, brown, medium)
