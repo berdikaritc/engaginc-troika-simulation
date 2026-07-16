@@ -44,10 +44,12 @@ my $max_turn;
 }
 
 my $turn_num = $which_p eq 'p1' ? $max_turn+1 : $max_turn;
+my $turn_letter = $which_p eq 'p1' ? 'A' : 'C';
 {
+
     open my $fh, ">>", "simulation.org" or die "Can't open simulation.org for append: $!";
     print $fh "\n";
-    print $fh "TURN $turn_num - ".uc($which_p)." DISCARDS $call\n";
+    print $fh "# TURN $turn_num$turn_letter - ".uc($which_p)." DISCARDS $call\n";
     print $fh "$_\n" for @discarded;
 }
 
