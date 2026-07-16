@@ -2,8 +2,8 @@
 2-tent (building, triangle, yellow, large)
 3-table (furniture, rectangle, brown, medium)
 1-watermelon (fruit, round, green, large)
-wildcard+tux lyx 1
-wildcard+tux lyx 2
+wildcard+cut lyx 1
+wildcard+cut lyx 2
 1-orange (fruit, round, orange, medium)
-wildcard+tux lyx 3
+wildcard+cut lyx 3
 1-pizza slice (food, triangle, yellow, medium)

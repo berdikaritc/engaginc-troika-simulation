@@ -17,7 +17,7 @@ wildcard tux 2
 2-golf ball (sports, round, white, small)
 3-piano (music, rectangle, black, large)
 wildcard tux 1
-wildcard+tux lyx 5
+wildcard+cut lyx 5
 2-laptop (gadget, rectangle, red, medium)
 1-handphone (gadget, rectangle, black, small)
 3-jelly (food, round, purple, small)
@@ -26,7 +26,7 @@ wildcard+tux lyx 5
 1-swimming trunk (fashion, triangle, blue, small)
 1-basket ball (sports, round, orange, large)
 3-tent (building, triangle, yellow, large)
-wildcard+tux lyx 6
+wildcard+cut lyx 6
 2-cupboard (furniture, rectangle, brown, large)
 3-watermelon (fruit, round, green, large)
 3-cloth hanger (fashion, triangle, blue, large)
@@ -40,7 +40,7 @@ wildcard max 4
 2-jelly (food, round, purple, small)
 1-cupboard (furniture, rectangle, brown, large)
 3-pizza slice (food, triangle, yellow, medium)
-wildcard+tux lyx 4
+wildcard+cut lyx 4
 1-cloth hanger (fashion, triangle, blue, large)
 3-tennis ball (sports, round, green, medium)
 3-cake slice (food, triangle, orange, small)
