@@ -100,3 +100,13 @@ wildcard max 4
 1-tent (building, triangle, yellow, large)
 3-dice (toy, rectangle, red, small)
 2-swimming trunk (fashion, triangle, blue, small)
+
+# TURN 6A - P1 DISCARDS SERIES: 8 CATEGORIES. WINS.
+wildcard+cut lyx 1
+wildcard max 4
+wildcard+cut lyx 4
+wildcard max 2
+3-piano (music, rectangle, black, large)
+3-tennis ball (sports, round, green, medium)
+1-pyramid (building, triangle, brown, large)
+3-cake slice (food, triangle, orange, small)

@@ -8,6 +8,12 @@ use File::Slurper qw(read_text read_lines write_text);
 
 my $which_p = $0 =~ /p1-/ ? "p1" : "p2";
 
+my @player_cards = read_lines("$which_p.txt");
+unless (@player_cards) {
+    warn "$which_p no longer has any cards, the game should have ended.\n";
+    exit 0;
+}
+
 my @cards = read_lines("draw.txt");
 die "I can't handle case where draw.txt has less than 3 cards"
     if @cards < 3;

@@ -1,6 +1,6 @@
-3-house roof (building, triangle, red, large)
-wildcard+cut lyx 6
 3-tent (building, triangle, yellow, large)
+wildcard+cut lyx 6
+3-house roof (building, triangle, red, large)
 1-cupboard (furniture, rectangle, brown, large)
 3-pizza slice (food, triangle, yellow, medium)
 2-tennis ball (sports, round, green, medium)
