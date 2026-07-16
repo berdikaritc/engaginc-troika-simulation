@@ -58,30 +58,48 @@ for my $step0 (@steps0) {
     } else {
         my ($from, $to);
         if ($turn_letter eq 'A') {
+            $from = 'P1';
+            $to = 'DISCARD';
+
+            if ($rest =~ /PASS/) {
+                $step->{summary} = "P1 PASSES";
+                $step->{call} = "P1 PASSES";
+                goto L1;
+            }
+
             $rest =~ /(?:DISCARDS )?(\w+): ([^.]+)/ or die "Can't parse rest: $rest (description: $step0->{description})";
             $step->{summary} = "P1 DISCARDS $1: $2";
             $step->{call} = "P1 CALLS: $2";
             $step->{call} .= ". P1 WINS." if $rest =~ /WIN/;
-            $from = 'P1';
-            $to = 'DISCARD';
         } elsif ($turn_letter eq 'B') {
-            $step->{summary} = "P1 DRAWS ANOTHER 3 CARDS";
             $from = 'DRAW';
             $to = 'P1';
+
+            $step->{summary} = "P1 DRAWS ANOTHER 3 CARDS";
         } elsif ($turn_letter eq 'C') {
+            $from = 'P2';
+            $to = 'DISCARD';
+
+            if ($rest =~ /PASS/) {
+                $step->{summary} = "P2 PASSES";
+                $step->{call} = "P2 PASSES";
+                goto L1;
+            }
+
             $rest =~ /(?:DISCARDS )?(\w+): ([^.]+)/ or die "Can't parse rest: $rest (description: $step0->{description})";
             $step->{summary} = "P2 DISCARDS $1: $2";
             $step->{call} = "P2 CALLS: $2";
             $step->{call} .= ". P2 WINS." if $rest =~ /WIN/;
-            $from = 'P2';
-            $to = 'DISCARD';
         } elsif ($turn_letter eq 'D') {
-            $step->{summary} = "P2 DRAWS ANOTHER 3 CARDS";
             $from = 'DRAW';
             $to = 'P2';
+
+            $step->{summary} = "P2 DRAWS ANOTHER 3 CARDS";
         } else {
             die "Unknown letter $turn_letter";
         }
+
+      L1:
 
         for my $c (@cards) {
             push @{$step->{moves}}, [$c, $from, $to];

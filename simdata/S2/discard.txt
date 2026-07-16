@@ -1,3 +1,6 @@
+2-cloth hanger (fashion, triangle, blue, large)
+1-pyramid (building, triangle, brown, large)
+2-pyramid (building, triangle, brown, large)
 3-pizza slice (food, triangle, yellow, medium)
 3-dice (toy, rectangle, red, small)
 3-watermelon (fruit, round, green, large)

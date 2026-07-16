@@ -61,3 +61,20 @@ wildcard max 5
 1-pyramid (building, triangle, brown, large)
 2-grape (fruit, round, purple, small)
 2-cloth hanger (fashion, triangle, blue, large)
+
+# TURN 4A - P1PASSES
+
+# TURN 4B - P1 DRAWS
+2-paper airplane (toy, triangle, yellow, small)
+3-drum (music, round, blue, medium)
+wildcard max 4
+
+# TURN 4C - P2 DISCARDS GROUP: TRIANGLE
+2-pyramid (building, triangle, brown, large)
+1-pyramid (building, triangle, brown, large)
+2-cloth hanger (fashion, triangle, blue, large)
+
+# TURN 4D - P2 DRAWS
+2-pizza slice (food, triangle, yellow, medium)
+2-cake slice (food, triangle, orange, small)
+1-jelly (food, round, purple, small)

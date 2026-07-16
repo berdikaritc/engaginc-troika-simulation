@@ -1,7 +1,7 @@
-2-cloth hanger (fashion, triangle, blue, large)
+1-jelly (food, round, purple, small)
+2-cake slice (food, triangle, orange, small)
+2-pizza slice (food, triangle, yellow, medium)
 2-grape (fruit, round, purple, small)
-1-pyramid (building, triangle, brown, large)
 2-tennis ball (sports, round, green, medium)
 wildcard+cut lyx 5
 2-hat (fashion, round, purple, medium)
-2-pyramid (building, triangle, brown, large)
