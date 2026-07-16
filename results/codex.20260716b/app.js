@@ -7,7 +7,7 @@ const CONFIG = Object.freeze({
   initialDrawDuration: 200,
   drawDuration: 400,
   discardDuration: 200,
-  discardStagger: 100,
+  discardStagger: 30,
   callDuration: 3000,
   handSpacing: 27.5
 });
