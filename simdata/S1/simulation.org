@@ -59,3 +59,23 @@ wildcard+cut lyx 4
 2-table (furniture, rectangle, brown, medium)
 2-laptop (gadget, rectangle, red, medium)
 wildcard tux 2
+
+# TURN 4A - P1 DISCARDS GROUP: MEDIUM
+2-drum (music, round, blue, medium)
+1-tv (gadget, rectangle, black, medium)
+1-hat (fashion, round, purple, medium)
+
+# TURN 4B - P1 DRAWS
+3-tennis ball (sports, round, green, medium)
+2-orange (fruit, round, orange, medium)
+1-pyramid (building, triangle, brown, large)
+
+# TURN 4C - P2 DISCARDS GROUP: MEDIUM
+2-table (furniture, rectangle, brown, medium)
+wildcard tux 2
+2-laptop (gadget, rectangle, red, medium)
+
+# TURN 4D - P2 DRAWS
+1-house roof (building, triangle, red, large)
+2-golf ball (sports, round, white, small)
+2-grape (fruit, round, purple, small)

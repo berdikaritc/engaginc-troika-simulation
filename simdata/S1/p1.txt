@@ -1,8 +1,8 @@
+1-pyramid (building, triangle, brown, large)
+2-orange (fruit, round, orange, medium)
+3-tennis ball (sports, round, green, medium)
 wildcard+cut lyx 4
-1-hat (fashion, round, purple, medium)
-1-tv (gadget, rectangle, black, medium)
 2-house roof (building, triangle, red, large)
 wildcard max 2
-2-drum (music, round, blue, medium)
 3-piano (music, rectangle, black, large)
 2-pyramid (building, triangle, brown, large)

@@ -1,6 +1,6 @@
-wildcard tux 2
-2-laptop (gadget, rectangle, red, medium)
-2-table (furniture, rectangle, brown, medium)
+2-grape (fruit, round, purple, small)
+2-golf ball (sports, round, white, small)
+1-house roof (building, triangle, red, large)
 wildcard max 3
 2-basket ball (sports, round, orange, large)
 2-dice (toy, rectangle, red, small)

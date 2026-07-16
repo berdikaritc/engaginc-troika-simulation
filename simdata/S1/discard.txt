@@ -1,3 +1,9 @@
+2-laptop (gadget, rectangle, red, medium)
+wildcard tux 2
+2-table (furniture, rectangle, brown, medium)
+1-hat (fashion, round, purple, medium)
+1-tv (gadget, rectangle, black, medium)
+2-drum (music, round, blue, medium)
 3-laptop (gadget, rectangle, red, medium)
 1-tennis ball (sports, round, green, medium)
 3-tv (gadget, rectangle, black, medium)
