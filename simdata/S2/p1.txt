@@ -1,7 +1,7 @@
-wildcard max 5
+1-table (furniture, rectangle, brown, medium)
+2-golf ball (sports, round, white, small)
+2-basket ball (sports, round, orange, large)
 2-piano (music, rectangle, black, large)
 3-cloth hanger (fashion, triangle, blue, large)
-3-grape (fruit, round, purple, small)
-1-paper airplane (toy, triangle, yellow, small)
 wildcard+cut lyx 6
 2-cupboard (furniture, rectangle, brown, large)
