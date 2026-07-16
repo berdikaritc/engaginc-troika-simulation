@@ -1,3 +1,0 @@
-3-house roof (building, triangle, red, large)
-wildcard+cut lyx 6
-3-tent (building, triangle, yellow, large)

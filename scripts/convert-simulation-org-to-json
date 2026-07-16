@@ -30,7 +30,7 @@ for my $step0 (@steps0) {
     my ($turn_num, $turn_letter, $rest) = $step0->{description} =~ /(\d+)([ABCD]?)(.*)/
         or die "Can't parse description: $step0->{description}";
     $rest //= '';
-    warn "DEBUG: description=<$step0->{description}>, turn_num=<$turn_num>, turn_letter=<$turn_letter>, rest=<$rest>\n";
+    warn "DEBUG: description=<$step0->{description}>, turn_num=<$turn_num>, turn_letter=<$turn_letter>, rest=<$rest>\n" if $ENV{DEBUG};
     my $turn;
     if (!$prev_turn_num || $turn_num != $prev_turn_num) {
         # a new turn
@@ -91,6 +91,10 @@ for my $step0 (@steps0) {
     push @{$turn->{steps}}, $step;
 }
 
-my $json = JSON::MaybeXS->new;
-$json->canonical->allow_nonref->pretty(1);
-print $json->encode($simulation);
+{
+    open my $fh, ">", "simulation.json" or die "Can't open simulation.json for writing: $!";
+    my $json = JSON::MaybeXS->new;
+    $json->canonical->allow_nonref->pretty(1);
+    print $fh $json->encode($simulation);
+    close $fh;
+}
