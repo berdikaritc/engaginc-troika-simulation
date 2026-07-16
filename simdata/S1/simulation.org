@@ -17,3 +17,25 @@
 1-handphone (gadget, rectangle, black, small)
 1-laptop (gadget, rectangle, red, medium)
 1-paper airplane (toy, triangle, yellow, small)
+
+# TURN 2A - P1 DISCARDS GROUP: SMALL
+3-paper airplane (toy, triangle, yellow, small)
+3-grape (fruit, round, purple, small)
+1-grape (fruit, round, purple, small)
+2-handphone (gadget, rectangle, black, small)
+
+# TURN 2B - P1 DRAWS
+wildcard max 2
+2-house roof (building, triangle, red, large)
+wildcard tux 1
+
+# TURN 2C - P2 DISCARDS GROUP: SMALL
+1-golf ball (sports, round, white, small)
+2-alphabet block (toy, rectangle, green, small)
+1-handphone (gadget, rectangle, black, small)
+1-paper airplane (toy, triangle, yellow, small)
+
+# TURN 2D - P2 DRAWS
+3-laptop (gadget, rectangle, red, medium)
+2-basket ball (sports, round, orange, large)
+wildcard max 3

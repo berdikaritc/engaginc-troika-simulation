@@ -20,7 +20,7 @@ for my $c (@cards) {
         next;
     }
     if ($c =~ /^x(\d*)\s+(.+)/) {
-        push @discarded0, [$1 || (99+$i), $2];
+        push @discarded0, [$1 ? $1 : 1000-$i, $2];
     } else {
         push @kept, $c;
     }
@@ -30,6 +30,8 @@ die "Please mark >= 3 cards to be discarded in $which_p.txt"
 die "Please put call name as # NAME, e.g. # GROUP: SMALL in the $which_p.txt file"
     unless $call;
 
+# discarded adalah sesuai urutan pengambilan/penumpukan ke discard artinya yang
+# paling awal adalah yang paling bawah tertumpuk
 my @discarded = map { $_->[1] } sort { $a->[0] <=> $b->[0] } @discarded0;
 
 # largest turn number

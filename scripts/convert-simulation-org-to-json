@@ -30,7 +30,7 @@ for my $step0 (@steps0) {
     my ($turn_num, $turn_letter, $rest) = $step0->{description} =~ /(\d+)([ABCD]?)(.*)/
         or die "Can't parse description: $step0->{description}";
     $rest //= '';
-    print "DEBUG: description=<$step0->{description}>, turn_num=<$turn_num>, turn_letter=<$turn_letter>, rest=<$rest>\n";
+    warn "DEBUG: description=<$step0->{description}>, turn_num=<$turn_num>, turn_letter=<$turn_letter>, rest=<$rest>\n";
     my $turn;
     if (!$prev_turn_num || $turn_num != $prev_turn_num) {
         # a new turn

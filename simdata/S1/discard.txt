@@ -1,0 +1,8 @@
+1-paper airplane (toy, triangle, yellow, small)
+1-handphone (gadget, rectangle, black, small)
+2-alphabet block (toy, rectangle, green, small)
+1-golf ball (sports, round, white, small)
+2-handphone (gadget, rectangle, black, small)
+1-grape (fruit, round, purple, small)
+3-grape (fruit, round, purple, small)
+3-paper airplane (toy, triangle, yellow, small)

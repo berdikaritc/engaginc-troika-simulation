@@ -1,9 +1,3 @@
-wildcard tux 1
-2-house roof (building, triangle, red, large)
-wildcard max 2
-wildcard max 3
-2-basket ball (sports, round, orange, large)
-3-laptop (gadget, rectangle, red, medium)
 wildcard+cut lyx 4
 1-hat (fashion, round, purple, medium)
 1-tv (gadget, rectangle, black, medium)

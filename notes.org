@@ -12,8 +12,10 @@
 
 3a. p1 discard dengan cara menandai di awal baris dengan "x ". jika ingin
     mengubah urutan beri angka mis: "x1 " akan dipilih dulu (paling bawah), lalu
-    "x2 ", dst. baru nanti semua yang "x " di atasnya. save file. lalu jalankan
-    skrip:
+    "x2 ", dst. baru nanti semua yang "x " di atasnya. jika tanpa notasi urutan,
+    maka "x " paling bawah dulu yang akan diambil, sesuai urutan tumpukan.
+
+    save file lalu jalankan skrip:
 
     sleep 3; ../../scripts/sim02a-p1-discard && ../../scripts/sim02b-p1-draw
 

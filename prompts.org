@@ -259,3 +259,17 @@ keep the zoom level. the character is doing a wet dog shake while still being dr
 keep the zoom level. the character is doing a blep expression.
 * zzz journal
 ** [2026-07-16 Thu] gw taruh di sub results/NAME/ agar repo ini bisa menyimpan berbagai hasil vibecoding
+* [2026-07-16 Thu] codex20260716b
+** prompt 2
+for initial draw animation, can you decrease the time of each card animation
+from 0.4 second to 0.2 second?
+** prompt 3
+for animating the card group that a player discards, can you do stagger
+animation instead of the individual cards animating serially? stagger delay
+should be 0.1s and each card should animate for 0.2s.
+** prompt 4
+can you add a small button to pause and resume the animation?
+** prompt 5
+nope, the pause button does not do anything when pressed.
+
+# tetep gagal, gw revert aja deh.
