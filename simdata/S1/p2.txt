@@ -1,9 +1,9 @@
-wildcard max 5
+3-handphone (gadget, rectangle, black, small)
+1-tennis ball (sports, round, green, medium)
+2-dice (toy, rectangle, red, small)
 1-pyramid (building, triangle, brown, large)
-3-tv (gadget, rectangle, black, medium)
 3-dice (toy, rectangle, red, small)
 1-grape (fruit, round, purple, small)
 wildcard max 6
 wildcard tux 5
 wildcard max 2
-2-hat (fashion, round, purple, medium)

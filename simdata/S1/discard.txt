@@ -1,3 +1,6 @@
+2-hat (fashion, round, purple, medium)
+3-tv (gadget, rectangle, black, medium)
+wildcard max 5
 2-tennis ball (sports, round, green, medium)
 wildcard tux 6
 2-the triangle (music, triangle, white, medium)

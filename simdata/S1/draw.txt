@@ -1,6 +1,3 @@
-3-handphone (gadget, rectangle, black, small)
-1-tennis ball (sports, round, green, medium)
-2-dice (toy, rectangle, red, small)
 1-piano (music, rectangle, black, large)
 3-house roof (building, triangle, red, large)
 3-alphabet block (toy, rectangle, green, small)

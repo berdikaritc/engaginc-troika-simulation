@@ -15,7 +15,7 @@
     "x2 ", dst. baru nanti semua yang "x " di atasnya. save file. lalu jalankan
     skrip:
 
-    ../../scripts/sim02a-p1-discard && ../../scripts/sim02b-p1-draw
+    sleep 3; ../../scripts/sim02a-p1-discard && ../../scripts/sim02b-p1-draw
 
     ini akan mengambil kartu yang ditandai didiscard di p1.txt dan
     menambahkannya ke discard.txt, lalu juga menambahkannya ke simulation.org
@@ -26,6 +26,6 @@
 
 3b. p2 juga discard & draw:
 
-    ../../scripts/sim02a-p1-discard && ../../scripts/sim02b-p1-draw
+    sleep 3; ../../scripts/sim02c-p2-discard && ../../scripts/sim02d-p2-draw
 
 04. lanjutkan dengan turn berikutnya, sampai salah satu pemain menang, tandai callnya mis: # GROUP: SMALL. WIN.
