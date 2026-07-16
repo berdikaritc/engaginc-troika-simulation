@@ -1,3 +1,4 @@
+# GROUP: 3
 wildcard+tux lyx 1
 wildcard+tux lyx 2
 1-orange (fruit, round, orange, medium)

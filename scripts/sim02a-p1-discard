@@ -25,6 +25,8 @@ for my $c (@cards) {
         push @kept, $c;
     }
 }
+die "Please mark >= 3 cards to be discarded in $which_p.txt"
+    unless @discarded0 >= 3;
 die "Please put call name as # NAME, e.g. # GROUP: SMALL in the $which_p.txt file"
     unless $call;
 
