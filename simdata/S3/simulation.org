@@ -60,3 +60,11 @@ wildcard max 2
 3-jelly (food, round, purple, small)
 3-drum (music, round, blue, medium)
 wildcard+cut lyx 1
+
+# TURN 4A - P1 DISCARDS SERIES: 6 CATEGORIES. WINS.
+wildcard max 2
+1-watermelon (fruit, round, green, large)
+3-tent (building, triangle, yellow, large)
+1-cake slice (food, triangle, orange, small)
+3-golf ball (sports, round, white, small)
+2-handphone (gadget, rectangle, black, small)

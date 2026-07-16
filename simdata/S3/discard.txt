@@ -1,3 +1,9 @@
+2-handphone (gadget, rectangle, black, small)
+3-golf ball (sports, round, white, small)
+1-cake slice (food, triangle, orange, small)
+3-tent (building, triangle, yellow, large)
+1-watermelon (fruit, round, green, large)
+wildcard max 2
 2-hat (fashion, round, purple, medium)
 3-pizza slice (food, triangle, yellow, medium)
 3-tv (gadget, rectangle, black, medium)
