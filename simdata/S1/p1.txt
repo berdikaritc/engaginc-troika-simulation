@@ -1,10 +1,6 @@
-# GROUP: 3
 wildcard+tux lyx 1
 wildcard+tux lyx 2
 1-orange (fruit, round, orange, medium)
 wildcard+tux lyx 3
-x 3-swimming trunk (fashion, triangle, blue, small)
-x 3-bed (furniture, rectangle, white, large)
 1-pizza slice (food, triangle, yellow, medium)
 2-tennis ball (sports, round, green, medium)
-x 3-cupboard (furniture, rectangle, brown, large)

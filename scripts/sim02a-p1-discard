@@ -57,7 +57,7 @@ $orig = read_text("discard.txt");
 {
     open my $fh, ">", "discard.txt" or die "Can't open discard.txt for writing: $!";
     print $fh "$_\n" for reverse @discarded;
-    print $orig;
+    print $fh $orig;
     close $fh;
 }
 
@@ -65,6 +65,5 @@ $orig = read_text("$which_p.txt");
 {
     open my $fh, ">", "$which_p.txt" or die "Can't open $which_p.txt for writing: $!";
     print $fh "$_\n" for @kept;
-    print $orig;
     close $fh;
 }

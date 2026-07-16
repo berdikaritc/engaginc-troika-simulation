@@ -1,5 +1,20 @@
 * [2026-07-16 Thu] steps to create a simulation using text files
 0. ke direktori simdata/NAME/
 
-1a. jalankan ../../scripts/sim01-draw. ini akan membuat draw.txt
-    dan mengisinya dengan urutan kartu random.
+1. jalankan ../../scripts/sim01-initial-draw. ini akan membuat draw.txt dan mengisinya
+   dengan urutan kartu random. lalu membagikan 9 kartu ke p1.txt, 9 kartu ke
+   p2.txt dan mengosongkan discard.txt. juga menambahkan entri ke
+   simulation.org
+
+2a. buka proses emacs *baru* berisi draw.txt, p1.txt, p2.txt, discard.txt secara
+    bersampingan, dan aktifkan auto-revert-mode utk semua buffer: (global-auto-revert-mode 1) dan M-x eval-buffer
+
+2b. p1 discard dengan cara menandai di awal baris dengan "x ". jika ingin
+    mengubah urutan beri angka mis: "x1 " akan dipilih dulu (paling bawah), lalu
+    "x2 ", dst. baru nanti semua yang "x " di atasnya. save file. lalu jalankan
+    skrip: ../../scripts/sim02-p1-discard
+
+    ini akan mengambil kartu yang ditandai didiscard di p1.txt dan
+    menambahkannya ke discard.txt, lalu juga menambahkannya ke simulation.org
+
+    note: file di emacs akan terupdate otomatis.
