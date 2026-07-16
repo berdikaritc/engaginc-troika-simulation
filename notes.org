@@ -1,0 +1,5 @@
+* [2026-07-16 Thu] steps to create a simulation using text files
+0. ke direktori simdata/NAME/
+
+1a. jalankan ../../scripts/sim01-draw. ini akan membuat draw.txt
+    dan mengisinya dengan urutan kartu random.

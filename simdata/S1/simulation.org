@@ -1,91 +1,19 @@
 # TURN 1 - INITIAL DRAW
-2-laptop (gadget, rectangle, red, medium)|DRAW|P1
-2-orange (fruit, round, orange, medium)|DRAW|P2
-wildcard max 1|DRAW|P1
-1-handphone (gadget, rectangle, black, small)|DRAW|P2
-wildcard+cut lyx 6|DRAW|P1
-wildcard+cut lyx 2|DRAW|P2
-1-jelly (food, round, purple, small)|DRAW|P1
-2-drum (music, round, blue, medium)|DRAW|P2
-2-tennis ball (sports, round, green, medium)|DRAW|P1
-2-golf ball (sports, round, white, small)|DRAW|P2
-wildcard tux 4|DRAW|P1
-wildcard tux 6|DRAW|P2
-wildcard tux 1|DRAW|P1
-wildcard max 2|DRAW|P2
-wildcard tux 2|DRAW|P1
-1-bed (furniture, rectangle, white, large)|DRAW|P2
-3-basket ball (sports, round, orange, large)|DRAW|P1
-2-dice (toy, rectangle, red, small)|DRAW|P2
-
-# TURN 2A - P1 DISCARDS GROUP: ROUND
-3-basket ball (sports, round, orange, large)|P1|DISCARD
-1-jelly (food, round, purple, small)|P1|DISCARD
-2-tennis ball (sports, round, green, medium)|P1|DISCARD
-
-# TURN 2B - P1 DRAWS ANOTHER 3 CARDS
-1-watermelon (fruit, round, green, large)|DRAW|P1
-2-house roof (building, triangle, red, large)|DRAW|P1
-3-laptop (gadget, rectangle, red, medium)|DRAW|P1
-
-# TURN 2C - P2 DISCARDS GROUP: 2
-2-orange (fruit, round, orange, medium)|P2|DISCARD
-2-drum (music, round, blue, medium)|P2|DISCARD
-2-golf ball (sports, round, white, small)|P2|DISCARD
-2-dice (toy, rectangle, red, small)|P2|DISCARD
-
-# TURN 2D - P2 DRAWS ANOTHER 3 CARDS
-2-jelly (food, round, purple, small)|DRAW|P2
-1-cake slice (food, triangle, orange, small)|DRAW|P2
-3-the triangle (music, triangle, white, medium)|DRAW|P2
-
-# TURN 3A - P1 DISCARDS GROUP: RECTANGLE
-2-laptop (gadget, rectangle, red, medium)|P1|DISCARD
-wildcard max 1|P1|DISCARD
-3-laptop (gadget, rectangle, red, medium)|P1|DISCARD
-
-# TURN 3B - P1 DRAWS ANOTHER 3 CARDS
-1-basket ball (sports, round, orange, large)
+3-cupboard (furniture, rectangle, brown, large)
 2-hat (fashion, round, purple, medium)
-1-house roof (building, triangle, red, large)
-
-# TURN 3C - P2 DISCARDS GROUP: RECTANGLE
-1-bed (furniture, rectangle, white, large)
+2-tennis ball (sports, round, green, medium)
+2-bed (furniture, rectangle, white, large)
+1-pizza slice (food, triangle, yellow, medium)
 wildcard max 2
-1-handphone (gadget, rectangle, black, small)
-
-# TURN 3D - P2 DRAWS
+3-bed (furniture, rectangle, white, large)
 wildcard tux 5
-1-alphabet block (toy, rectangle, green, small)
-1-tv (gadget, rectangle, black, medium)
-
-# TURN 4A - P1 DISCARDS GROUP: 1
-1-watermelon (fruit, round, green, large)
-1-basket ball (sports, round, orange, large)
+3-swimming trunk (fashion, triangle, blue, small)
+wildcard max 1
+wildcard+tux lyx 3
 1-house roof (building, triangle, red, large)
-
-# TURN 4B - P1 DRAWS
-3-alphabet block (toy, rectangle, green, small)
-wildcard tux 3
-2-cloth hanger (fashion, triangle, blue, large)
-
-# TURN 4C - P2 DISCARDS GROUP: 1
-1-cake slice (food, triangle, orange, small)
-1-alphabet block (toy, rectangle, green, small)
-1-tv (gadget, rectangle, black, medium)
-
-# TURN 4D - P2 DRAWS
-1-cupboard (furniture, rectangle, brown, large)
-2-watermelon (fruit, round, green, large)
-3-grape (fruit, round, purple, small)
-
-# TURN 5A - P1 DISCARDS SERIES: 9 COLORS. P1 WINS.
-wildcard+cut lyx 6
-wildcard tux 4
-wildcard tux 1
-wildcard tux 2
-wildcard tux 3
-2-house roof (building, triangle, red, large)
-2-hat (fashion, round, purple, medium)
-3-alphabet block (toy, rectangle, green, small)
-2-cloth hanger (fashion, triangle, blue, large)
+1-orange (fruit, round, orange, medium)
+wildcard max 6
+wildcard+tux lyx 2
+1-grape (fruit, round, purple, small)
+wildcard+tux lyx 1
+3-dice (toy, rectangle, red, small)

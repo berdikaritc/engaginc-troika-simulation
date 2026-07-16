@@ -1,0 +1,35 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use strict;
+use warnings;
+
+use Games::Cards::Troika::Util;
+use File::Slurper qw(write_text);
+
+# given 18 lines of card names, create 9 lines of 2-column tab separated output,
+# one column for P1 and the other for P2, suitable for pasting to simulation.xlsx.
+
+my @cards = @{ Games::Cards::Troika::Util::troika_list_cards_shuffled(descriptive => 1)->[2] };
+
+my @cards_p1;
+my @cards_p2;
+
+my @draw;
+for (1..9) {
+    my ($c1, $c2) = splice @cards, 0, 2;
+    push @draw, $c1, $c2;
+    unshift @cards_p1, $c1;
+    unshift @cards_p2, $c2;
+}
+
+write_text("draw.txt", join("", map {"$_\n"} @cards));
+write_text("p1.txt", join("", map {"$_\n"} @cards_p1));
+write_text("p2.txt", join("", map {"$_\n"} @cards_p2));
+write_text("discard.txt", "");
+
+write_text("simulation.org", join(
+    "",
+    "# TURN 1 - INITIAL DRAW\n",
+    (map { "$_\n" } @draw),
+));

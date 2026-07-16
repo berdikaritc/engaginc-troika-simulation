@@ -1,0 +1,68 @@
+#!/usr/bin/env perl
+
+use 5.014;
+use strict;
+use warnings;
+
+use File::Slurper qw(read_text read_lines write_text);
+
+my $which_p = $0 =~ /p1-/ ? "p1" : "p2";
+
+my @cards = read_lines("$which_p.txt");
+my @discarded0;
+my @kept;
+my $i = 0;
+my $call;
+for my $c (@cards) {
+    $i++;
+    if ($c =~ /^# (.+)/) {
+        $call = $1;
+        next;
+    }
+    if ($c =~ /^x(\d*)\s+(.+)/) {
+        push @discarded0, [$1 || (99+$i), $2];
+    } else {
+        push @kept, $c;
+    }
+}
+die "Please put call name as # NAME, e.g. # GROUP: SMALL in the $which_p.txt file"
+    unless $call;
+
+my @discarded = map { $_->[1] } sort { $a->[0] <=> $b->[0] } @discarded0;
+
+# largest turn number
+my $max_turn;
+{
+    open my $fh, "<", "simulation.org" or die "Can't open simulation.org for reading: $!";
+    while (defined(my $line = <$fh>)) {
+        $line =~ /^# TURN (\d+)/ or next;
+        $max_turn = $1 if !$max_turn or $max_turn < $1;
+    }
+    close $fh;
+}
+
+my $turn_num = $which_p eq 'p1' ? $max_turn+1 : $max_turn;
+{
+    open my $fh, ">>", "simulation.org" or die "Can't open simulation.org for append: $!";
+    print $fh "\n";
+    print $fh "TURN $turn_num - ".uc($which_p)." DISCARDS $call\n";
+    print $fh "$_\n" for @discarded;
+}
+
+my $orig;
+
+$orig = read_text("discard.txt");
+{
+    open my $fh, ">", "discard.txt" or die "Can't open discard.txt for writing: $!";
+    print $fh "$_\n" for reverse @discarded;
+    print $orig;
+    close $fh;
+}
+
+$orig = read_text("$which_p.txt");
+{
+    open my $fh, ">", "$which_p.txt" or die "Can't open $which_p.txt for writing: $!";
+    print $fh "$_\n" for @kept;
+    print $orig;
+    close $fh;
+}
