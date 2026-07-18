@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Slap — Game Simulation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="stage" aria-label="Slap card game simulation">
+    <header class="brand"><img src="images/logo/logo.png" alt="Slap" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span hidden>SLAP!</span></header>
+
+    <section class="zone zone-p1" aria-label="Player 1 pile">
+      <div class="pile" id="pile-p1"><div class="card back"></div><div class="count" id="count-p1">42</div></div>
+      <div class="zone-label"><strong>P1</strong><span id="label-cards-1">CARDS</span></div>
+    </section>
+
+    <section class="zone zone-center" aria-label="Discard pile">
+      <div id="call" aria-live="polite"></div>
+      <div class="discard" id="discard"></div>
+      <div class="zone-label"><strong id="label-discard">DISCARD</strong><span id="discard-count">0</span></div>
+      <img class="hand p1-hand" id="hand-p1" src="images/hands/hands-01.png" alt="P1 hand">
+      <img class="hand p2-hand" id="hand-p2" src="images/hands/hands-02.png" alt="P2 hand">
+    </section>
+
+    <section class="zone zone-p2" aria-label="Player 2 pile">
+      <div class="pile" id="pile-p2"><div class="card back"></div><div class="count" id="count-p2">42</div></div>
+      <div class="zone-label"><strong>P2</strong><span id="label-cards-2">CARDS</span></div>
+    </section>
+
+    <div id="banner" aria-live="assertive"></div>
+    <button id="restart" type="button">RESTART</button>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
