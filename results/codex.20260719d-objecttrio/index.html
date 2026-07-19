@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=720, initial-scale=1, maximum-scale=1">
+  <title>Object Trio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="game" aria-label="Object Trio game simulation">
+    <header class="masthead">
+      <img class="logo" src="images/logo/logo.png" alt="Object Trio">
+      <div class="logo-fallback" aria-hidden="true"><span>OBJECT</span><strong>TRIO</strong></div>
+      <button id="replay" type="button" title="Replay" aria-label="Replay simulation">↻</button>
+    </header>
+
+    <section id="p1-zone" class="player-zone player-one">
+      <div class="zone-label" id="p1-label"><span>P1</span><small data-i18n="hand">HAND</small><small class="collecting" id="p1-collecting"></small></div>
+      <div id="p1-hand" class="hand"></div>
+    </section>
+
+    <section class="table-zone">
+      <div class="felt-mark">OBJECT <b>TRIO</b></div>
+      <div class="pile-wrap draw-wrap">
+        <div id="draw-pile" class="pile"></div>
+        <div class="pile-label"><span data-i18n="drawPile">DRAW PILE</span><b id="deck-count">81</b></div>
+      </div>
+      <div class="turn-indicator" id="turn-indicator" aria-live="polite"></div>
+      <div class="pile-wrap discard-wrap">
+        <div id="discard-pile" class="pile"></div>
+        <div class="pile-label"><span data-i18n="discardPile">DISCARD</span></div>
+      </div>
+    </section>
+
+    <section id="p2-zone" class="player-zone player-two">
+      <div class="zone-label" id="p2-label"><span>P2</span><small data-i18n="hand">HAND</small><small class="collecting" id="p2-collecting"></small></div>
+      <div id="p2-hand" class="hand"></div>
+    </section>
+
+    <div id="announcement" class="announcement" aria-live="assertive"></div>
+    <div id="start-card" class="start-card"><span data-i18n="ready">GET READY</span><b>OBJECT TRIO</b></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
