@@ -1,0 +1,92 @@
+:root {
+  --ink: #14243b;
+  --cream: #fff8e7;
+  --yellow: #ffc83d;
+  --coral: #ff665a;
+  --blue: #3d8cff;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; min-height: 100%; background: #17253b; }
+body { display: grid; place-items: start center; font-family: Inter, ui-rounded, "Arial Rounded MT Bold", Arial, sans-serif; color: var(--ink); }
+
+.stage {
+  position: relative;
+  width: 720px;
+  height: 1080px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12px 12px, rgba(21,49,76,.055) 2px, transparent 2.5px) 0 0 / 24px 24px,
+    var(--cream);
+  isolation: isolate;
+}
+
+.stage::before, .stage::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; }
+.stage::before { width: 330px; height: 330px; right: -190px; top: 145px; background: #ffe3dd; }
+.stage::after { width: 260px; height: 260px; left: -160px; bottom: 80px; background: #dcecff; }
+
+.hud {
+  height: 132px;
+  display: grid;
+  grid-template-columns: 236px 210px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 22px 14px;
+  background: rgba(255,255,255,.86);
+  border-bottom: 4px solid var(--ink);
+  box-shadow: 0 5px 0 rgba(20,36,59,.08);
+}
+
+.brand { display: flex; align-items: center; gap: 11px; }
+.brand h1 { margin: 0; font-size: 22px; line-height: .9; letter-spacing: -.5px; }
+.brand p { margin: 6px 0 0; font-size: 9px; font-weight: 800; color: #667286; letter-spacing: .35px; }
+.brand-mark { position: relative; width: 48px; height: 56px; flex: none; }
+.brand-mark span { position: absolute; width: 31px; height: 42px; border: 3px solid var(--ink); border-radius: 6px; box-shadow: 2px 3px 0 rgba(20,36,59,.18); }
+.brand-mark span:nth-child(1) { left: 0; top: 7px; background: var(--blue); transform: rotate(-13deg); }
+.brand-mark span:nth-child(2) { left: 9px; top: 2px; background: var(--yellow); transform: rotate(0); }
+.brand-mark span:nth-child(3) { left: 17px; top: 7px; background: var(--coral); transform: rotate(13deg); }
+
+.scores { display: flex; justify-content: center; align-items: center; gap: 8px; }
+.player { width: 74px; height: 76px; border: 3px solid var(--ink); border-radius: 12px; background: #fff; display: grid; place-items: center; align-content: center; box-shadow: 3px 4px 0 var(--ink); transition: transform .2s, background .2s; }
+.player b { font-size: 12px; letter-spacing: 1px; }
+.player strong { font-size: 34px; line-height: 1; }
+.player.active { background: var(--yellow); transform: translateY(-3px); }
+.player:nth-of-type(2).active { background: #8cc2ff; }
+.dash { font-size: 22px; font-weight: 900; }
+
+.message { min-height: 58px; display: grid; place-items: center; padding: 8px; border-radius: 10px; background: var(--ink); color: white; font-size: 17px; font-weight: 1000; text-align: center; letter-spacing: .5px; box-shadow: 3px 4px 0 #7f8997; }
+.message.match { background: #168956; animation: message-pop .45s both; }
+.message.no-match { background: var(--coral); animation: message-pop .35s both; }
+
+.board-wrap { height: 948px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-bottom: 14px; }
+.board { width: 690px; display: grid; grid-template-columns: repeat(7, 90px); grid-template-rows: repeat(3, 140px); gap: 19px 10px; justify-content: center; perspective: 900px; }
+
+.card-slot { position: relative; width: 90px; height: 140px; }
+.card { position: absolute; inset: 0; border-radius: 7px; transform: scaleX(1); transform-origin: center; transition: transform .35s cubic-bezier(.42,0,.72,1), filter .25s; filter: drop-shadow(3px 5px 2px rgba(20,36,59,.25)); }
+.card.turning { transform: scaleX(0); }
+.card-face { position: absolute; inset: 0; width: 90px; height: 140px; object-fit: fill; border-radius: 7px; }
+.card-front { visibility: hidden; }
+.card.front-visible .card-back { visibility: hidden; }
+.card.front-visible .card-front { visibility: visible; }
+.card.matched { animation: match-pulse .62s ease-in-out infinite alternate; filter: drop-shadow(0 0 9px #ffd528) drop-shadow(0 0 4px #ffd528); }
+.card.fly { animation: fly-away 1s cubic-bezier(.5,-.2,.85,.4) forwards; }
+
+.progress { width: 290px; height: 7px; margin-top: 58px; background: #d4d9dc; border-radius: 9px; overflow: hidden; }
+.progress span { display: block; width: 0; height: 100%; background: linear-gradient(90deg, var(--coral), var(--yellow)); transition: width .5s; }
+.remaining { margin: 10px 0 0; color: #697486; font-weight: 900; font-size: 11px; letter-spacing: 1.5px; }
+
+.winner { position: absolute; inset: 0; z-index: 10; display: grid; place-content: center; justify-items: center; color: white; background: rgba(13,28,48,.92); opacity: 0; visibility: hidden; transform: scale(1.08); transition: opacity .6s, transform .6s, visibility .6s; }
+.winner.show { opacity: 1; visibility: visible; transform: scale(1); }
+.winner .burst { position: absolute; width: 430px; height: 430px; left: 145px; top: 325px; border-radius: 50%; background: repeating-conic-gradient(var(--yellow) 0 8deg, transparent 8deg 17deg); opacity: .32; animation: spin 18s linear infinite; }
+.winner p, .winner h2, .winner div:not(.burst) { position: relative; }
+.winner p { margin: 0 0 12px; font-size: 20px; font-weight: 900; letter-spacing: 5px; color: var(--yellow); }
+.winner h2 { margin: 0; max-width: 640px; text-align: center; font-size: 76px; line-height: .95; text-shadow: 5px 6px 0 var(--coral); }
+.winner div:not(.burst) { margin-top: 26px; padding: 11px 28px; border: 3px solid white; border-radius: 50px; font-size: 29px; font-weight: 900; }
+
+@keyframes message-pop { 50% { transform: scale(1.08) rotate(-1deg); } }
+@keyframes match-pulse { to { transform: translateY(-7px) scale(1.06); } }
+@keyframes fly-away { 0% { transform: rotate(0) translateY(0); opacity: 1; } 100% { transform: rotate(360deg) translateY(-850px) scale(.65); opacity: 0; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 719px) { body { display: block; } }
+@media (prefers-reduced-motion: reduce) { .card, .winner, .progress span { transition-duration: .01ms; } }
