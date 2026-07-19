@@ -1018,6 +1018,33 @@ of English. This include "P1'S TURN" becoming "GILIRAN P1", "P1 WINS" becoming
 ** [2026-07-19 Sun 23:06] session: codex.20260719e-memorymatch
 *** journal
 **** [2026-07-19 Sun 23:05] start
+**** [2026-07-19 Sun 23:10] lihat hasil, masih salah
+# kena jebakan yang sama nih dengan "flip"
+*** additional prompts
+The flipping animation is still incorrect. You still flip by mirroring the image
+of the back side of the card. What needed is to show the front side of the card
+instead. And make this flipping animation smooth: it should display the card as
+it is being turned over horizontally from back side to front side, i.e. the card
+is getting thinner if viewed from the front, eventually becoming a single
+vertical line, and later gradually widening again to full width, this time
+showing the front side.
+
+ # better tapi tetep belum
+
+The flipping animation is still not smooth, I'm just seeing the back side of the
+card disappear for a split second, then the front side of the card is shown. Not
+the smooth transition from back to front as intended.
+
+ # nah, that's what i want
+
+Speed up the animation by 2x.
+
+ # cuma flip animationnya aja dari 0.7s jadi 0.35s.
+
+The opening is unrealistic, why does every player seems to be able to find
+object trios after the 1st attempt without seeing any of the cards before?
+
+ # still stuck after almost 5min
 
 * game > slap
 ** [2026-07-18 Sat] description

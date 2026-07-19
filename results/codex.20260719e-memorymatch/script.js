@@ -80,17 +80,32 @@ function chooseCards() {
 
 async function flip(index, faceUp) {
   const card = $(`#card-${index}`);
-  // First half: the currently visible face narrows to its vertical edge.
-  card.classList.add('turning');
-  await sleep(350);
+  const options = {
+    duration: 175,
+    easing: 'cubic-bezier(.42, 0, .72, 1)',
+    fill: 'forwards'
+  };
+
+  // Web Animations forces every intermediate width to be painted instead of
+  // allowing class/style changes to be combined into one browser frame.
+  const close = card.animate(
+    [{ transform: 'scaleX(1)' }, { transform: 'scaleX(0)' }],
+    options
+  );
+  await close.finished;
 
   // At the edge-on midpoint, exchange faces; no mirrored back can be shown.
   state.cards[index].flipped = faceUp;
   card.classList.toggle('front-visible', faceUp);
 
   // Second half: the new face widens from the edge back to full width.
-  card.classList.remove('turning');
-  await sleep(350);
+  const open = card.animate(
+    [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }],
+    { ...options, easing: 'cubic-bezier(.28, 0, .58, 1)' }
+  );
+  await open.finished;
+  close.cancel();
+  open.cancel();
 }
 
 async function playTurn() {

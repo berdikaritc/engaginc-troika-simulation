@@ -62,8 +62,7 @@ body { display: grid; place-items: start center; font-family: Inter, ui-rounded,
 .board { width: 690px; display: grid; grid-template-columns: repeat(7, 90px); grid-template-rows: repeat(3, 140px); gap: 19px 10px; justify-content: center; perspective: 900px; }
 
 .card-slot { position: relative; width: 90px; height: 140px; }
-.card { position: absolute; inset: 0; border-radius: 7px; transform: scaleX(1); transform-origin: center; transition: transform .35s cubic-bezier(.42,0,.72,1), filter .25s; filter: drop-shadow(3px 5px 2px rgba(20,36,59,.25)); }
-.card.turning { transform: scaleX(0); }
+.card { position: absolute; inset: 0; border-radius: 7px; transform: scaleX(1); transform-origin: center; will-change: transform; transition: filter .25s; filter: drop-shadow(3px 5px 2px rgba(20,36,59,.25)); }
 .card-face { position: absolute; inset: 0; width: 90px; height: 140px; object-fit: fill; border-radius: 7px; }
 .card-front { visibility: hidden; }
 .card.front-visible .card-back { visibility: hidden; }
@@ -89,4 +88,3 @@ body { display: grid; place-items: start center; font-family: Inter, ui-rounded,
 @keyframes spin { to { transform: rotate(360deg); } }
 
 @media (max-width: 719px) { body { display: block; } }
-@media (prefers-reduced-motion: reduce) { .card, .winner, .progress span { transition-duration: .01ms; } }
