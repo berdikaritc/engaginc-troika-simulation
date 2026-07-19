@@ -26,7 +26,7 @@ const shuffle = array => {
   return array;
 };
 
-const state = { cards: [], scores: [0, 0], player: 0, groupsLeft: 7 };
+const state = { cards: [], scores: [0, 0], player: 0, groupsLeft: 7, known: new Map() };
 
 function setMessage(text, style = '') {
   const el = $('#message');
@@ -63,19 +63,25 @@ function updateProgress() {
 
 function chooseCards() {
   const available = state.cards.map((c,i) => c.removed ? -1 : i).filter(i => i >= 0);
-  const groupMap = new Map();
+  const rememberedGroups = new Map();
   available.forEach(i => {
-    const g = state.cards[i].group;
-    groupMap.set(g, [...(groupMap.get(g) || []), i]);
+    if (!state.known.has(i)) return;
+    const group = state.known.get(i);
+    rememberedGroups.set(group, [...(rememberedGroups.get(group) || []), i]);
   });
-  // Matching gets likelier as the board empties: 10% initially, rising to 70%.
+  const rememberedTrios = [...rememberedGroups.values()].filter(indices => indices.length === 3);
+
+  // Memory is used more reliably as the board empties: 10% initially,
+  // rising to 70%. A deliberate match is possible only after all three
+  // positions in that trio have actually been revealed on earlier turns.
   const matchChance = .10 + ((7 - state.groupsLeft) / 6) * .60;
-  if (groupMap.size === 1 || Math.random() < matchChance) {
-    return shuffle([...groupMap.values()])[0];
+  if (rememberedTrios.length && Math.random() < matchChance) {
+    return shuffle(rememberedTrios)[0];
   }
-  // Force a genuine miss: take two from one trio and one from another.
-  const groups = shuffle([...groupMap.values()]);
-  return shuffle([groups[0][0], groups[0][1], groups[1][0]]);
+
+  // With no usable remembered trio, the player explores three positions at
+  // random. An early match can therefore happen, but only by real coincidence.
+  return shuffle([...available]).slice(0, 3);
 }
 
 async function flip(index, faceUp) {
@@ -97,6 +103,7 @@ async function flip(index, faceUp) {
   // At the edge-on midpoint, exchange faces; no mirrored back can be shown.
   state.cards[index].flipped = faceUp;
   card.classList.toggle('front-visible', faceUp);
+  if (faceUp) state.known.set(index, state.cards[index].group);
 
   // Second half: the new face widens from the edge back to full width.
   const open = card.animate(
