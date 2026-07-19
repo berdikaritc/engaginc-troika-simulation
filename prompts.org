@@ -780,6 +780,351 @@ agy.20260719a-slap yang flop.
 symlink diganti real directory.
 
 males gw tweak2x lagi, tinggalin aja.
+* game > speed
+** [2026-07-19 Sun] description
+*** id
+Kartu troika dapat digunakan untuk berbagai permainan.
+Salah satunya adalah Speed, untuk 2 pemain.
+Di permainan ini, digunakan 80 kartu objek tanpa kartu wildcard.
+Kocok kartu, bagikan 34 kartu ke masing-masing pemain, tertutup, disebut Tumpukan Ambil Pemain 1 dan 2.
+Bagikan 6 kartu di depan masing-masing pemain, tertutup, disebut Tumpukan Cadangan Pemain 1 dan Pmain 2.
+Taruh 1 kartu di sebelah dalam Tumpukan Cadangan masing-masing pemain, tertutup, disebut Tumpukan Main Pemain 1 dan 2.
+Tujuan permainan: jadi yang pertama menghabiskan Tumpukan Mainnya.
+Dalam permainan ini tidak ada giliran, masing-masing pemain berlomba secepat mungkin menaruh kartu.
+Permainan dimulai dengan masing-masing pemain mengambil 6 kartu dari Tumpukan Ambilnya.
+Lalu kedua pemain secara bersamaan membalik kartu di Tumpukan Main masing-masing.
+Setelah itu pemain berlomba-lomba membuang 1 kartu ke salah satu Tumpukan Main.
+Kartu yang dibuang dari Tangannya harus memiliki kategori atau warna yang sama dengan kartu teratas di Tumpukan Main.
+Setelah itu pemain mengambil 1 kartu lagi dari Tumpukan Ambilnya agar karut di Tangan tetap 6.
+Jika kedua pemain sudah tidak bisa membuang kartu lagi, maka mereka bersama-sama mengambil satu kartu dari Tumpukan Cadangan ke Tumpukan Mainnya masing-masing.
+Dan permainan bisa berlanjut dari sana.
+Pemain pertama yang berhasil menghabiskan kartu di Tumpukan Ambil dan Tangannya menang.
+*** en
+The Troika cards can be used to play many kinds of games.
+One of which is called Speed, for 2 players.
+This game utilizes 80 object cards and none of the wildcards.
+Shuffle the cards, deal 34 cards to each player, face down. These are called, respectively, Draw Pile for Player 1 and 2.
+Then deal 6 cards in front of each player, face down. These are called, respectively, Reserve Pile for Player 1 and 2.
+Then deal 1 card beside each Reserve Pile, face down. These are called, respectively, Play Pile for Player 1 and 2.
+The goal of the game: to be the first to discard all cards from their hand and Play Pile.
+There are no turns in this game, each player discards his cards as quickly as possible.
+The game begins with each player drawing 6 cards from their own Draw Pile.
+Then all players flip the card in their Play Pile face up, at the same time.
+Then players race discarding 1 card from their Hand to either Play Pile.
+The card to be discarded must be of the same color or category as the topmost card of the Play Pile.
+Then the player draw one card from their own Draw Pile to keep their Hand at 6 cards.
+If both players can no longer discard any card, then they draw another card from their Reserve Pile to their Play Pile, face up, to allow more discarding.
+The first player that discards their cards in their Draw Pile and their Hand, wins.
+** [2026-07-18 Sat] prompt 1
+*** Summary
+i'm making a html+css+javascript-based card game play simulation animation that
+will be recorded using a desktop recorder like simplescreenrecorder on linux to
+produce a video animation (the video will be portrait 720x1080). make 720x1080
+the entire area for animation.
+
+the name of the card game is "Speed".
+
+the simulation will be for 2 players (P1 and P2).
+
+*** The cards
+The cards are of two types. First there are the object cards, each of which will
+contain picture of a certain QUANTITY of objects (either one object, or two of
+the same object, or three). Each object will have a SHAPE (one of triangle,
+rectangle, and round), SIZE (one of small, medium, large), COLOR (one of nine:
+white, black, red, blue, green, yellow, orange, purple, and brown), and CATEGORY
+(one of nine: fruit, sports, building, food, gadget, fashion, furniture, toy,
+music). So in total there are 81 object cards. Listed below in the format of:
+QUANTITY-OBJECT_NAME (CATEGORY, SHAPE, COLOR, SIZE). Card name is
+QUANTITY-OBJECT_NAME.
+
+1-grape (fruit, round, purple, small)
+2-grape (fruit, round, purple, small)
+3-grape (fruit, round, purple, small)
+1-orange (fruit, round, orange, medium)
+2-orange (fruit, round, orange, medium)
+3-orange (fruit, round, orange, medium)
+1-watermelon (fruit, round, green, large)
+2-watermelon (fruit, round, green, large)
+3-watermelon (fruit, round, green, large)
+1-golf ball (sports, round, white, small)
+2-golf ball (sports, round, white, small)
+3-golf ball (sports, round, white, small)
+1-tennis ball (sports, round, green, medium)
+2-tennis ball (sports, round, green, medium)
+3-tennis ball (sports, round, green, medium)
+1-basket ball (sports, round, orange, large)
+2-basket ball (sports, round, orange, large)
+3-basket ball (sports, round, orange, large)
+1-house roof (building, triangle, red, large)
+2-house roof (building, triangle, red, large)
+3-house roof (building, triangle, red, large)
+1-tent (building, triangle, yellow, large)
+2-tent (building, triangle, yellow, large)
+3-tent (building, triangle, yellow, large)
+1-pyramid (building, triangle, brown, large)
+2-pyramid (building, triangle, brown, large)
+3-pyramid (building, triangle, brown, large)
+1-cake slice (food, triangle, orange, small)
+2-cake slice (food, triangle, orange, small)
+3-cake slice (food, triangle, orange, small)
+1-pizza slice (food, triangle, yellow, medium)
+2-pizza slice (food, triangle, yellow, medium)
+3-pizza slice (food, triangle, yellow, medium)
+1-jelly (food, round, purple, small)
+2-jelly (food, round, purple, small)
+3-jelly (food, round, purple, small)
+1-handphone (gadget, rectangle, black, small)
+2-handphone (gadget, rectangle, black, small)
+3-handphone (gadget, rectangle, black, small)
+1-tv (gadget, rectangle, black, medium)
+2-tv (gadget, rectangle, black, medium)
+3-tv (gadget, rectangle, black, medium)
+1-laptop (gadget, rectangle, red, medium)
+2-laptop (gadget, rectangle, red, medium)
+3-laptop (gadget, rectangle, red, medium)
+1-swimming trunk (fashion, triangle, blue, small)
+2-swimming trunk (fashion, triangle, blue, small)
+3-swimming trunk (fashion, triangle, blue, small)
+1-cloth hanger (fashion, triangle, blue, large)
+2-cloth hanger (fashion, triangle, blue, large)
+3-cloth hanger (fashion, triangle, blue, large)
+1-hat (fashion, round, purple, medium)
+2-hat (fashion, round, purple, medium)
+3-hat (fashion, round, purple, medium)
+1-table (furniture, rectangle, brown, medium)
+2-table (furniture, rectangle, brown, medium)
+3-table (furniture, rectangle, brown, medium)
+1-cupboard (furniture, rectangle, brown, large)
+2-cupboard (furniture, rectangle, brown, large)
+3-cupboard (furniture, rectangle, brown, large)
+1-bed (furniture, rectangle, white, large)
+2-bed (furniture, rectangle, white, large)
+3-bed (furniture, rectangle, white, large)
+1-paper airplane (toy, triangle, yellow, small)
+2-paper airplane (toy, triangle, yellow, small)
+3-paper airplane (toy, triangle, yellow, small)
+1-dice (toy, rectangle, red, small)
+2-dice (toy, rectangle, red, small)
+3-dice (toy, rectangle, red, small)
+1-alphabet block (toy, rectangle, green, small)
+2-alphabet block (toy, rectangle, green, small)
+3-alphabet block (toy, rectangle, green, small)
+1-the triangle (music, triangle, white, medium)
+2-the triangle (music, triangle, white, medium)
+3-the triangle (music, triangle, white, medium)
+1-drum (music, round, blue, medium)
+2-drum (music, round, blue, medium)
+3-drum (music, round, blue, medium)
+1-piano (music, rectangle, black, large)
+2-piano (music, rectangle, black, large)
+3-piano (music, rectangle, black, large)
+
+And below is the same list of cards, but in Indonesian:
+
+1-anggur (buah, bundar, ungu, kecil)
+2-anggur (buah, bundar, ungu, kecil)
+3-anggur (buah, bundar, ungu, kecil)
+1-jeruk (buah, bundar, oranye, sedang)
+2-jeruk (buah, bundar, oranye, sedang)
+3-jeruk (buah, bundar, oranye, sedang)
+1-semangka (buah, bundar, hijau, besar)
+2-semangka (buah, bundar, hijau, besar)
+3-semangka (buah, bundar, hijau, besar)
+1-bola golf (olahraga, bundar, putih, kecil)
+2-bola golf (olahraga, bundar, putih, kecil)
+3-bola golf (olahraga, bundar, putih, kecil)
+1-bola tenis (olahraga, bundar, hijau, sedang)
+2-bola tenis (olahraga, bundar, hijau, sedang)
+3-bola tenis (olahraga, bundar, hijau, sedang)
+1-bola basket (olahraga, bundar, oranye, besar)
+2-bola basket (olahraga, bundar, oranye, besar)
+3-bola basket (olahraga, bundar, oranye, besar)
+1-atap rumah (bangunan, segitiga, merah, besar)
+2-atap rumah (bangunan, segitiga, merah, besar)
+3-atap rumah (bangunan, segitiga, merah, besar)
+1-tenda (bangunan, segitiga, kuning, besar)
+2-tenda (bangunan, segitiga, kuning, besar)
+3-tenda (bangunan, segitiga, kuning, besar)
+1-piramid (bangunan, segitiga, cokelat, besar)
+2-piramid (bangunan, segitiga, cokelat, besar)
+3-piramid (bangunan, segitiga, cokelat, besar)
+1-sepotong kue (makanan, segitiga, oranye, kecil)
+2-sepotong kue (makanan, segitiga, oranye, kecil)
+3-sepotong kue (makanan, segitiga, oranye, kecil)
+1-sepotong pizza (makanan, segitiga, kuning, sedang)
+2-sepotong pizza (makanan, segitiga, kuning, sedang)
+3-sepotong pizza (makanan, segitiga, kuning, sedang)
+1-jeli (makanan, bundar, ungu, kecil)
+2-jeli (makanan, bundar, ungu, kecil)
+3-jeli (makanan, bundar, ungu, kecil)
+1-ponsel (gawai, kotak, hitam, kecil)
+2-ponsel (gawai, kotak, hitam, kecil)
+3-ponsel (gawai, kotak, hitam, kecil)
+1-tv (gawai, kotak, hitam, sedang)
+2-tv (gawai, kotak, hitam, sedang)
+3-tv (gawai, kotak, hitam, sedang)
+1-laptop (gawai, kotak, merah, sedang)
+2-laptop (gawai, kotak, merah, sedang)
+3-laptop (gawai, kotak, merah, sedang)
+1-celana renang (fesyen, segitiga, biru, kecil)
+2-celana renang (fesyen, segitiga, biru, kecil)
+3-celana renang (fesyen, segitiga, biru, kecil)
+1-gantungan baju (fesyen, segitiga, biru, besar)
+2-gantungan baju (fesyen, segitiga, biru, besar)
+3-gantungan baju (fesyen, segitiga, biru, besar)
+1-topi (fesyen, bundar, ungu, sedang)
+2-topi (fesyen, bundar, ungu, sedang)
+3-topi (fesyen, bundar, ungu, sedang)
+1-meja (mebel, kotak, cokelat, sedang)
+2-meja (mebel, kotak, cokelat, sedang)
+3-meja (mebel, kotak, cokelat, sedang)
+1-lemari (mebel, kotak, cokelat, besar)
+2-lemari (mebel, kotak, cokelat, besar)
+3-lemari (mebel, kotak, cokelat, besar)
+1-ranjang (mebel, kotak, putih, besar)
+2-ranjang (mebel, kotak, putih, besar)
+3-ranjang (mebel, kotak, putih, besar)
+1-pesawat kertas (mainan, segitiga, kuning, kecil)
+2-pesawat kertas (mainan, segitiga, kuning, kecil)
+3-pesawat kertas (mainan, segitiga, kuning, kecil)
+1-dadu (mainan, kotak, merah, kecil)
+2-dadu (mainan, kotak, merah, kecil)
+3-dadu (mainan, kotak, merah, kecil)
+1-balok huruf (mainan, kotak, hijau, kecil)
+2-balok huruf (mainan, kotak, hijau, kecil)
+3-balok huruf (mainan, kotak, hijau, kecil)
+1-trikona (musik, segitiga, putih, sedang)
+2-trikona (musik, segitiga, putih, sedang)
+3-trikona (musik, segitiga, putih, sedang)
+1-drum (musik, bundar, biru, sedang)
+2-drum (musik, bundar, biru, sedang)
+3-drum (musik, bundar, biru, sedang)
+1-piano (musik, kotak, hitam, besar)
+2-piano (musik, kotak, hitam, besar)
+3-piano (musik, kotak, hitam, besar)
+wildcard max 1
+wildcard max 2
+wildcard max 3
+wildcard max 4
+wildcard max 5
+wildcard max 6
+wildcard tux 1
+wildcard tux 2
+wildcard tux 3
+wildcard tux 4
+wildcard tux 5
+wildcard tux 6
+wildcard+cut lyx 1
+wildcard+cut lyx 2
+wildcard+cut lyx 3
+wildcard+cut lyx 4
+wildcard+cut lyx 5
+wildcard+cut lyx 6
+
+And aside from that, there are also three wildcard cards, with the following names:
+
+wildcard max 1
+wildcard tux 1
+wildcard+cut lyx 1
+*** The rules of the game
+This game utilizes 80 object cards and none of the wildcards.
+Shuffle the cards, deal 34 cards to each player, face down. These are called, respectively, Draw Pile for Player 1 and 2.
+Then deal 6 cards in front of each player, face down. These are called, respectively, Reserve Pile for Player 1 and 2.
+Then deal 1 card beside each Reserve Pile, face down. These are called, respectively, Play Pile for Player 1 and 2.
+The goal of the game: to be the first to discard all cards from their hand and Play Pile.
+There are no turns in this game, each player discards his cards as quickly as possible.
+The game begins with each player drawing 6 cards from their own Draw Pile.
+Then all players flip the card in their Play Pile face up, at the same time.
+Then players race discarding 1 card from their Hand to either Play Pile.
+The card to be discarded must be of the same color or category as the topmost card of the Play Pile.
+Then the player draw one card from their own Draw Pile to keep their Hand at 6 cards.
+If both players can no longer discard any card, then they draw another card from their Reserve Pile to their Play Pile, face up, to allow more discarding.
+The first player that discards their cards in their Draw Pile and their Hand, wins.
+*** The images
+the images for the front side of the cards are in images/cards-front/
+subdirectory, with the PNG files named "CARDNAME.png".
+
+The image for the back side of the cards is the images/cards-back/back.png file.
+
+Do not use the hands images. Leave them alone.
+*** Layout of the screen & appearance
+From top to bottom:
+
+- The top logo+information area: the very top will contain title (use logo file
+  images/logo/logo.png) and nothing else, The logo positioning should be
+  absolute so it does not move to the left or right whenever there are text
+  being displayed or animation happens.
+- P1's Draw Pile on the left and P1's hand on its right.
+  This area will occupy about 1/3 of vertical area of the screen.
+  The cards put in this pile should not overlap or cover the top area or the area below it.
+- P1's Reserve Pile on the left, then P1's Play Pile on its right,
+  then P2's Play Pile on its right, then P2's Reserve Pile on its right.
+  This area will also occupy about 1/3 of vertical area  of the screen.
+  The cards put in this area should not overlap or cover the cards in the area above it or below it.
+- P2's Draw Pile on the left and P2's hand on its right.
+  This area will occupy about 1/3 of vertical area of the screen.
+  The cards put in this pile should not overlap or cover the top area or the area below it.
+
+Width of card should be 165. The height should be proportional. You should not
+add any additional padding to the cards.
+
+Try to conserve vertical space.
+
+The labels for the areas should not be too large and covered by the cards.
+
+There should be a small counter display of the number of cards on each pile.
+
+The players' hands will be displayed in accordeon style with fixed spacing between
+cards (~1/5 width of the card). The leftmost card will be the bottommost card,
+and subsequent cards on the right are cards that are on top of the previous
+cards (cards to their left).
+
+The draw piles and reserve piles will be displayed as a vertical stack
+where only the top of the pile is shown, face down.
+
+The play piles will be displayed as a vertical stack where only the top of the
+pile is shown, face down before the race beins and face up afterwards.
+
+*** The simulation
+The simulation starts with a randomly shuffled (random on every page load)
+cards. There are already 34 cards on each player's Draw Pile, 6 cards on each
+player's Reserve Pile, and one card on each player's Play Pile.
+
+After two seconds of delay, the simulation game starts.
+
+It starts with P1 and P2 flipping the card on their Play Pile face up at the
+same time, instantly. There should be a big text saying "FLIP" (but the text
+should not cover any cards, and the text should disappear after 2 seconds). Then
+a delay of about 1 second.
+
+Then players randomly race discarding their cards. Each time before a player
+discards his card there should be a random delay between 0s and 1.2s. Then there
+should be a smooth (60fps) animation of a card flying from his hand to the Play
+Pile, which should take about 0.3s. Then followed by animation of a card in the
+player's Draw Pile (if there are still cards on the Draw Pile) being flipped
+instantly face up then flying smoothly to the Player's Hand, the animation
+should take about 0.3s.
+
+When both players can no longer discard cards according to the rule, there
+should be a delay of about 2 seconds, then a big text should be displayed that
+say "FLIP RESERVE" (that disappears after 2 seconds). Then a delay of about 1
+second before the race is resumed. If both players are still stuck, both players
+each draw one card from the Reserve Pile again. If there are no longer cards on
+the Reserve Pile, the game ends (there should a big text saying "DRAW").
+
+Continue until one of the player wins.
+
+When a player wins, there should be a big text saying "P1 WINS" or "P2 WINS".
+
+Then the simulation ends.
+*** Options
+i want to be able to set a query parameter 'lang' to 'en' (the default) or 'id'.
+When the parameter is set to 'id', the text should all be in Indonesian instead
+of English. This include the text "FLIP" becomes "BALIK", "TAKE RESERVE" becomes
+"AMBIL CADANGAN", and "P1 WINS" becomes "P1 MENANG".
+** [2026-07-19 Sun 19:02] session: codex.20260719b-speed
+*** journal
+**** [2026-07-19 Sun 19:02] start
 * game > troika player
 ** [2026-07-15 Wed] prompt 1
 *** Summary
