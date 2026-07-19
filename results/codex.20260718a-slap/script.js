@@ -87,10 +87,10 @@
     if(g!==generation)return; players[player].push(...discard); discard=[]; $('#discard').replaceChildren(); update(); await sleep(250);
   }
   async function handleSlap(match,active,g){
-    let loser;
-    if(!match){ const mistaken=Math.random()<.5?0:1; await slap(mistaken,g); $('#discard .card')?.classList.add('highlight'); await showBanner(T.wrong,'',1250); loser=mistaken; }
-    else { const winner=Math.random()<.5?0:1; loser=1-winner; const order=winner===0?[1,0]:[0,1]; slap(order[0],g); await sleep(rand(35,85)); await slap(order[1],g); $('#discard .card')?.classList.add('highlight'); await showBanner(T.slap('P'+(winner+1)),'',1200); }
-    await collect(loser,g); turn=loser; return loser;
+    let collector;
+    if(!match){ const mistakenSlapper=Math.random()<.5?0:1; await slap(mistakenSlapper,g); $('#discard .card')?.classList.add('highlight'); await showBanner(T.wrong,'',1250); collector=mistakenSlapper; }
+    else { const winner=Math.random()<.5?0:1; collector=1-winner; const order=winner===0?[1,0]:[0,1]; slap(order[0],g); await sleep(rand(35,85)); await slap(order[1],g); $('#discard .card')?.classList.add('highlight'); await showBanner(T.slap('P'+(winner+1)),'',1200); }
+    await collect(collector,g); turn=collector; return collector;
   }
   async function game(g){
     await sleep(2000);

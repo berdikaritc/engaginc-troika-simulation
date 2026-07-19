@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slap Card Game Simulation</title>
+  <!-- Google Fonts for premium typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Dashboard/Controls panel (rendered outside the 720x1080 recording frame) -->
+  <div class="control-panel">
+    <h2>Slap Simulation Controls</h2>
+    <div class="control-group">
+      <label>Language / Bahasa</label>
+      <div class="btn-group">
+        <button id="btn-lang-en" class="active">English</button>
+        <button id="btn-lang-id">Indonesia</button>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <label>Playback</label>
+      <div class="btn-group">
+        <button id="btn-play-pause">Pause</button>
+        <button id="btn-restart">Restart</button>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label>Speed Multiplier</label>
+      <div class="speed-controls">
+        <button class="speed-btn" data-speed="0.5">0.5x</button>
+        <button class="speed-btn active" data-speed="1">1x</button>
+        <button class="speed-btn" data-speed="1.5">1.5x</button>
+        <button class="speed-btn" data-speed="2.5">2.5x</button>
+        <button class="speed-btn" data-speed="5">5x</button>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label>Simulation Info</label>
+      <div class="info-box">
+        <div><strong>Deck Size:</strong> 84 cards</div>
+        <div><strong>P1 Pile:</strong> <span id="info-p1-cards">42</span></div>
+        <div><strong>P2 Pile:</strong> <span id="info-p2-cards">42</span></div>
+        <div><strong>Discard:</strong> <span id="info-discard-cards">0</span></div>
+        <div><strong>Last Slapper:</strong> <span id="info-last-slapper">-</span></div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label>Debug Logs</label>
+      <div id="debug-log" class="debug-log"></div>
+    </div>
+  </div>
+
+  <!-- The 720x1080 simulation window (Simplescreenrecorder records this area) -->
+  <div class="recording-frame">
+    <div class="game-container" id="game-container">
+      
+      <!-- Top Logo area (Absolute positioned, centered, no text, logo only) -->
+      <div class="logo-area">
+        <img src="images/logo/logo.png" alt="Slap Logo" class="logo-image">
+      </div>
+
+      <!-- Left Call Panel (Displays current call like 1 Small / 1 Kecil) -->
+      <div class="call-panel" id="call-panel">
+        <div class="call-title" id="call-title">CALL</div>
+        <div class="call-badge" id="call-badge">-</div>
+      </div>
+
+      <!-- Right Side Labels (Tucked far to the right, clear of the central cards) -->
+      <div class="side-labels">
+        <div class="side-label-item" id="label-p1">
+          <span class="label-name">P1</span>
+          <span class="label-count" id="count-p1">42</span>
+        </div>
+        <div class="side-label-item" id="label-discard">
+          <span class="label-name" id="label-discard-text">DISCARD</span>
+          <span class="label-count" id="count-discard">0</span>
+        </div>
+        <div class="side-label-item" id="label-p2">
+          <span class="label-name">P2</span>
+          <span class="label-count" id="count-p2">42</span>
+        </div>
+      </div>
+
+      <!-- Pile stack markers in the center (top, middle, bottom 1/3) -->
+      <!-- P1 pile area (Centered in top 1/3) -->
+      <div class="pile-slot p1-slot" id="p1-slot">
+        <!-- Visual card stack -->
+        <div class="visual-stack" id="p1-visual-stack"></div>
+      </div>
+
+      <!-- Discard pile area (Centered in middle 1/3) -->
+      <div class="pile-slot discard-slot" id="discard-slot">
+        <!-- Visual card stack containing face-up cards -->
+        <div class="visual-stack" id="discard-visual-stack"></div>
+      </div>
+
+      <!-- P2 pile area (Centered in bottom 1/3) -->
+      <div class="pile-slot p2-slot" id="p2-slot">
+        <!-- Visual card stack -->
+        <div class="visual-stack" id="p2-visual-stack"></div>
+      </div>
+
+      <!-- Hands Overlay (Absolute positioning for slaps) -->
+      <img src="images/hands/hands-01.png" class="player-hand" id="hand-p1" alt="P1 Hand">
+      <img src="images/hands/hands-02.png" class="player-hand" id="hand-p2" alt="P2 Hand">
+
+      <!-- Text / Message Banner Overlay -->
+      <div class="event-banner" id="event-banner">
+        <div class="banner-text" id="banner-text">READY</div>
+      </div>
+      
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
