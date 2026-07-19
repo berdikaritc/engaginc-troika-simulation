@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=720, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Speed — Card Game Simulation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="game" aria-label="Speed card game simulation">
+    <header><img src="../../images/logo/logo.png" alt="Speed"></header>
+
+    <section class="player-zone p1-zone">
+      <div class="pile draw" id="p1-draw"><span class="label"></span><span class="count"></span></div>
+      <div class="hand" id="p1-hand"><span class="label"></span></div>
+      <div class="call" id="p1-call" aria-live="polite"></div>
+    </section>
+
+    <section class="table-zone">
+      <div class="pile reserve" id="p1-reserve"><span class="label"></span><span class="count"></span></div>
+      <div class="pile play" id="p1-play"><span class="label"></span><span class="count"></span></div>
+      <div class="pile play" id="p2-play"><span class="label"></span><span class="count"></span></div>
+      <div class="pile reserve" id="p2-reserve"><span class="label"></span><span class="count"></span></div>
+    </section>
+
+    <section class="player-zone p2-zone">
+      <div class="pile draw" id="p2-draw"><span class="label"></span><span class="count"></span></div>
+      <div class="hand" id="p2-hand"><span class="label"></span></div>
+      <div class="call" id="p2-call" aria-live="polite"></div>
+    </section>
+
+    <div id="result" role="status" aria-live="assertive"></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

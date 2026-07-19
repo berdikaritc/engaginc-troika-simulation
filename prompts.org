@@ -785,8 +785,8 @@ males gw tweak2x lagi, tinggalin aja.
 *** id
 Kartu troika dapat digunakan untuk berbagai permainan.
 Salah satunya adalah Speed, untuk 2 pemain.
-Di permainan ini, digunakan 80 kartu objek tanpa kartu wildcard.
-Kocok kartu, bagikan 34 kartu ke masing-masing pemain, tertutup, disebut Tumpukan Ambil Pemain 1 dan 2.
+Di permainan ini, digunakan 50 kartu objek tanpa kartu wildcard.
+Kocok kartu, bagikan 18 kartu ke masing-masing pemain, tertutup, disebut Tumpukan Ambil Pemain 1 dan 2.
 Bagikan 6 kartu di depan masing-masing pemain, tertutup, disebut Tumpukan Cadangan Pemain 1 dan Pmain 2.
 Taruh 1 kartu di sebelah dalam Tumpukan Cadangan masing-masing pemain, tertutup, disebut Tumpukan Main Pemain 1 dan 2.
 Tujuan permainan: jadi yang pertama menghabiskan Tumpukan Mainnya.
@@ -802,8 +802,8 @@ Pemain pertama yang berhasil menghabiskan kartu di Tumpukan Ambil dan Tangannya 
 *** en
 The Troika cards can be used to play many kinds of games.
 One of which is called Speed, for 2 players.
-This game utilizes 80 object cards and none of the wildcards.
-Shuffle the cards, deal 34 cards to each player, face down. These are called, respectively, Draw Pile for Player 1 and 2.
+This game utilizes 50 object cards and none of the wildcards.
+Shuffle the cards, deal 18 cards to each player, face down. These are called, respectively, Draw Pile for Player 1 and 2.
 Then deal 6 cards in front of each player, face down. These are called, respectively, Reserve Pile for Player 1 and 2.
 Then deal 1 card beside each Reserve Pile, face down. These are called, respectively, Play Pile for Player 1 and 2.
 The goal of the game: to be the first to discard all cards from their hand and Play Pile.
@@ -1027,8 +1027,8 @@ wildcard max 1
 wildcard tux 1
 wildcard+cut lyx 1
 *** The rules of the game
-This game utilizes 80 object cards and none of the wildcards.
-Shuffle the cards, deal 34 cards to each player, face down. These are called, respectively, Draw Pile for Player 1 and 2.
+This game utilizes 50 object cards and none of the wildcards.
+Shuffle the cards, deal 18 cards to each player, face down. These are called, respectively, Draw Pile for Player 1 and 2.
 Then deal 6 cards in front of each player, face down. These are called, respectively, Reserve Pile for Player 1 and 2.
 Then deal 1 card beside each Reserve Pile, face down. These are called, respectively, Play Pile for Player 1 and 2.
 The goal of the game: to be the first to discard all cards from their hand and Play Pile.
@@ -1054,14 +1054,14 @@ From top to bottom:
   images/logo/logo.png) and nothing else, The logo positioning should be
   absolute so it does not move to the left or right whenever there are text
   being displayed or animation happens.
-- P1's Draw Pile on the left and P1's hand on its right.
+- P1's Draw Pile on the left and P1's hand on its right, then an empty P1 Call Subarea on its right for the rest of the horizontal space.
   This area will occupy about 1/3 of vertical area of the screen.
   The cards put in this pile should not overlap or cover the top area or the area below it.
 - P1's Reserve Pile on the left, then P1's Play Pile on its right,
   then P2's Play Pile on its right, then P2's Reserve Pile on its right.
   This area will also occupy about 1/3 of vertical area  of the screen.
   The cards put in this area should not overlap or cover the cards in the area above it or below it.
-- P2's Draw Pile on the left and P2's hand on its right.
+- P2's Draw Pile on the left and P2's hand on its right, then an empty P2 Call Subarea on its right for the rest of the horizontal space.
   This area will occupy about 1/3 of vertical area of the screen.
   The cards put in this pile should not overlap or cover the top area or the area below it.
 
@@ -1071,6 +1071,10 @@ add any additional padding to the cards.
 Try to conserve vertical space.
 
 The labels for the areas should not be too large and covered by the cards.
+
+P1 Call Subarea and P2 Call Subarea should not be labeled. These subareas are
+where the text will be displayed whenever P1 or P2 discards a card and call
+their card.
 
 There should be a small counter display of the number of cards on each pile.
 
@@ -1087,7 +1091,7 @@ pile is shown, face down before the race beins and face up afterwards.
 
 *** The simulation
 The simulation starts with a randomly shuffled (random on every page load)
-cards. There are already 34 cards on each player's Draw Pile, 6 cards on each
+cards. There are already 18 cards on each player's Draw Pile, 6 cards on each
 player's Reserve Pile, and one card on each player's Play Pile.
 
 After two seconds of delay, the simulation game starts.
@@ -1095,22 +1099,37 @@ After two seconds of delay, the simulation game starts.
 It starts with P1 and P2 flipping the card on their Play Pile face up at the
 same time, instantly. There should be a big text saying "FLIP" (but the text
 should not cover any cards, and the text should disappear after 2 seconds). Then
-a delay of about 1 second.
+a delay of about 2 seconds.
 
 Then players randomly race discarding their cards. Each time before a player
-discards his card there should be a random delay between 0s and 1.2s. Then there
-should be a smooth (60fps) animation of a card flying from his hand to the Play
-Pile, which should take about 0.3s. Then followed by animation of a card in the
-player's Draw Pile (if there are still cards on the Draw Pile) being flipped
-instantly face up then flying smoothly to the Player's Hand, the animation
-should take about 0.3s.
+discards his card there should be a random delay between 0.1s and 1.8s. Then
+there should a big text in the player's Call Subarea calling the card, e.g.
+"RED" or "MUSIC" according to the same color or category that the player intends
+to play (the text should be displayed until he discards another card). And then
+the card to be discarded is highlighted. Then there should be a delay of about
+0.5s. Then there should be a smooth (60fps) animation of a card flying from his
+hand to the Play Pile, which should take about 0.6s. Then followed by animation
+of a card in the player's Draw Pile (if there are still cards on the Draw Pile)
+being flipped instantly face up then flying smoothly to the Player's Hand, the
+animation should take about 0.6s.
+
+Make sure that when animating discarding a card, the card is not duplicated.
+It should move from the player's hand towards the draw pile.
+
+When a player has called a card and the card stars flying towards a play pile,
+prevent the other player from calling to the same play pile.
 
 When both players can no longer discard cards according to the rule, there
 should be a delay of about 2 seconds, then a big text should be displayed that
-say "FLIP RESERVE" (that disappears after 2 seconds). Then a delay of about 1
-second before the race is resumed. If both players are still stuck, both players
-each draw one card from the Reserve Pile again. If there are no longer cards on
-the Reserve Pile, the game ends (there should a big text saying "DRAW").
+say "FLIP RESERVE" (that disappears after 2 seconds). Then a delay of about 2
+second. Then an animation of one card from each of the player's Reserve Pile
+being flipped instantly face up then flies smoothly to the respective player's
+Play Pile, the animation should take about 0.6s. Then a delay of about 2 second
+before the race is resumed.
+
+If both players are still stuck, both players each draw one card from the
+Reserve Pile again. If there are no longer cards on the Reserve Pile, the game
+ends (there should a big text saying "DRAW").
 
 Continue until one of the player wins.
 
@@ -1125,6 +1144,35 @@ of English. This include the text "FLIP" becomes "BALIK", "TAKE RESERVE" becomes
 ** [2026-07-19 Sun 19:02] session: codex.20260719b-speed
 *** journal
 **** [2026-07-19 Sun 19:02] start
+**** [2026-07-19 Sun 19:08] hasilnya animasi terlalu cepat
+gw decide utk revise my prompt and start over.
+** [2026-07-19 Sun 19:02] session: codex.20260719c-speed
+*** journal
+**** [2026-07-19 Sun 19:19] start
+*** subsequent prompts
+make the initial draw pile containing 33 cards intead of 34, so in total 80
+object cards are required.
+
+when a card is being discarded, i still see that in the animation, the card is
+being duplicated: it flies to the play pile but the original card is still in
+place. also can you remove the flip animation, when a card is flipped from face
+down to face up, it should not be animated but the card is just changed
+instantly from face down to face up.
+
+also, before any reserve card being taken, the animation is very fast/instant
+instead of the intended smooth animation speed (e.g. discarding animation is too
+fast/instant). only after the flip reserve event, things become normal as
+intended.
+
+When player stats to discard a card, after the call is displayed, the card to be
+discarded should be highlighted first, there should be a delay of about 0.5s
+before the flying animation.
+
+make the initial draw piles containing 18 cards intead of 33, so in total 50
+object cards are required.
+
+when a player has called a card and the card stars flying towards a play pile,
+prevent the other player from calling to the same play pile.
 * game > troika player
 ** [2026-07-15 Wed] prompt 1
 *** Summary
