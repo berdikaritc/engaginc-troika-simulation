@@ -1046,6 +1046,10 @@ object trios after the 1st attempt without seeing any of the cards before?
 
  # still stuck after almost 5min
 
+** [2026-07-20 Mon 06:00] fork codex.20260719e-memorymatch to codex.20260719e-memorymatch5x3
+*** prompts
+instead of 7x3, use 5x3 grid. make the cards a bit larger: width is 120 and
+height adjusted proportionately.
 * game > slap
 ** [2026-07-18 Sat] description
 *** id

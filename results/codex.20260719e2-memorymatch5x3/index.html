@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=720, initial-scale=1, maximum-scale=1">
+  <title>Memory Match</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="stage" aria-label="Memory Match game simulation">
+    <header class="hud">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div><h1 id="title">MEMORY<br>MATCH</h1><p id="subtitle">Find the object trios</p></div>
+      </div>
+      <div class="scores" aria-label="Scores">
+        <section class="player active" id="player-0"><b>P1</b><strong id="score-0">0</strong></section>
+        <div class="dash">—</div>
+        <section class="player" id="player-1"><b>P2</b><strong id="score-1">0</strong></section>
+      </div>
+      <div class="message" id="message" aria-live="polite">GET READY</div>
+    </header>
+
+    <section class="board-wrap">
+      <div class="board" id="board" aria-label="3 by 5 card grid"></div>
+      <div class="progress"><span id="progress-fill"></span></div>
+      <p class="remaining" id="remaining">5 TRIOS TO FIND</p>
+    </section>
+
+    <div class="winner" id="winner" aria-hidden="true">
+      <div class="burst"></div>
+      <p id="winner-kicker">GAME OVER</p>
+      <h2 id="winner-text">P1 WINS!</h2>
+      <div id="final-score">4 — 3</div>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
