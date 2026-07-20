@@ -10,6 +10,10 @@
     return Number.isInteger(value) && value >= 1 && value <= 42 ? value : 42;
   };
   const initialCards = [startCount('p1start'), startCount('p2start')];
+  const p1FasterParam = Number(query.get('p1fasterchance'));
+  const p1FasterChance = query.has('p1fasterchance') && Number.isFinite(p1FasterParam) && p1FasterParam >= 0 && p1FasterParam <= 100
+    ? p1FasterParam / 100
+    : 0.5;
   const T = lang === 'id' ? {
     small:'Kecil',medium:'Sedang',large:'Besar',cards:'KARTU',discard:'BUANGAN',wrong:'SALAH GEBRAK',
     gameName:'GEBRAKAN',instruction:'GEBRAK KARTU SAAT COCOK',
@@ -116,7 +120,7 @@
   async function handleSlap(match,active,g){
     let collector;
     if(!match){ const mistakenSlapper=Math.random()<.5?0:1; await slap(mistakenSlapper,g); $('#discard .card')?.classList.add('highlight'); await showBanner(T.wrong,'',1250); collector=mistakenSlapper; }
-    else { const winner=Math.random()<.5?0:1; collector=1-winner; const order=winner===0?[1,0]:[0,1]; slap(order[0],g); await sleep(rand(35,85)); await slap(order[1],g); $('#discard .card')?.classList.add('highlight'); await showBanner(T.slap('P'+(winner+1)),'',1200); }
+    else { const winner=Math.random()<p1FasterChance?0:1; collector=1-winner; const order=winner===0?[1,0]:[0,1]; slap(order[0],g); await sleep(rand(35,85)); await slap(order[1],g); $('#discard .card')?.classList.add('highlight'); await showBanner(T.slap('P'+(winner+1)),'',1200); }
     await collect(collector,g); turn=collector; return collector;
   }
   async function game(g){
