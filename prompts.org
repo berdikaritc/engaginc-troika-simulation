@@ -3,7 +3,7 @@
 #+TODO: IDEA WISHLIST | CANCELLED REJECTED
 #+TODO: POTENTIAL | CANTUSE
 
-* INPROGRESS game > bullshit
+* game > bullshit
 ** [2026-07-20 Mon] description
 *** id
 Kartu troika dapat digunakan untuk berbagai permainan.
@@ -382,6 +382,11 @@ Add the title of the game "BULLSHIT" (or "BOONG-BOONGAN" in Indonesian) in the
 top area, at the right of logo.
 
 # ok good enough
+
+Accept a query parameter p2chance which will determine P2's chance of correctly
+guessing the claim, e.g. p2chance=70 for 70%. The default if unspecified is 50%
+which is the same as P1, but this parameter allows changing the odds that P2
+will win or lose.
 * game > collect 8
 ** [2026-07-18 Sat] description
 *** id

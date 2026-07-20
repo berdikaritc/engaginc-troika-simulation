@@ -4,7 +4,12 @@
   const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
   const random = a => a[Math.floor(Math.random() * a.length)];
   const shuffle = a => { for (let i=a.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
-  const lang = new URLSearchParams(location.search).get('lang') === 'id' ? 'id' : 'en';
+  const query = new URLSearchParams(location.search);
+  const lang = query.get('lang') === 'id' ? 'id' : 'en';
+  const requestedP2Chance = Number(query.get('p2chance'));
+  const p2Chance = query.has('p2chance') && Number.isFinite(requestedP2Chance)
+    ? Math.min(100, Math.max(0, requestedP2Chance)) / 100
+    : .5;
   document.documentElement.lang = lang;
   $('game-title').textContent = lang === 'id' ? 'BOONG-BOONGAN' : 'BULLSHIT';
 
@@ -136,7 +141,8 @@
     actor.hand=actor.hand.filter(c=>!picked.includes(c)); layoutHand(actor);
     await moveCards(picked,$('play-area'));
     await wait(2000+Math.random()*1000);
-    const guessCorrect=Math.random()<.5; const guessedTrue=guessCorrect?claim.truth:!claim.truth;
+    const guessChance=guesser===players[1]?p2Chance:.5;
+    const guessCorrect=Math.random()<guessChance; const guessedTrue=guessCorrect?claim.truth:!claim.truth;
     guesser.msg.textContent=guessedTrue?words.true:words.lie;
     await wait(2000); await flip(picked,false);
     actor.msg.textContent=guesser.msg.textContent=guessCorrect?words.correct:words.wrong;
