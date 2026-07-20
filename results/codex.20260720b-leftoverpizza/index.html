@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Leftover Pizza</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="game" aria-label="Leftover Pizza game simulation">
+    <header class="topbar">
+      <img class="logo" src="images/logo/logo.png" alt="Leftover Pizza logo">
+      <div class="brand"><span class="brand-en">LEFTOVER</span><strong>PIZZA</strong></div>
+      <div id="status" class="status">GET READY!</div>
+    </header>
+
+    <section id="p1-zone" class="zone hand-zone">
+      <div id="p1-label" class="zone-label"><b>P1</b><span id="p1-count">27 CARDS</span></div>
+      <div id="p1-hand" class="hand"></div>
+    </section>
+
+    <section id="discard-zone" class="zone discard-zone">
+      <div class="zone-label discard-label"><b id="discard-title">DISCARD</b><span id="discard-count">0 CARDS</span></div>
+      <div class="table-mark">LEFTOVER<br><strong>PIZZA</strong></div>
+      <div id="discard" class="discard"></div>
+    </section>
+
+    <section id="p2-zone" class="zone hand-zone">
+      <div id="p2-label" class="zone-label"><b>P2</b><span id="p2-count">26 CARDS</span></div>
+      <div id="p2-hand" class="hand"></div>
+    </section>
+
+    <div id="result" class="result" aria-live="polite"><small id="result-small">GAME OVER</small><strong></strong></div>
+    <div id="fx-layer"></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
