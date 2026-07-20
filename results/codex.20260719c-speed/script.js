@@ -10,8 +10,8 @@
   document.documentElement.lang = lang;
 
   const text = {
-    en: { draw: 'Draw', hand: 'Hand', reserve: 'Reserve', play: 'Play', flip: 'FLIP', flipReserve: 'FLIP RESERVE', win: p => `${p} WINS`, tie: 'DRAW' },
-    id: { draw: 'Ambil', hand: 'Tangan', reserve: 'Cadangan', play: 'Main', flip: 'BALIK', flipReserve: 'AMBIL CADANGAN', win: p => `${p} MENANG`, tie: 'SERI' }
+    en: { draw: 'Draw', hand: 'Hand', reserve: 'Reserve', play: 'Play', flip: 'FLIP', flipReserve: 'FLIP RESERVE', win: p => `${p} WINS`, tie: 'DRAW', instructions: 'DISCARD YOUR CARDS ONE BY ONE THE FASTEST, CARD MUST MATCH CATEGORY/COLOR OF PREVIOUS CARD' },
+    id: { draw: 'Ambil', hand: 'Tangan', reserve: 'Cadangan', play: 'Main', flip: 'BALIK', flipReserve: 'AMBIL CADANGAN', win: p => `${p} MENANG`, tie: 'SERI', instructions: 'BUANG KARTUMU SATU-PERSATU SECEPAT-CEPATNYA, KARTU HARUS SAMA KATEGORI/WARNA DG KARTU SEBELUMNYA' }
   }[lang];
   const translations = {
     fruit: 'BUAH', sports: 'OLAHRAGA', building: 'BANGUNAN', food: 'MAKANAN', gadget: 'GAWAI',
@@ -43,6 +43,7 @@
   const ids = ['p1-draw','p1-hand','p1-reserve','p1-play','p1-call','p2-play','p2-reserve','p2-draw','p2-hand','p2-call'];
   const el = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
   const result = document.getElementById('result');
+  document.getElementById('game-instructions').textContent = text.instructions;
   const players = [
     { id: 'p1', label: 'P1', draw: [], hand: [], reserve: [], play: [], busy: false, selectedHandIndex: null, flyingHandIndex: null },
     { id: 'p2', label: 'P2', draw: [], hand: [], reserve: [], play: [], busy: false, selectedHandIndex: null, flyingHandIndex: null }

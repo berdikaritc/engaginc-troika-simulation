@@ -4,9 +4,10 @@
   const lang = params.get('lang') === 'id' ? 'id' : 'en';
   document.documentElement.lang = lang;
   const copy = lang === 'id'
-    ? { ready:'BERSIAP!', matching:'MEMBUANG PASANGAN', turn:'GILIRAN', cards:'KARTU', discard:'BUANGAN', over:'PERMAINAN SELESAI', wins:'MENANG' }
-    : { ready:'GET READY!', matching:'DISCARDING PAIRS', turn:"'S TURN", cards:'CARDS', discard:'DISCARD', over:'GAME OVER', wins:'WINS' };
+    ? { ready:'BERSIAP!', matching:'MEMBUANG PASANGAN', turn:'GILIRAN', cards:'KARTU', discard:'BUANGAN', over:'PERMAINAN SELESAI', wins:'MENANG', instruction:'HINDARI MENDAPAT PIZZA SISA' }
+    : { ready:'GET READY!', matching:'DISCARDING PAIRS', turn:"'S TURN", cards:'CARDS', discard:'DISCARD', over:'GAME OVER', wins:'WINS', instruction:'AVOID GETTING THE LEFTOVER PIZZA' };
   if(lang === 'id') { $('.brand-en').textContent='PIZZA'; $('.brand strong').textContent='SISA'; }
+  $('#game-instruction').textContent=copy.instruction;
 
   const objects = [
     ['grape','anggur','🍇'],['orange','jeruk','🍊'],['watermelon','semangka','🍉'],

@@ -7,11 +7,12 @@ body { display:grid; place-items:start center; }
   radial-gradient(circle at 78% 44%,#ffdf8950 0 1px,transparent 2px),
   linear-gradient(135deg,#633929,#3c211a); background-size:27px 27px,19px 19px,auto; }
 #game::after { content:""; position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 80px #160b0799; z-index:30; }
-.topbar { height:108px; position:relative; border-bottom:4px solid #eab955; background:#21120dd9; display:flex; align-items:center; justify-content:center; }
+.topbar { height:132px; position:relative; border-bottom:4px solid #eab955; background:#21120dd9; display:flex; align-items:center; justify-content:center; }
 .logo { position:absolute; left:22px; top:12px; width:84px; height:84px; object-fit:contain; z-index:2; }
 .logo:not([src]), .logo.broken { opacity:0; }
 .brand { text-align:center; letter-spacing:3px; font:22px/19px Arial,sans-serif; color:#f7cf72; transform:rotate(-2deg); text-shadow:3px 3px #000; }
 .brand strong { display:block; font:50px/48px Impact,sans-serif; color:#ef493b; letter-spacing:2px; -webkit-text-stroke:2px #fff0c8; }
+.game-instruction { display:block; margin-top:5px; color:#fff0b0; font:700 13px/16px Arial,sans-serif; letter-spacing:1px; text-shadow:1px 2px #000; white-space:nowrap; }
 .status { position:absolute; right:18px; width:140px; text-align:right; color:#ffd76b; font:18px/1 Arial,sans-serif; letter-spacing:1px; }
 .zone { position:relative; border-bottom:2px solid #f3c96b40; }
 .hand-zone { height:303px; }

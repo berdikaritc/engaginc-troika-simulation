@@ -14,8 +14,9 @@ body { display: grid; place-items: center; font-family: Impact, "Arial Narrow", 
 #card-overlay { position:absolute; z-index:2000; inset:0; overflow:visible; pointer-events:none; }
 #card-overlay .card { z-index:1 !important; }
 .masthead { position: relative; height: 108px; border-bottom: 3px solid rgba(65,29,10,.4); }
-.masthead img { position:absolute; width:132px; height:auto; left:205px; top:3px; }
-.masthead h1 { position:absolute; left:357px; top:32px; margin:0; color:#fff4cf; font-size:38px; line-height:1; letter-spacing:1.5px; white-space:nowrap; text-shadow:3px 4px 0 #7c2416, 0 0 9px rgba(255,205,49,.55); }
+.masthead img { position:absolute; width:132px; height:auto; left:155px; top:3px; }
+.masthead h1 { position:absolute; left:307px; top:32px; margin:0; color:#fff4cf; font-size:38px; line-height:1; letter-spacing:1.5px; white-space:nowrap; text-shadow:3px 4px 0 #7c2416, 0 0 9px rgba(255,205,49,.55); }
+.masthead p { position:absolute; left:307px; top:70px; width:400px; margin:0; color:#fff4cf; font-family:"Arial Narrow", Arial, sans-serif; font-size:16.9px; font-weight:900; line-height:1.05; letter-spacing:.1px; text-shadow:1px 2px 0 #7c2416; }
 .zone { position: relative; height: 324px; overflow: hidden; border-bottom: 3px solid rgba(65,29,10,.32); }
 .zone h2 { position:absolute; z-index:50; left:14px; top:5px; margin:0; font-size:19px; letter-spacing:1.5px; color:#fff4cf; text-shadow:1px 2px 0 #5c2e16; }
 .hand { position:absolute; z-index:10; left:12px; top:38px; width:475px; height:270px; }

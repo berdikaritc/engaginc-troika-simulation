@@ -9,7 +9,7 @@ body { display:flex; justify-content:center; overflow:auto; }
 .logo { position:absolute; left:25px; top:14px; width:80px; height:80px; object-fit:contain; }
 .title { text-align:center; line-height:1; }
 h1 { margin:0; font-size:36px; letter-spacing:2px; font-weight:900; }
-.title p { margin:7px 0 0; font-size:12px; letter-spacing:6px; font-weight:bold; }
+.title p { margin:7px 0 0; font-size:11px; letter-spacing:.6px; font-weight:bold; white-space:nowrap; }
 #callout { position:absolute; right:22px; width:145px; text-align:center; font-weight:900; font-size:20px; color:var(--red); transform:rotate(-2deg); }
 .hand-zone { height:315px; position:relative; padding:48px 24px 19px; }
 .zone-label { position:absolute; top:15px; left:24px; right:24px; display:flex; align-items:center; gap:10px; border-bottom:2px solid #17213933; height:31px; }

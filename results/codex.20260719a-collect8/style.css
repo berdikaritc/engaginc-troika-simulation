@@ -5,7 +5,10 @@ body { display:grid; place-items:start center; }
 #stage { position:relative; width:720px; height:1080px; overflow:hidden; color:#fff; background:radial-gradient(circle at 50% 50%, #277052 0, #164b38 52%, #0d3628 100%); box-shadow:0 0 60px #000; }
 #stage::after { content:""; position:absolute; inset:0; pointer-events:none; opacity:.1; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.65' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E"); }
 header { position:absolute; z-index:30; left:0; top:0; width:100%; height:116px; border-bottom:1px solid #ffffff2c; background:#0d3226cc; }
-#logo { position:absolute; width:184px; height:auto; left:268px; top:3px; }
+#logo { position:absolute; width:184px; height:auto; left:118px; top:3px; }
+#game-heading { position:absolute; left:326px; top:19px; width:360px; text-shadow:0 2px 3px #000a; }
+#game-name { color:var(--gold); font-size:28px; line-height:1; font-weight:900; letter-spacing:1.5px; }
+#game-instruction { max-width:350px; margin-top:9px; color:#fff8db; font-size:13px; line-height:1.25; font-weight:700; letter-spacing:.7px; }
 .player-zone { position:absolute; left:0; width:100%; height:287px; }
 .player-zone.top { top:119px; }
 .player-zone.bottom { top:782px; }

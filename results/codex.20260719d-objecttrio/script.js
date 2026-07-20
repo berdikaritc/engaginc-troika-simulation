@@ -6,8 +6,8 @@
   const lang = params.get('lang') === 'id' ? 'id' : 'en';
   const speed = Math.max(.2, Number(params.get('speed')) || 1);
   const copy = {
-    en: { hand:'HAND', drawPile:'DRAW PILE', discardPile:'DISCARD', ready:'GET READY', turn:'TURN', thinking:'THINKING…', wins:'WINS!', draw:'DRAW', collecting:'COLLECTING', or:'OR' },
-    id: { hand:'KARTU', drawPile:'TUMPUKAN', discardPile:'BUANGAN', ready:'BERSIAP', turn:'GILIRAN', thinking:'BERPIKIR…', wins:'MENANG!', draw:'SERI', collecting:'MENGOLEKSI', or:'ATAU' }
+    en: { gameName:'OBJECT TRIO', gameInstruction:'COLLECT 3 CARDS OF THE SAME OBJECT', hand:'HAND', drawPile:'DRAW PILE', discardPile:'DISCARD', ready:'GET READY', turn:'TURN', thinking:'THINKING…', wins:'WINS!', draw:'DRAW', collecting:'COLLECTING', or:'OR' },
+    id: { gameName:'TRIO OBJEK', gameInstruction:'KUMPULKAN 3 KARTU OBJEK SAMA', hand:'KARTU', drawPile:'TUMPUKAN', discardPile:'BUANGAN', ready:'BERSIAP', turn:'GILIRAN', thinking:'BERPIKIR…', wins:'MENANG!', draw:'SERI', collecting:'MENGOLEKSI', or:'ATAU' }
   }[lang];
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = copy[el.dataset.i18n]);

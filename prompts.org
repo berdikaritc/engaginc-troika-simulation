@@ -387,351 +387,16 @@ Accept a query parameter p2chance which will determine P2's chance of correctly
 guessing the claim, e.g. p2chance=70 for 70%. The default if unspecified is 50%
 which is the same as P1, but this parameter allows changing the odds that P2
 will win or lose.
-* game > leftover pizza
-** [2026-07-20 Mon] description
-*** id
-Kartu troika dapat digunakan untuk berbagai permainan.
-Salah satunya adalah Pizza Sisa.
-Permainan ini adalah versi Troika dari Kartu Setan (Old Maid).
-Di permainan ini, digunakan kartu 1-objek dan 2-objek (mis: 1-anggur dan 2-anggur, 1-topi dan 2-topi, dst). Total kartu yang dipakai 54 kartu.
-Kartu wildcard tidak dipakai.
-Keluarkan satu kartu 2-pizza sehingga total kartu yang dipakai 53.
-Kocok kartu, bagikan semerata mungkin ke semua pemain, tertutup.
-Tujuan permainan adalah menghabiskan kartu di tangan dengan memasangkan semua objek.
-Dan menghindari mendapatkan kartu yang tidak punya pasangan: 1-pizza.
-Mula-mula, semua pemain membuang semua pasangan kartu yang ada di tangan mereka, mis: 1-anggur dan 2-anggur, dst.
-Setelah itu, pemain bergiliran mengambil 1 kartu dari pemain berikutnya secara acak tanpa melihat.
-Jika kartu yang diambil punya pasangan di tangan, kedua kartu dibuang.
-Teruskan hingga hanya tersisa 1 kartu di satu pemain.
-Pemain yang mendapat 1-pizza atau Pizza Sisa kalah.
-Catatan: kartu 2-pizza bisa diganti kartu lain misalnya 2-kue, dan lain-lain.
-*** en
-The Troika cards can be used to play many kinds of games.
-One of them is Leftover Pizza, which is the Troika version of the Old Maid card game.
-This game utilizes all 1-object and 2-object cards (for example: 1-grape and 2-grape, 1-hat and 2-hat, and so on). Total cards used is 54.
-Wildcards are not used.
-Take out the 2-pizza card so total cards used becomes 53.
-Shuffle the cards, deal evenly to all players, face down.
-The goal of the game is to discard all object pairs cards and avoid being left with 1-pizza card in the end.
-First all players discard all card pairs found in their hand, for example: 1-grape and 2-grape, and so on.
-Then, players take turn taking one card from the next player randomly without looking.
-If the card has its pair in the player's hand, the card pair can be discarded.
-Continue until only one player is left with the 1-pizza card (the Leftover Pizza).
-That player loses.
-Note: instead of the 2-pizza card, you can take out 2-cake instead, or other card.
-** [2026-07-20 Mon] prompt 1
-*** Summary
-i'm making a html+css+javascript-based card game play simulation animation that
-will be recorded using a desktop recorder like simplescreenrecorder on linux to
-produce a video animation (the video will be portrait 720x1080). make 720x1080
-the entire area for animation.
 
-the name of the card game is "Leftover Pizza" (or "Pizza Sisa" in Indonesian).
+Add a static text that is displayed throughout the simulation, below the game
+name. When language is set to English the text says "CONVINCE YOUR OPPONENT THAT
+YOUR CLAIM IS NOT BULLSHIT!". When language is set to Indonesian, the text says:
+"YAKINKAN LAWAN BAHWA KAMU TIDAK BOONG!".
 
-the simulation will be for 2 players (P1 and P2).
+Make that text a bit larger, shift the logo and the game name more to the left
+to allow for more space for larger text.
 
-*** The cards
-The cards are of two types. First there are the object cards, each of which will
-contain picture of a certain QUANTITY of objects (either one object, or two of
-the same object, or three). Each object will have a SHAPE (one of triangle,
-rectangle, and round), SIZE (one of small, medium, large), COLOR (one of nine:
-white, black, red, blue, green, yellow, orange, purple, and brown), and CATEGORY
-(one of nine: fruit, sports, building, food, gadget, fashion, furniture, toy,
-music). So in total there are 81 object cards. Listed below in the format of:
-QUANTITY-OBJECT_NAME (CATEGORY, SHAPE, COLOR, SIZE). Card name is
-QUANTITY-OBJECT_NAME.
-
-1-grape (fruit, round, purple, small)
-2-grape (fruit, round, purple, small)
-3-grape (fruit, round, purple, small)
-1-orange (fruit, round, orange, medium)
-2-orange (fruit, round, orange, medium)
-3-orange (fruit, round, orange, medium)
-1-watermelon (fruit, round, green, large)
-2-watermelon (fruit, round, green, large)
-3-watermelon (fruit, round, green, large)
-1-golf ball (sports, round, white, small)
-2-golf ball (sports, round, white, small)
-3-golf ball (sports, round, white, small)
-1-tennis ball (sports, round, green, medium)
-2-tennis ball (sports, round, green, medium)
-3-tennis ball (sports, round, green, medium)
-1-basket ball (sports, round, orange, large)
-2-basket ball (sports, round, orange, large)
-3-basket ball (sports, round, orange, large)
-1-house roof (building, triangle, red, large)
-2-house roof (building, triangle, red, large)
-3-house roof (building, triangle, red, large)
-1-tent (building, triangle, yellow, large)
-2-tent (building, triangle, yellow, large)
-3-tent (building, triangle, yellow, large)
-1-pyramid (building, triangle, brown, large)
-2-pyramid (building, triangle, brown, large)
-3-pyramid (building, triangle, brown, large)
-1-cake slice (food, triangle, orange, small)
-2-cake slice (food, triangle, orange, small)
-3-cake slice (food, triangle, orange, small)
-1-pizza slice (food, triangle, yellow, medium)
-2-pizza slice (food, triangle, yellow, medium)
-3-pizza slice (food, triangle, yellow, medium)
-1-jelly (food, round, purple, small)
-2-jelly (food, round, purple, small)
-3-jelly (food, round, purple, small)
-1-handphone (gadget, rectangle, black, small)
-2-handphone (gadget, rectangle, black, small)
-3-handphone (gadget, rectangle, black, small)
-1-tv (gadget, rectangle, black, medium)
-2-tv (gadget, rectangle, black, medium)
-3-tv (gadget, rectangle, black, medium)
-1-laptop (gadget, rectangle, red, medium)
-2-laptop (gadget, rectangle, red, medium)
-3-laptop (gadget, rectangle, red, medium)
-1-swimming trunk (fashion, triangle, blue, small)
-2-swimming trunk (fashion, triangle, blue, small)
-3-swimming trunk (fashion, triangle, blue, small)
-1-cloth hanger (fashion, triangle, blue, large)
-2-cloth hanger (fashion, triangle, blue, large)
-3-cloth hanger (fashion, triangle, blue, large)
-1-hat (fashion, round, purple, medium)
-2-hat (fashion, round, purple, medium)
-3-hat (fashion, round, purple, medium)
-1-table (furniture, rectangle, brown, medium)
-2-table (furniture, rectangle, brown, medium)
-3-table (furniture, rectangle, brown, medium)
-1-cupboard (furniture, rectangle, brown, large)
-2-cupboard (furniture, rectangle, brown, large)
-3-cupboard (furniture, rectangle, brown, large)
-1-bed (furniture, rectangle, white, large)
-2-bed (furniture, rectangle, white, large)
-3-bed (furniture, rectangle, white, large)
-1-paper airplane (toy, triangle, yellow, small)
-2-paper airplane (toy, triangle, yellow, small)
-3-paper airplane (toy, triangle, yellow, small)
-1-dice (toy, rectangle, red, small)
-2-dice (toy, rectangle, red, small)
-3-dice (toy, rectangle, red, small)
-1-alphabet block (toy, rectangle, green, small)
-2-alphabet block (toy, rectangle, green, small)
-3-alphabet block (toy, rectangle, green, small)
-1-the triangle (music, triangle, white, medium)
-2-the triangle (music, triangle, white, medium)
-3-the triangle (music, triangle, white, medium)
-1-drum (music, round, blue, medium)
-2-drum (music, round, blue, medium)
-3-drum (music, round, blue, medium)
-1-piano (music, rectangle, black, large)
-2-piano (music, rectangle, black, large)
-3-piano (music, rectangle, black, large)
-
-And below is the same list of cards, but in Indonesian:
-
-1-anggur (buah, bundar, ungu, kecil)
-2-anggur (buah, bundar, ungu, kecil)
-3-anggur (buah, bundar, ungu, kecil)
-1-jeruk (buah, bundar, oranye, sedang)
-2-jeruk (buah, bundar, oranye, sedang)
-3-jeruk (buah, bundar, oranye, sedang)
-1-semangka (buah, bundar, hijau, besar)
-2-semangka (buah, bundar, hijau, besar)
-3-semangka (buah, bundar, hijau, besar)
-1-bola golf (olahraga, bundar, putih, kecil)
-2-bola golf (olahraga, bundar, putih, kecil)
-3-bola golf (olahraga, bundar, putih, kecil)
-1-bola tenis (olahraga, bundar, hijau, sedang)
-2-bola tenis (olahraga, bundar, hijau, sedang)
-3-bola tenis (olahraga, bundar, hijau, sedang)
-1-bola basket (olahraga, bundar, oranye, besar)
-2-bola basket (olahraga, bundar, oranye, besar)
-3-bola basket (olahraga, bundar, oranye, besar)
-1-atap rumah (bangunan, segitiga, merah, besar)
-2-atap rumah (bangunan, segitiga, merah, besar)
-3-atap rumah (bangunan, segitiga, merah, besar)
-1-tenda (bangunan, segitiga, kuning, besar)
-2-tenda (bangunan, segitiga, kuning, besar)
-3-tenda (bangunan, segitiga, kuning, besar)
-1-piramid (bangunan, segitiga, cokelat, besar)
-2-piramid (bangunan, segitiga, cokelat, besar)
-3-piramid (bangunan, segitiga, cokelat, besar)
-1-sepotong kue (makanan, segitiga, oranye, kecil)
-2-sepotong kue (makanan, segitiga, oranye, kecil)
-3-sepotong kue (makanan, segitiga, oranye, kecil)
-1-sepotong pizza (makanan, segitiga, kuning, sedang)
-2-sepotong pizza (makanan, segitiga, kuning, sedang)
-3-sepotong pizza (makanan, segitiga, kuning, sedang)
-1-jeli (makanan, bundar, ungu, kecil)
-2-jeli (makanan, bundar, ungu, kecil)
-3-jeli (makanan, bundar, ungu, kecil)
-1-ponsel (gawai, kotak, hitam, kecil)
-2-ponsel (gawai, kotak, hitam, kecil)
-3-ponsel (gawai, kotak, hitam, kecil)
-1-tv (gawai, kotak, hitam, sedang)
-2-tv (gawai, kotak, hitam, sedang)
-3-tv (gawai, kotak, hitam, sedang)
-1-laptop (gawai, kotak, merah, sedang)
-2-laptop (gawai, kotak, merah, sedang)
-3-laptop (gawai, kotak, merah, sedang)
-1-celana renang (fesyen, segitiga, biru, kecil)
-2-celana renang (fesyen, segitiga, biru, kecil)
-3-celana renang (fesyen, segitiga, biru, kecil)
-1-gantungan baju (fesyen, segitiga, biru, besar)
-2-gantungan baju (fesyen, segitiga, biru, besar)
-3-gantungan baju (fesyen, segitiga, biru, besar)
-1-topi (fesyen, bundar, ungu, sedang)
-2-topi (fesyen, bundar, ungu, sedang)
-3-topi (fesyen, bundar, ungu, sedang)
-1-meja (mebel, kotak, cokelat, sedang)
-2-meja (mebel, kotak, cokelat, sedang)
-3-meja (mebel, kotak, cokelat, sedang)
-1-lemari (mebel, kotak, cokelat, besar)
-2-lemari (mebel, kotak, cokelat, besar)
-3-lemari (mebel, kotak, cokelat, besar)
-1-ranjang (mebel, kotak, putih, besar)
-2-ranjang (mebel, kotak, putih, besar)
-3-ranjang (mebel, kotak, putih, besar)
-1-pesawat kertas (mainan, segitiga, kuning, kecil)
-2-pesawat kertas (mainan, segitiga, kuning, kecil)
-3-pesawat kertas (mainan, segitiga, kuning, kecil)
-1-dadu (mainan, kotak, merah, kecil)
-2-dadu (mainan, kotak, merah, kecil)
-3-dadu (mainan, kotak, merah, kecil)
-1-balok huruf (mainan, kotak, hijau, kecil)
-2-balok huruf (mainan, kotak, hijau, kecil)
-3-balok huruf (mainan, kotak, hijau, kecil)
-1-trikona (musik, segitiga, putih, sedang)
-2-trikona (musik, segitiga, putih, sedang)
-3-trikona (musik, segitiga, putih, sedang)
-1-drum (musik, bundar, biru, sedang)
-2-drum (musik, bundar, biru, sedang)
-3-drum (musik, bundar, biru, sedang)
-1-piano (musik, kotak, hitam, besar)
-2-piano (musik, kotak, hitam, besar)
-3-piano (musik, kotak, hitam, besar)
-wildcard max 1
-wildcard max 2
-wildcard max 3
-wildcard max 4
-wildcard max 5
-wildcard max 6
-wildcard tux 1
-wildcard tux 2
-wildcard tux 3
-wildcard tux 4
-wildcard tux 5
-wildcard tux 6
-wildcard+cut lyx 1
-wildcard+cut lyx 2
-wildcard+cut lyx 3
-wildcard+cut lyx 4
-wildcard+cut lyx 5
-wildcard+cut lyx 6
-
-And aside from that, there are also three wildcard cards, with the following names:
-
-wildcard max 1 wildcard tux 1 wildcard+cut lyx 1
-
-*** The rules of the game
-This game is basically a variant of the Old Maid card game.
-This game utilizes all 1-object and 2-object cards (for example: 1-grape and 2-grape, 1-hat and 2-hat, and so on). Total cards used is 54.
-Wildcards are not used.
-Take out the 2-pizza card so total cards used becomes 53.
-Shuffle the cards, deal evenly to all players, face down.
-The goal of the game is to discard all object pairs cards and avoid being left with 1-pizza card in the end.
-First all players discard all card pairs found in their hand, for example: 1-grape and 2-grape, and so on.
-Then, players take turn taking one card from the next player randomly without looking.
-If the card has its pair in the player's hand, the card pair can be discarded.
-Continue until only one player is left with the 1-pizza card (the Leftover Pizza).
-That player loses.
-Note: instead of the 2-pizza card, you can take out 2-cake instead, or other card.
-*** Layout of the screen & appearance
-From top to bottom:
-
-- The top logo+information area: the very top will contain title (use logo file
-  images/logo/logo.png) and game name, and nothing else, The logo positioning
-  should be absolute so it does not move to the left or right whenever there are
-  text being displayed or animation happens. This area occupies about 10% of the
-  vertical space.
-- P1's hand: the P1's hand which will occupy about 30% of vertical space. The
-  cards put in this pile should not overlap or cover the area on top of it or
-  the area below it.
-- Discard pile. which will occupy about 30% of vertical space.
-- P2's hand: the P1's hand which will occupy about 30% of vertical space. The
-  cards put in this pile should not overlap or cover the area on top of it.
-
-Width of card should be 100. The height should be proportional. There should not
-be additional padding for the cards.
-
-Try to conserve vertical space.
-
-The labels for the areas should not be covered by the cards. Maybe put the
-labels far on the right side.
-
-The players' hands will be displayed in accordeon style with fixed spacing
-between cards. The accordeon should maximize all available horizontal space so
-it should adjust the spacing between cards accordingly. The leftmost card will
-be the bottommost card, and subsequent cards on the right are cards that are on
-top of the previous cards (cards to their left).
-
-The discard pile will be displayed as a vertical pile where only the topmost
-card of the pile is shown, face up.
-
-*** The simulation
-Each page load should start with a randomly shuffled cards. P1 and P2 already
-has 27 and 26 cards, respectively, face up.
-
-After 2 seconds, the simulation starts.
-
-The simulation starts with P1 and P2 discarding the pairs in the hand, serially.
-Each time a pair is discarded, both cards should be lifted, shown in full and spread apart,
-highlighted for 0.5s, and fly smoothly (60fps animation) towards the discard
-pile simultaneously (animation should take 0.5s). Then another pair is discarded
-the same way, until all pairs are exhausted.
-
-Then a delay of 2s.
-
-Then P1's turn. The label for P1 is highlighted. P1 takes a random card from
-P2's hand. That card is lifted, shown in full and highlighted for 0.5s, then
-flies into P1's hand (animation takes 0.5s). Then delay 0.5s. If the card has
-its pair in P1's hand, both cards are lifted, shown in full and spread apart,
-highlighted for 0.5s, and fly smoothly towards the discard pile simultaneously
-(animation should take 0.5s).
-
-Then P1's label in unhighlighted.
-
-Then a delay of 1s.
-
-Then P2's turn, much like P1's turn.
-
-Then back to P1's turn and so on, until only one card is left.
-
-The player that is left with the one card loses. A big message is shown saying
-which player wins, e.g. "P1 WINS".
-
-Then simulation ends.
-*** The images
-the images for the front side of the cards are in images/cards-front/
-subdirectory, with the PNG files named "CARDNAME.png".
-
-The image for the back side of the cards is the images/cards-back/back.png file.
-
-Do not use the hands images. Leave them alone.
-
-*** Options
-i want to be able to set a query parameter 'lang' to 'en' (the default) or 'id'.
-When the parameter is set to 'id', the text should all be in Indonesian instead
-of English. This include "P1 WINS" becoming "P1 MENANG".
-** [2026-07-20 Mon 08:24] session: codex.20260720b-leftoverpizza
-*** journal
-**** [2026-07-20 Mon 08:25] start
-**** [2026-07-20 Mon 08:36] gw cek ternyata udah ampir 8 menit masih muter2x, tapi hasilnya udah jadi sih
-masih ada bbrp yang kurang pas
-*** additional prompts
-the cards still have additional white area/padding around it. also increase the
-width of the cards from 100 to 115. height should be adjusted accordingly.
-
-The accordeon should maximize all available horizontal space so
-it should adjust the spacing between cards accordingly.
-
-# ok good enough
+make the static text 30% larger.
 * game > collect 8
 ** [2026-07-18 Sat] description
 *** id
@@ -1087,6 +752,15 @@ show what collection a player is collecting, perhaps below the player's hand
 label? with the same font color and size as the "HAND" text in the player's hand
 label, e.g. "COLLECTING MUSIC", or "COLLECTING RED". (in indonesian it's
 "MENGOLEKSI MUSIK" or "MENGOLEKSI MERAH").
+
+Add a text showing the name game (if language is set to English: "COLLECT 8"; if
+Indonesian: "KOLEKSI 8") at the right of logo; perhaps shift the logo to the left.
+
+Also a static text that is displayed throughout the simulation, below the game
+name. When language is set to English the text says "COLLECT 8 CARDS OF THE SAME
+CATEGORY OR COLOR". When language is set to Indonesian, the text says "KUMPULKAN
+8 KARTU KATEGORI SAMA ATAU WARNA SAMA".
+
 * game > continue 1
 ** [2026-07-20 Mon] description
 *** id
@@ -1448,6 +1122,16 @@ If both player have to pass, then the winner is the player with the least number
 of cards in his hand, or if both players have the same number of hands then the
 game ends with draw, in which case a big text is displayed in the center showing
 "DRAW".
+
+Add a static text that is displayed throughout the simulation, below the game
+name replacing the "CARD GAME" text, that says "MATCH CATEGORY OR COLOR OF
+PREVIOUS CARD" (in Indonesian: "SAMAKAN KATEGORI ATAU WARNA KARTU SEBELUMNYA").
+
+# tuh kayak gini masih bisa salah, di keduanya versi indo yg muncul
+
+No, when language is set to English, the text should say "MATCH CATEGORY OR
+COLOR OF PREVIOUS CARD". But when language is set to Indonesian, the text should
+say "SAMAKAN KATEGORI ATAU WARNA KARTU SEBELUMNYA".
 
 * game > continue 2
 ** [2026-07-20 Mon] description
@@ -1849,6 +1533,357 @@ Nope, the flipping animation is now totally broken: the back side is still fully
 Add a static text that is displayed throughout the simulation, below the game
 name but above the messages, that says "MATCH AT LEAST TWO ASPECTS OF PREVIOUS CARD"
 (in Indonesian: "COCOKKAN MINIMAL 2 ASPEK DENGAN KARTU SEBELUMNYA").
+* game > leftover pizza
+** [2026-07-20 Mon] description
+*** id
+Kartu troika dapat digunakan untuk berbagai permainan.
+Salah satunya adalah Pizza Sisa.
+Permainan ini adalah versi Troika dari Kartu Setan (Old Maid).
+Di permainan ini, digunakan kartu 1-objek dan 2-objek (mis: 1-anggur dan 2-anggur, 1-topi dan 2-topi, dst). Total kartu yang dipakai 54 kartu.
+Kartu wildcard tidak dipakai.
+Keluarkan satu kartu 2-pizza sehingga total kartu yang dipakai 53.
+Kocok kartu, bagikan semerata mungkin ke semua pemain, tertutup.
+Tujuan permainan adalah menghabiskan kartu di tangan dengan memasangkan semua objek.
+Dan menghindari mendapatkan kartu yang tidak punya pasangan: 1-pizza.
+Mula-mula, semua pemain membuang semua pasangan kartu yang ada di tangan mereka, mis: 1-anggur dan 2-anggur, dst.
+Setelah itu, pemain bergiliran mengambil 1 kartu dari pemain berikutnya secara acak tanpa melihat.
+Jika kartu yang diambil punya pasangan di tangan, kedua kartu dibuang.
+Teruskan hingga hanya tersisa 1 kartu di satu pemain.
+Pemain yang mendapat 1-pizza atau Pizza Sisa kalah.
+Catatan: kartu 2-pizza bisa diganti kartu lain misalnya 2-kue, dan lain-lain.
+*** en
+The Troika cards can be used to play many kinds of games.
+One of them is Leftover Pizza, which is the Troika version of the Old Maid card game.
+This game utilizes all 1-object and 2-object cards (for example: 1-grape and 2-grape, 1-hat and 2-hat, and so on). Total cards used is 54.
+Wildcards are not used.
+Take out the 2-pizza card so total cards used becomes 53.
+Shuffle the cards, deal evenly to all players, face down.
+The goal of the game is to discard all object pairs cards and avoid being left with 1-pizza card in the end.
+First all players discard all card pairs found in their hand, for example: 1-grape and 2-grape, and so on.
+Then, players take turn taking one card from the next player randomly without looking.
+If the card has its pair in the player's hand, the card pair can be discarded.
+Continue until only one player is left with the 1-pizza card (the Leftover Pizza).
+That player loses.
+Note: instead of the 2-pizza card, you can take out 2-cake instead, or other card.
+** [2026-07-20 Mon] prompt 1
+*** Summary
+i'm making a html+css+javascript-based card game play simulation animation that
+will be recorded using a desktop recorder like simplescreenrecorder on linux to
+produce a video animation (the video will be portrait 720x1080). make 720x1080
+the entire area for animation.
+
+the name of the card game is "Leftover Pizza" (or "Pizza Sisa" in Indonesian).
+
+the simulation will be for 2 players (P1 and P2).
+
+*** The cards
+The cards are of two types. First there are the object cards, each of which will
+contain picture of a certain QUANTITY of objects (either one object, or two of
+the same object, or three). Each object will have a SHAPE (one of triangle,
+rectangle, and round), SIZE (one of small, medium, large), COLOR (one of nine:
+white, black, red, blue, green, yellow, orange, purple, and brown), and CATEGORY
+(one of nine: fruit, sports, building, food, gadget, fashion, furniture, toy,
+music). So in total there are 81 object cards. Listed below in the format of:
+QUANTITY-OBJECT_NAME (CATEGORY, SHAPE, COLOR, SIZE). Card name is
+QUANTITY-OBJECT_NAME.
+
+1-grape (fruit, round, purple, small)
+2-grape (fruit, round, purple, small)
+3-grape (fruit, round, purple, small)
+1-orange (fruit, round, orange, medium)
+2-orange (fruit, round, orange, medium)
+3-orange (fruit, round, orange, medium)
+1-watermelon (fruit, round, green, large)
+2-watermelon (fruit, round, green, large)
+3-watermelon (fruit, round, green, large)
+1-golf ball (sports, round, white, small)
+2-golf ball (sports, round, white, small)
+3-golf ball (sports, round, white, small)
+1-tennis ball (sports, round, green, medium)
+2-tennis ball (sports, round, green, medium)
+3-tennis ball (sports, round, green, medium)
+1-basket ball (sports, round, orange, large)
+2-basket ball (sports, round, orange, large)
+3-basket ball (sports, round, orange, large)
+1-house roof (building, triangle, red, large)
+2-house roof (building, triangle, red, large)
+3-house roof (building, triangle, red, large)
+1-tent (building, triangle, yellow, large)
+2-tent (building, triangle, yellow, large)
+3-tent (building, triangle, yellow, large)
+1-pyramid (building, triangle, brown, large)
+2-pyramid (building, triangle, brown, large)
+3-pyramid (building, triangle, brown, large)
+1-cake slice (food, triangle, orange, small)
+2-cake slice (food, triangle, orange, small)
+3-cake slice (food, triangle, orange, small)
+1-pizza slice (food, triangle, yellow, medium)
+2-pizza slice (food, triangle, yellow, medium)
+3-pizza slice (food, triangle, yellow, medium)
+1-jelly (food, round, purple, small)
+2-jelly (food, round, purple, small)
+3-jelly (food, round, purple, small)
+1-handphone (gadget, rectangle, black, small)
+2-handphone (gadget, rectangle, black, small)
+3-handphone (gadget, rectangle, black, small)
+1-tv (gadget, rectangle, black, medium)
+2-tv (gadget, rectangle, black, medium)
+3-tv (gadget, rectangle, black, medium)
+1-laptop (gadget, rectangle, red, medium)
+2-laptop (gadget, rectangle, red, medium)
+3-laptop (gadget, rectangle, red, medium)
+1-swimming trunk (fashion, triangle, blue, small)
+2-swimming trunk (fashion, triangle, blue, small)
+3-swimming trunk (fashion, triangle, blue, small)
+1-cloth hanger (fashion, triangle, blue, large)
+2-cloth hanger (fashion, triangle, blue, large)
+3-cloth hanger (fashion, triangle, blue, large)
+1-hat (fashion, round, purple, medium)
+2-hat (fashion, round, purple, medium)
+3-hat (fashion, round, purple, medium)
+1-table (furniture, rectangle, brown, medium)
+2-table (furniture, rectangle, brown, medium)
+3-table (furniture, rectangle, brown, medium)
+1-cupboard (furniture, rectangle, brown, large)
+2-cupboard (furniture, rectangle, brown, large)
+3-cupboard (furniture, rectangle, brown, large)
+1-bed (furniture, rectangle, white, large)
+2-bed (furniture, rectangle, white, large)
+3-bed (furniture, rectangle, white, large)
+1-paper airplane (toy, triangle, yellow, small)
+2-paper airplane (toy, triangle, yellow, small)
+3-paper airplane (toy, triangle, yellow, small)
+1-dice (toy, rectangle, red, small)
+2-dice (toy, rectangle, red, small)
+3-dice (toy, rectangle, red, small)
+1-alphabet block (toy, rectangle, green, small)
+2-alphabet block (toy, rectangle, green, small)
+3-alphabet block (toy, rectangle, green, small)
+1-the triangle (music, triangle, white, medium)
+2-the triangle (music, triangle, white, medium)
+3-the triangle (music, triangle, white, medium)
+1-drum (music, round, blue, medium)
+2-drum (music, round, blue, medium)
+3-drum (music, round, blue, medium)
+1-piano (music, rectangle, black, large)
+2-piano (music, rectangle, black, large)
+3-piano (music, rectangle, black, large)
+
+And below is the same list of cards, but in Indonesian:
+
+1-anggur (buah, bundar, ungu, kecil)
+2-anggur (buah, bundar, ungu, kecil)
+3-anggur (buah, bundar, ungu, kecil)
+1-jeruk (buah, bundar, oranye, sedang)
+2-jeruk (buah, bundar, oranye, sedang)
+3-jeruk (buah, bundar, oranye, sedang)
+1-semangka (buah, bundar, hijau, besar)
+2-semangka (buah, bundar, hijau, besar)
+3-semangka (buah, bundar, hijau, besar)
+1-bola golf (olahraga, bundar, putih, kecil)
+2-bola golf (olahraga, bundar, putih, kecil)
+3-bola golf (olahraga, bundar, putih, kecil)
+1-bola tenis (olahraga, bundar, hijau, sedang)
+2-bola tenis (olahraga, bundar, hijau, sedang)
+3-bola tenis (olahraga, bundar, hijau, sedang)
+1-bola basket (olahraga, bundar, oranye, besar)
+2-bola basket (olahraga, bundar, oranye, besar)
+3-bola basket (olahraga, bundar, oranye, besar)
+1-atap rumah (bangunan, segitiga, merah, besar)
+2-atap rumah (bangunan, segitiga, merah, besar)
+3-atap rumah (bangunan, segitiga, merah, besar)
+1-tenda (bangunan, segitiga, kuning, besar)
+2-tenda (bangunan, segitiga, kuning, besar)
+3-tenda (bangunan, segitiga, kuning, besar)
+1-piramid (bangunan, segitiga, cokelat, besar)
+2-piramid (bangunan, segitiga, cokelat, besar)
+3-piramid (bangunan, segitiga, cokelat, besar)
+1-sepotong kue (makanan, segitiga, oranye, kecil)
+2-sepotong kue (makanan, segitiga, oranye, kecil)
+3-sepotong kue (makanan, segitiga, oranye, kecil)
+1-sepotong pizza (makanan, segitiga, kuning, sedang)
+2-sepotong pizza (makanan, segitiga, kuning, sedang)
+3-sepotong pizza (makanan, segitiga, kuning, sedang)
+1-jeli (makanan, bundar, ungu, kecil)
+2-jeli (makanan, bundar, ungu, kecil)
+3-jeli (makanan, bundar, ungu, kecil)
+1-ponsel (gawai, kotak, hitam, kecil)
+2-ponsel (gawai, kotak, hitam, kecil)
+3-ponsel (gawai, kotak, hitam, kecil)
+1-tv (gawai, kotak, hitam, sedang)
+2-tv (gawai, kotak, hitam, sedang)
+3-tv (gawai, kotak, hitam, sedang)
+1-laptop (gawai, kotak, merah, sedang)
+2-laptop (gawai, kotak, merah, sedang)
+3-laptop (gawai, kotak, merah, sedang)
+1-celana renang (fesyen, segitiga, biru, kecil)
+2-celana renang (fesyen, segitiga, biru, kecil)
+3-celana renang (fesyen, segitiga, biru, kecil)
+1-gantungan baju (fesyen, segitiga, biru, besar)
+2-gantungan baju (fesyen, segitiga, biru, besar)
+3-gantungan baju (fesyen, segitiga, biru, besar)
+1-topi (fesyen, bundar, ungu, sedang)
+2-topi (fesyen, bundar, ungu, sedang)
+3-topi (fesyen, bundar, ungu, sedang)
+1-meja (mebel, kotak, cokelat, sedang)
+2-meja (mebel, kotak, cokelat, sedang)
+3-meja (mebel, kotak, cokelat, sedang)
+1-lemari (mebel, kotak, cokelat, besar)
+2-lemari (mebel, kotak, cokelat, besar)
+3-lemari (mebel, kotak, cokelat, besar)
+1-ranjang (mebel, kotak, putih, besar)
+2-ranjang (mebel, kotak, putih, besar)
+3-ranjang (mebel, kotak, putih, besar)
+1-pesawat kertas (mainan, segitiga, kuning, kecil)
+2-pesawat kertas (mainan, segitiga, kuning, kecil)
+3-pesawat kertas (mainan, segitiga, kuning, kecil)
+1-dadu (mainan, kotak, merah, kecil)
+2-dadu (mainan, kotak, merah, kecil)
+3-dadu (mainan, kotak, merah, kecil)
+1-balok huruf (mainan, kotak, hijau, kecil)
+2-balok huruf (mainan, kotak, hijau, kecil)
+3-balok huruf (mainan, kotak, hijau, kecil)
+1-trikona (musik, segitiga, putih, sedang)
+2-trikona (musik, segitiga, putih, sedang)
+3-trikona (musik, segitiga, putih, sedang)
+1-drum (musik, bundar, biru, sedang)
+2-drum (musik, bundar, biru, sedang)
+3-drum (musik, bundar, biru, sedang)
+1-piano (musik, kotak, hitam, besar)
+2-piano (musik, kotak, hitam, besar)
+3-piano (musik, kotak, hitam, besar)
+wildcard max 1
+wildcard max 2
+wildcard max 3
+wildcard max 4
+wildcard max 5
+wildcard max 6
+wildcard tux 1
+wildcard tux 2
+wildcard tux 3
+wildcard tux 4
+wildcard tux 5
+wildcard tux 6
+wildcard+cut lyx 1
+wildcard+cut lyx 2
+wildcard+cut lyx 3
+wildcard+cut lyx 4
+wildcard+cut lyx 5
+wildcard+cut lyx 6
+
+And aside from that, there are also three wildcard cards, with the following names:
+
+wildcard max 1 wildcard tux 1 wildcard+cut lyx 1
+
+*** The rules of the game
+This game is basically a variant of the Old Maid card game.
+This game utilizes all 1-object and 2-object cards (for example: 1-grape and 2-grape, 1-hat and 2-hat, and so on). Total cards used is 54.
+Wildcards are not used.
+Take out the 2-pizza card so total cards used becomes 53.
+Shuffle the cards, deal evenly to all players, face down.
+The goal of the game is to discard all object pairs cards and avoid being left with 1-pizza card in the end.
+First all players discard all card pairs found in their hand, for example: 1-grape and 2-grape, and so on.
+Then, players take turn taking one card from the next player randomly without looking.
+If the card has its pair in the player's hand, the card pair can be discarded.
+Continue until only one player is left with the 1-pizza card (the Leftover Pizza).
+That player loses.
+Note: instead of the 2-pizza card, you can take out 2-cake instead, or other card.
+*** Layout of the screen & appearance
+From top to bottom:
+
+- The top logo+information area: the very top will contain title (use logo file
+  images/logo/logo.png) and game name, and nothing else, The logo positioning
+  should be absolute so it does not move to the left or right whenever there are
+  text being displayed or animation happens. This area occupies about 10% of the
+  vertical space.
+- P1's hand: the P1's hand which will occupy about 30% of vertical space. The
+  cards put in this pile should not overlap or cover the area on top of it or
+  the area below it.
+- Discard pile. which will occupy about 30% of vertical space.
+- P2's hand: the P1's hand which will occupy about 30% of vertical space. The
+  cards put in this pile should not overlap or cover the area on top of it.
+
+Width of card should be 100. The height should be proportional. There should not
+be additional padding for the cards.
+
+Try to conserve vertical space.
+
+The labels for the areas should not be covered by the cards. Maybe put the
+labels far on the right side.
+
+The players' hands will be displayed in accordeon style with fixed spacing
+between cards. The accordeon should maximize all available horizontal space so
+it should adjust the spacing between cards accordingly. The leftmost card will
+be the bottommost card, and subsequent cards on the right are cards that are on
+top of the previous cards (cards to their left).
+
+The discard pile will be displayed as a vertical pile where only the topmost
+card of the pile is shown, face up.
+
+*** The simulation
+Each page load should start with a randomly shuffled cards. P1 and P2 already
+has 27 and 26 cards, respectively, face up.
+
+After 2 seconds, the simulation starts.
+
+The simulation starts with P1 and P2 discarding the pairs in the hand, serially.
+Each time a pair is discarded, both cards should be lifted, shown in full and spread apart,
+highlighted for 0.5s, and fly smoothly (60fps animation) towards the discard
+pile simultaneously (animation should take 0.5s). Then another pair is discarded
+the same way, until all pairs are exhausted.
+
+Then a delay of 2s.
+
+Then P1's turn. The label for P1 is highlighted. P1 takes a random card from
+P2's hand. That card is lifted, shown in full and highlighted for 0.5s, then
+flies into P1's hand (animation takes 0.5s). Then delay 0.5s. If the card has
+its pair in P1's hand, both cards are lifted, shown in full and spread apart,
+highlighted for 0.5s, and fly smoothly towards the discard pile simultaneously
+(animation should take 0.5s).
+
+Then P1's label in unhighlighted.
+
+Then a delay of 1s.
+
+Then P2's turn, much like P1's turn.
+
+Then back to P1's turn and so on, until only one card is left.
+
+The player that is left with the one card loses. A big message is shown saying
+which player wins, e.g. "P1 WINS".
+
+Then simulation ends.
+*** The images
+the images for the front side of the cards are in images/cards-front/
+subdirectory, with the PNG files named "CARDNAME.png".
+
+The image for the back side of the cards is the images/cards-back/back.png file.
+
+Do not use the hands images. Leave them alone.
+
+*** Options
+i want to be able to set a query parameter 'lang' to 'en' (the default) or 'id'.
+When the parameter is set to 'id', the text should all be in Indonesian instead
+of English. This include "P1 WINS" becoming "P1 MENANG".
+** [2026-07-20 Mon 08:24] session: codex.20260720b-leftoverpizza
+*** journal
+**** [2026-07-20 Mon 08:25] start
+**** [2026-07-20 Mon 08:36] gw cek ternyata udah ampir 8 menit masih muter2x, tapi hasilnya udah jadi sih
+masih ada bbrp yang kurang pas
+*** additional prompts
+the cards still have additional white area/padding around it. also increase the
+width of the cards from 100 to 115. height should be adjusted accordingly.
+
+The accordeon should maximize all available horizontal space so
+it should adjust the spacing between cards accordingly.
+
+# ok good enough
+
+Add a static text that is displayed throughout the simulation, below the game
+name. When language is set to English the text says "AVOID GETTING THE LEFTOVER
+PIZZA". When language is set to Indonesian, the text says "HINDARI MENDAPAT
+PIZZA SISA".
+
 * game > memory match
 ** [2026-07-19 Sun] description
 *** id
@@ -2522,6 +2557,7 @@ of English. This include "P1 WINS" becoming "P1 MENANG", "DRAW" becoming "SERI".
 *** journal
 **** [2026-07-19 Sun 20:17] start
 **** [2026-07-19 Sun 20:20] inspek hasil, aneh kali ini ada aja bug yg dulu2 pernah dibuat diulang lagi
+*** additional prompts
 i still see extra white padding around the card. also the animation is still not
 smooth/too fast/too instant.
 
@@ -2540,6 +2576,14 @@ Make the players able to attempt to sometimes collect to two objects
 simultanously. to be able to reach their goal faster. When they are attempting
 to collect two objects, the label should say something like "COLLECTING GRAPE OR
 TENNIS BALL".
+
+Add a text showing the name game (if language is set to English: "OBJECT TRIO"; if
+Indonesian: "TRIO OBJEK") at the right of logo; perhaps shift the logo to the left.
+
+Also a static text that is displayed throughout the simulation, below the game
+name. When language is set to English the text says "COLLECT 3 CARDS OF THE SAME
+OBJECT". When language is set to Indonesian, the text says "KUMPULKAN 3 KARTU
+OBJEK SAMA".
 
 * game > slap
 ** [2026-07-18 Sat] description
@@ -2931,13 +2975,25 @@ first. after the incoming pile arrive, the current pile slides back to the right
 on top of the incoming pile. this whole animation should take about 3s.
 
 # ok good enough
-*** subsequent prompts
+
 # found a bug, when there is a mistaken slap, the player who does the slap is
 # the one who must take the cards in the discard pile.
 
 I found a bug. When there is a mistaken slap, the player who does the slap is
 the one who must take the cards in the discard pile, not the other player.
-** [2026-07-19 Sun] session: agy.20260719a-slap
+
+Add a text showing the name game (if language is set to English: "SLAP"; if
+Indonesian: "GEBRAKAN") at the right of logo; perhaps shift the logo to the left.
+
+Also a static text that is displayed throughout the simulation, below the game
+name. When language is set to English the text says "SLAP THE CARD WHEN IT
+MATCHES THE CALL!". When language is set to Indonesian, the text says "GEBRAK
+KARTU SAAT COCOK".
+
+When a card is being flipped from face down to face up, instead of displaying it
+instantly, animate it smoothly (animation takes 0.3s). After the animation ends,
+then the card can be slapped if decided to be slapped.
+** UNUSED [2026-07-19 Sun] session: agy.20260719a-slap
 *** journal
 **** [2026-07-19 Sun 05:11] start
 **** [2026-07-19 Sun] kena individual quota, switch ke akun lain dari budimansnowman ke perlancar
@@ -2959,7 +3015,7 @@ simulasi troika player sih oke ya, kodenya dia yang gw pake.
 
 UPDATE: gw baca2x reddit thread, banyak yg ga nganjurin juga antigravity/gemini,
 inferior, headache, sering kena limit, dsb.
-** [2026-07-19 Sun] session: qwen.20260719a-slap
+** UNUSED [2026-07-19 Sun] session: qwen.20260719a-slap
 *** journal
 **** [2026-07-19 Sun] start, butuh 5 menitan
 **** [2026-07-19 Sun] cek hasil, gak bener, masih sekelas
@@ -3332,7 +3388,7 @@ i want to be able to set a query parameter 'lang' to 'en' (the default) or 'id'.
 When the parameter is set to 'id', the text should all be in Indonesian instead
 of English. This include the text "FLIP" becomes "BALIK", "TAKE RESERVE" becomes
 "AMBIL CADANGAN", and "P1 WINS" becomes "P1 MENANG".
-** [2026-07-19 Sun 19:02] session: codex.20260719b-speed
+** UNUSED [2026-07-19 Sun 19:02] session: codex.20260719b-speed
 *** journal
 **** [2026-07-19 Sun 19:02] start
 **** [2026-07-19 Sun 19:08] hasilnya animasi terlalu cepat
@@ -3371,6 +3427,20 @@ center area instead of the Call subareas.
 In some cases, I can still see a card being duplicated when animating the
 discarding, particularly when the card is in the middle of the hand and not the
 topmost card of the hand.
+
+Add a text showing the name game (if language is set to English: "SPEED"; if
+Indonesian: "SPEED") at the right of logo; perhaps shift the logo to the left.
+
+Also a static text that is displayed throughout the simulation, below the game
+name. When language is set to English the text says "DISCARD YOUR CARDS ONE BY
+ONE THE FASTEST, CARD MUST MATCH AN ASPECT OF PREVIOUS CARD". When language is
+set to Indonesian, the text says "BUANG KARTUMU SATU-PERSATU SECEPAT-CEPATNYA,
+KARTU HARUS COCOK SATU ASPEK DG KARTU SEBELUMNYA".
+
+Change the text: "CARD MUST MATCH AN ASPECT OF PREVIOUS CARD" becomes "CARD MUST
+MATCH CATEGORY/COLOR OF PREVIOUS CARD". "KARTU HARUS COCOK SATU ASPEK DG KARTU
+SEBELUMNYA" becomes "KARTU HARUS SAMA KATEGORI/WARNA DG KARTU SEBELUMNYA".
+
 * game > threesome
 ** [2026-07-20 Mon] description
 *** id
@@ -3897,82 +3967,6 @@ final position.
  #   gak mulus, setiap call LAYAR DIBLUR, wtf. gw revert ah.
 ** [2026-07-15 Wed] Prompt 1T1AG.2-question
 what if i want to change the simulation data from S1 to, say, S2, which part should i change?
-** [2026-07-15 Wed] eng: imagegen: close up shots of wsc baby animals (buat bahan nanti meningkatkan konsistensi)
-
-zoom in so the full face (including the ears) fills the frame.
-
-# # jangan deh, ntar susah videnya jadi terlalu invent
-# zoom in so the face (and not the ears) fills the frame.
-
-# zoom in so the face fills the frame.
-
-change horizontal angle to 3/4.
-
-change horizontal angle to side, face facing left.
-
-add blurred cartoony background of a typical backyard in jakarta.
-
-add blurred cartoony background of a typical chicken coop in jakarta.
-
-add blurred cartoony background of a typical backyard in bandung indonesia.
-
-add blurred cartoony background of a typical park in jakarta.
-
-add blurred cartoony background of a typical garden in jakarta.
-
-add blurred cartoony background of a typical road side in jakarta.
-
-add blurred cartoony background of a typical housing complex in jakarta.
-
-add blurred cartoony background of the ragunan zoo in jakarta.
-
-** [2026-07-15 Wed] eng: videogen: close up cute shots of wsc baby animals
-funny expressions to do with one's face, for close up shots.
-
-funny expressions that kitten or cat does with its face.
-
----
-
-keep the zoom level, do not zoom out. the character looks at the camera, smiles and then winks happily.
-
-keep the zoom level, do not zoom out. the character looks at his nose, wiggles his nose a bit, and giggles.
-
-the character looks at his nose, wiggles his nose a bit, and giggles. camera: slow zoom in.
-
-keep the zoom level. the character looks at his nose, wiggles his nose a bit, and giggles.
-
-keep the zoom level. the character puffs both cheeks full of air, then smiles.
-
-keep the zoom level. the character is doing a "fish face" (sucked-in cheeks).
-
-keep the zoom level. the character is sticking out his tongue, then smiles.
-
-keep the zoom level. the character is doing a fake grin showing all teeth.
-
-keep the zoom level. the character is squinting his eyes to the camera, then smiles slightly.
-
-keep the zoom level. the character is doing a tiny pursed lips.
-
-keep the zoom level. the character is widening his eyes as wide as possible, then smiles.
-
-keep the zoom level. the character's mouth is hanging open in surprise.
-
-keep the zoom level. the character is doing one or more of these funny poses:
-sticking out his tongue, puffs both cheeks full of air, looking at his nose,
-winks at the camera, smiling.
-
-the character is sticking out his tongue, then smiles. camera: slow & slight zoom in.
-keep the character exactly like in the reference image.
-
- # duh kadang2x berubah lari ke arah realistik.
- # udah disuruh keep, juga tetap berubah
- # kayaknya ada gerakan kamera jadi shift deh
-
-keep the zoom level. the character is doing a wet dog shake while still being dry.
-
-# The tip of the tongue sticks out slightly.
-# Gives a silly, absent-minded look.
-keep the zoom level. the character is doing a blep expression.
 ** [2026-07-16 Thu] codex.20260716b
 *** prompt 2
 for initial draw animation, can you decrease the time of each card animation
@@ -3990,6 +3984,14 @@ nope, the pause button does not do anything when pressed.
 *** prompt 6
 for animating the card group that a player discards, can you reduce stagger
 from 0.1s to 0.03s?
+*** additional prompts
+why is the animation not starting? after loading through browser through http
+(loading the /?sim=S2 URI, for example), the page says SIMULATION LOADING... and
+just stays like that.
+
+# ok for some reason perlu Ctrl-Shift-R bukan cuma F5, supaya /app.js diload.
+# kalo gak, si html ga ngeload app.js, aneh.
+
 * zzz journal
 ** [2026-07-16 Thu] gw taruh di sub results/NAME/ agar repo ini bisa menyimpan berbagai hasil vibecoding
 ** [2026-07-18 Sat] buat simulasi untuk game lain yang bisa dimainkan dengan kartu troika

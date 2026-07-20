@@ -5,8 +5,8 @@
   const lang = new URLSearchParams(location.search).get('lang') === 'id' ? 'id' : 'en';
   document.documentElement.lang = lang;
   const copy = {
-    en:{hand:'HAND',drawPile:'DRAW PILE',discardPile:'DISCARD PILE',turn:p=>`${p}'S TURN`,thinking:'THINKING…',wins:p=>`${p} WINS`,draw:'DRAW',collecting:v=>`COLLECTING ${v.toUpperCase()}`},
-    id:{hand:'KARTU',drawPile:'TUMPUKAN AMBIL',discardPile:'TUMPUKAN BUANG',turn:p=>`GILIRAN ${p}`,thinking:'BERPIKIR…',wins:p=>`${p} MENANG`,draw:'SERI',collecting:v=>`MENGOLEKSI ${v.toUpperCase()}`}
+    en:{gameName:'COLLECT 8',gameInstruction:'COLLECT 8 CARDS OF THE SAME CATEGORY OR COLOR',hand:'HAND',drawPile:'DRAW PILE',discardPile:'DISCARD PILE',turn:p=>`${p}'S TURN`,thinking:'THINKING…',wins:p=>`${p} WINS`,draw:'DRAW',collecting:v=>`COLLECTING ${v.toUpperCase()}`},
+    id:{gameName:'KOLEKSI 8',gameInstruction:'KUMPULKAN 8 KARTU KATEGORI SAMA ATAU WARNA SAMA',hand:'KARTU',drawPile:'TUMPUKAN AMBIL',discardPile:'TUMPUKAN BUANG',turn:p=>`GILIRAN ${p}`,thinking:'BERPIKIR…',wins:p=>`${p} MENANG`,draw:'SERI',collecting:v=>`MENGOLEKSI ${v.toUpperCase()}`}
   }[lang];
   const idNames={fruit:'buah',sports:'olahraga',building:'bangunan',food:'makanan',gadget:'gawai',fashion:'fesyen',furniture:'mebel',toy:'mainan',music:'musik',white:'putih',black:'hitam',red:'merah',blue:'biru',green:'hijau',yellow:'kuning',orange:'oranye',purple:'ungu',brown:'cokelat'};
   document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = copy[el.dataset.i18n]);

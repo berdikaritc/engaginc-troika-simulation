@@ -10,8 +10,11 @@ body { display: grid; place-items: start center; overflow: hidden; font-family: 
   box-shadow: inset 0 0 90px #0009;
 }
 #game::after { content: ""; position: absolute; inset: 9px; border: 1px solid #f2cf7055; pointer-events: none; z-index: 200; }
-header { position: absolute; z-index: 150; top: 0; left: 0; width: 720px; height: 108px; pointer-events: none; }
-header img { position: absolute; top: 0; left: 260px; width: 200px; height: 112px; object-fit: contain; }
+.game-header { position: absolute; z-index: 150; top: 0; left: 0; width: 720px; height: 108px; display: flex; align-items: center; padding: 5px 24px; pointer-events: none; }
+.game-header img { width: 150px; height: 96px; flex: 0 0 150px; object-fit: contain; }
+.game-heading { min-width: 0; padding-left: 14px; text-shadow: 0 2px 5px #000; }
+.game-name { color: var(--gold); font-size: 28px; line-height: 1; font-weight: 1000; letter-spacing: .1em; }
+.game-instructions { margin-top: 7px; max-width: 500px; color: #fff; font-size: 13px; line-height: 1.22; font-weight: 800; letter-spacing: .025em; }
 .player-zone, .table-zone { position: absolute; left: 0; width: 720px; }
 .player-zone { height: 274px; }
 .p1-zone { top: 112px; }

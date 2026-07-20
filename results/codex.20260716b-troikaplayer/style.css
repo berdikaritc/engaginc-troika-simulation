@@ -49,16 +49,48 @@ html, body {
 
 .logo {
   position: absolute;
-  left: 22px;
-  top: 18px;
-  width: 176px;
+  left: 12px;
+  top: 25px;
+  width: 140px;
   height: auto;
 }
 
+.game-copy {
+  position: absolute;
+  left: 166px;
+  top: 19px;
+  width: 300px;
+  text-transform: uppercase;
+}
+
+.game-name {
+  color: var(--gold);
+  font-size: 33px;
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: .5px;
+  white-space: nowrap;
+}
+
+.game-rule {
+  margin-top: 9px;
+  color: rgba(249, 243, 223, .82);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: .35px;
+}
+
+.lang-id { display: none; }
+:lang(id) .lang-en,
+:lang(in) .lang-en { display: none; }
+:lang(id) .lang-id,
+:lang(in) .lang-id { display: block; }
+
 .status {
   position: absolute;
-  left: 220px;
-  right: 26px;
+  left: 480px;
+  right: 18px;
   top: 38px;
   text-align: right;
   text-transform: uppercase;

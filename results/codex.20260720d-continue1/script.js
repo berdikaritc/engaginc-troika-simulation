@@ -2,9 +2,9 @@
   'use strict';
   const lang = new URLSearchParams(location.search).get('lang') === 'id' ? 'id' : 'en';
   const T = lang === 'id' ? {
-    title:'SAMBUNG SATU', subtitle:'PERMAINAN KARTU', cards:'KARTU', draw:'TUMPUKAN AMBIL', discard:'TUMPUKAN BUANG', left:'TERSISA', pass:'LEWAT', wins:'MENANG', tie:'SERI'
+    title:'SAMBUNG SATU', subtitle:'SAMAKAN KATEGORI ATAU WARNA KARTU SEBELUMNYA', cards:'KARTU', draw:'TUMPUKAN AMBIL', discard:'TUMPUKAN BUANG', left:'TERSISA', pass:'LEWAT', wins:'MENANG', tie:'SERI'
   } : {
-    title:'CONTINUE ONE', subtitle:'CARD GAME', cards:'CARDS', draw:'DRAW PILE', discard:'DISCARD PILE', left:'LEFT', pass:'PASS', wins:'WINS', tie:'DRAW'
+    title:'CONTINUE ONE', subtitle:'MATCH CATEGORY OR COLOR OF PREVIOUS CARD', cards:'CARDS', draw:'DRAW PILE', discard:'DISCARD PILE', left:'LEFT', pass:'PASS', wins:'WINS', tie:'DRAW'
   };
   const info = [
     ['grape','fruit','purple'],['orange','fruit','orange'],['watermelon','fruit','green'],

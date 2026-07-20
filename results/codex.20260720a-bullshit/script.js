@@ -12,6 +12,9 @@
     : .5;
   document.documentElement.lang = lang;
   $('game-title').textContent = lang === 'id' ? 'BOONG-BOONGAN' : 'BULLSHIT';
+  $('game-tagline').textContent = lang === 'id'
+    ? 'YAKINKAN LAWAN BAHWA KAMU TIDAK BOONG!'
+    : 'CONVINCE YOUR OPPONENT THAT YOUR CLAIM IS NOT BULLSHIT!';
 
   const words = {
     en: { hand:'HAND', play:'PLAY AREA', true:'TRUE', lie:'BULLSHIT', correct:'CORRECT GUESS', wrong:'INCORRECT GUESS', wins:'WINS',

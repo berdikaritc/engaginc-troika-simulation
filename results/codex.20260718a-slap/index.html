@@ -8,7 +8,16 @@
 </head>
 <body>
   <main id="stage" aria-label="Slap card game simulation">
-    <header class="brand"><img src="images/logo/logo.png" alt="Slap" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span hidden>SLAP!</span></header>
+    <header class="brand">
+      <div class="brand-logo">
+        <img src="images/logo/logo.png" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+        <span hidden>SLAP!</span>
+      </div>
+      <div class="brand-copy">
+        <strong id="game-name">SLAP</strong>
+        <span id="game-instruction">SLAP THE CARD WHEN IT MATCHES THE CALL!</span>
+      </div>
+    </header>
 
     <section class="zone zone-p1" aria-label="Player 1 pile">
       <div class="pile" id="pile-p1"><div class="card back"></div><div class="count" id="count-p1">42</div></div>

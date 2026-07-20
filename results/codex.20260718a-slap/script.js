@@ -6,11 +6,15 @@
   const lang = new URLSearchParams(location.search).get('lang') === 'id' ? 'id' : 'en';
   const T = lang === 'id' ? {
     small:'Kecil',medium:'Sedang',large:'Besar',cards:'KARTU',discard:'BUANGAN',wrong:'SALAH GEBRAK',
+    gameName:'GEBRAKAN',instruction:'GEBRAK KARTU SAAT COCOK',
     slap:p=>'GEBRAK! '+p+' TERCEPAT', wins:p=>p+' MENANG', restart:'ULANGI'
   } : {
     small:'Small',medium:'Medium',large:'Large',cards:'CARDS',discard:'DISCARD',wrong:'WRONG SLAP',
+    gameName:'SLAP',instruction:'SLAP THE CARD WHEN IT MATCHES THE CALL!',
     slap:p=>'SLAP! '+p+' IS FASTEST', wins:p=>p+' WINS THE GAME', restart:'RESTART'
   };
+  document.documentElement.lang=lang;
+  $('#game-name').textContent=T.gameName; $('#game-instruction').textContent=T.instruction;
   $('#label-cards-1').textContent=$('#label-cards-2').textContent=T.cards;
   $('#label-discard').textContent=T.discard; $('#restart').textContent=T.restart;
 
@@ -40,6 +44,23 @@
     $('#count-p1').textContent=players[0].length; $('#count-p2').textContent=players[1].length; $('#discard-count').textContent=discard.length;
     $('#pile-p1 .card').style.visibility=players[0].length?'visible':'hidden'; $('#pile-p2 .card').style.visibility=players[1].length?'visible':'hidden';
   }
+  async function flipCard(card,g){
+    const face=cardEl(card,true), angle=rand(-3,3); $('#discard').replaceChildren(face);
+    const hide=face.animate([
+      {transform:`rotate(${angle}deg) rotateY(0deg)`},
+      {transform:`rotate(${angle}deg) rotateY(90deg)`}
+    ],{duration:150,easing:'ease-in',fill:'forwards'});
+    await hide.finished; if(g!==generation){face.remove();return;}
+    hide.cancel();
+    face.className='card front';
+    face.style.backgroundImage=`url("images/cards-front/${encodeURIComponent(card.file).replace(/%2F/g,'/')}")`;
+    const reveal=face.animate([
+      {transform:`rotate(${angle}deg) rotateY(90deg)`},
+      {transform:`rotate(${angle}deg) rotateY(0deg)`}
+    ],{duration:150,easing:'ease-out',fill:'forwards'});
+    await reveal.finished; if(g!==generation){face.remove();return;}
+    face.style.transform=`rotate(${angle}deg)`; reveal.cancel();
+  }
   function showBanner(text, cls='', duration=1100){ const b=$('#banner'); b.textContent=text;b.className='show '+cls; return sleep(duration).then(()=>b.className=''); }
   async function flyCard(player,card,g){
     const stage=$('#stage').getBoundingClientRect(), src=$(`#pile-p${player+1}`).getBoundingClientRect(), dst=$('#discard').getBoundingClientRect();
@@ -50,7 +71,7 @@
       {transform:`translate(${dst.left-src.left}px,${dst.top-src.top}px) rotate(${rand(-8,8)}deg) scale(1)`,offset:1}
     ],{duration:600,easing:'cubic-bezier(.2,.75,.28,1)',fill:'forwards'});
     await flight.finished; if(g!==generation){e.remove();return;}
-    e.remove(); const face=cardEl(card); face.style.transform=`rotate(${rand(-3,3)}deg)`; $('#discard').replaceChildren(face);
+    e.remove(); await flipCard(card,g);
   }
   async function slap(player,g){
     const hand=$(`#hand-p${player+1}`), t=rand(.1,.2); hand.style.setProperty('--slap-time',t+'s'); hand.className=`hand p${player+1}-hand slap-p${player+1}`; await sleep(t*1000+80); if(g!==generation)return; hand.className=`hand p${player+1}-hand`;
