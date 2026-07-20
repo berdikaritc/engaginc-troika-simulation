@@ -2943,13 +2943,13 @@ of English. This include "P1 WINS" becoming "P1 MENANG".
 ** [2026-07-20 Mon 09:14] session: codex.20260720c-threesome
 *** journal
 **** [2026-07-20 Mon 09:14] start
+**** [2026-07-20 Mon 09:18] inspect result
+ada bug 1.
 *** additional prompts
-the cards still have additional white area/padding around it. also increase the
-width of the cards from 100 to 115. height should be adjusted accordingly.
-
-The accordeon should maximize all available horizontal space so
-it should adjust the spacing between cards accordingly.
-
+bug: when the cards to be discarded start flying to the target player's hand,
+the card is duplicated. the card duplicate already appears in the final position
+then the original flying card flies to merge with it. make sure the card is not
+duplicated.
 # ok good enough
 * game > troika player
 ** [2026-07-15 Wed] prompt 1

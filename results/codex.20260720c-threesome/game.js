@@ -112,9 +112,13 @@
     other.hand.splice(index, 1); layout(other);
     player.hand.push(card); layout(player);
     const destination = cardRect(player, card);
+    const landedCard = [...player.handEl.children].find(el => el.dataset.card === card);
+    landedCard.style.visibility = 'hidden';
     clone.classList.remove('highlight');
     clone.style.transform = `translate(${destination.left - from.left}px, ${destination.top - from.top}px)`;
-    await wait(500); clone.remove();
+    await wait(500);
+    clone.remove();
+    landedCard.style.visibility = '';
     await wait(500);
     const trio = findTrio(player.hand);
     if (trio) await discardTrio(player, trio);
