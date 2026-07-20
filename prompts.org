@@ -2609,6 +2609,348 @@ center area instead of the Call subareas.
 In some cases, I can still see a card being duplicated when animating the
 discarding, particularly when the card is in the middle of the hand and not the
 topmost card of the hand.
+* game > threesome
+** [2026-07-20 Mon] description
+*** id
+Kartu troika dapat digunakan untuk berbagai permainan.
+Salah satunya adalah Threesome.
+Permainan ini adalah versi Troika dari Kartu Setan (Old Maid).
+Permainan ini mirip permainan lainnya yaitu Pizza Sisa, tapi di sini kita harus membuang trio kartu dan bukan pasangan.
+Di permainan ini, digunakan semua kartu objek. Kartu wildcard tidak dipakai.
+Keluarkan satu kartu 3-pizza sehingga total kartu yang dipakai 80.
+Kocok kartu, bagikan semerata mungkin ke semua pemain, tertutup.
+Tujuan permainan adalah menghabiskan kartu di tangan dengan memasangkan semua trio objek.
+Dan menghindari mendapatkan kartu yang tidak lengkap trionya: 1-pizza dan 2-pizza.
+Mula-mula, semua pemain membuang semua trio objek yang ada di tangan mereka, mis: 1-anggur 2-anggur 3-anggur, dst.
+Setelah itu, pemain bergiliran mengambil 1 kartu dari pemain berikutnya secara acak tanpa melihat.
+Jika kartu yang diambil sudah membentuk trio di tangan, ketiga kartu dibuang.
+Teruskan hingga hanya tersisa 2 kartu di satu pemain.
+Pemain yang mendapat 1-pizza dan 2-pizza kalah.
+Catatan: kartu 3-pizza bisa diganti kartu lain misalnya 3-kue, dan lain-lain.
+*** en
+The Troika cards can be used to play many kinds of games.
+One of them is Threesome, which is the Troika version of the Old Maid card game.
+This game is also similar to the other game Leftover Pizza, but in this game we discard trios and not pairs.
+This game utilizes all object cards. Wildcards are not used.
+Take out the 3-pizza card so total cards used becomes 80.
+Shuffle the cards, deal evenly to all players, face down.
+The goal of the game is to discard all object trio cards and avoid being left with 2-pizza and 2-pizza cards in the end.
+First all players discard all card trios found in their hand, for example: 1-grape 2-grape 3-grape, and so on.
+Then, players take turn taking one card from the next player randomly without looking.
+If the card forms a trio in the player's hand, the card trio can be discarded.
+Continue until only one player is left with the 1-pizza and 2-pizza cards.
+That player loses.
+Note: instead of the 3-pizza card, you can take out 3-cake instead, or other card.
+** [2026-07-20 Mon] prompt 1
+*** Summary
+i'm making a html+css+javascript-based card game play simulation animation that
+will be recorded using a desktop recorder like simplescreenrecorder on linux to
+produce a video animation (the video will be portrait 720x1080). make 720x1080
+the entire area for animation.
+
+the name of the card game is "Threesome" (also "Threesome" in Indonesian).
+
+the simulation will be for 2 players (P1 and P2).
+
+*** The cards
+The cards are of two types. First there are the object cards, each of which will
+contain picture of a certain QUANTITY of objects (either one object, or two of
+the same object, or three). Each object will have a SHAPE (one of triangle,
+rectangle, and round), SIZE (one of small, medium, large), COLOR (one of nine:
+white, black, red, blue, green, yellow, orange, purple, and brown), and CATEGORY
+(one of nine: fruit, sports, building, food, gadget, fashion, furniture, toy,
+music). So in total there are 81 object cards. Listed below in the format of:
+QUANTITY-OBJECT_NAME (CATEGORY, SHAPE, COLOR, SIZE). Card name is
+QUANTITY-OBJECT_NAME.
+
+1-grape (fruit, round, purple, small)
+2-grape (fruit, round, purple, small)
+3-grape (fruit, round, purple, small)
+1-orange (fruit, round, orange, medium)
+2-orange (fruit, round, orange, medium)
+3-orange (fruit, round, orange, medium)
+1-watermelon (fruit, round, green, large)
+2-watermelon (fruit, round, green, large)
+3-watermelon (fruit, round, green, large)
+1-golf ball (sports, round, white, small)
+2-golf ball (sports, round, white, small)
+3-golf ball (sports, round, white, small)
+1-tennis ball (sports, round, green, medium)
+2-tennis ball (sports, round, green, medium)
+3-tennis ball (sports, round, green, medium)
+1-basket ball (sports, round, orange, large)
+2-basket ball (sports, round, orange, large)
+3-basket ball (sports, round, orange, large)
+1-house roof (building, triangle, red, large)
+2-house roof (building, triangle, red, large)
+3-house roof (building, triangle, red, large)
+1-tent (building, triangle, yellow, large)
+2-tent (building, triangle, yellow, large)
+3-tent (building, triangle, yellow, large)
+1-pyramid (building, triangle, brown, large)
+2-pyramid (building, triangle, brown, large)
+3-pyramid (building, triangle, brown, large)
+1-cake slice (food, triangle, orange, small)
+2-cake slice (food, triangle, orange, small)
+3-cake slice (food, triangle, orange, small)
+1-pizza slice (food, triangle, yellow, medium)
+2-pizza slice (food, triangle, yellow, medium)
+3-pizza slice (food, triangle, yellow, medium)
+1-jelly (food, round, purple, small)
+2-jelly (food, round, purple, small)
+3-jelly (food, round, purple, small)
+1-handphone (gadget, rectangle, black, small)
+2-handphone (gadget, rectangle, black, small)
+3-handphone (gadget, rectangle, black, small)
+1-tv (gadget, rectangle, black, medium)
+2-tv (gadget, rectangle, black, medium)
+3-tv (gadget, rectangle, black, medium)
+1-laptop (gadget, rectangle, red, medium)
+2-laptop (gadget, rectangle, red, medium)
+3-laptop (gadget, rectangle, red, medium)
+1-swimming trunk (fashion, triangle, blue, small)
+2-swimming trunk (fashion, triangle, blue, small)
+3-swimming trunk (fashion, triangle, blue, small)
+1-cloth hanger (fashion, triangle, blue, large)
+2-cloth hanger (fashion, triangle, blue, large)
+3-cloth hanger (fashion, triangle, blue, large)
+1-hat (fashion, round, purple, medium)
+2-hat (fashion, round, purple, medium)
+3-hat (fashion, round, purple, medium)
+1-table (furniture, rectangle, brown, medium)
+2-table (furniture, rectangle, brown, medium)
+3-table (furniture, rectangle, brown, medium)
+1-cupboard (furniture, rectangle, brown, large)
+2-cupboard (furniture, rectangle, brown, large)
+3-cupboard (furniture, rectangle, brown, large)
+1-bed (furniture, rectangle, white, large)
+2-bed (furniture, rectangle, white, large)
+3-bed (furniture, rectangle, white, large)
+1-paper airplane (toy, triangle, yellow, small)
+2-paper airplane (toy, triangle, yellow, small)
+3-paper airplane (toy, triangle, yellow, small)
+1-dice (toy, rectangle, red, small)
+2-dice (toy, rectangle, red, small)
+3-dice (toy, rectangle, red, small)
+1-alphabet block (toy, rectangle, green, small)
+2-alphabet block (toy, rectangle, green, small)
+3-alphabet block (toy, rectangle, green, small)
+1-the triangle (music, triangle, white, medium)
+2-the triangle (music, triangle, white, medium)
+3-the triangle (music, triangle, white, medium)
+1-drum (music, round, blue, medium)
+2-drum (music, round, blue, medium)
+3-drum (music, round, blue, medium)
+1-piano (music, rectangle, black, large)
+2-piano (music, rectangle, black, large)
+3-piano (music, rectangle, black, large)
+
+And below is the same list of cards, but in Indonesian:
+
+1-anggur (buah, bundar, ungu, kecil)
+2-anggur (buah, bundar, ungu, kecil)
+3-anggur (buah, bundar, ungu, kecil)
+1-jeruk (buah, bundar, oranye, sedang)
+2-jeruk (buah, bundar, oranye, sedang)
+3-jeruk (buah, bundar, oranye, sedang)
+1-semangka (buah, bundar, hijau, besar)
+2-semangka (buah, bundar, hijau, besar)
+3-semangka (buah, bundar, hijau, besar)
+1-bola golf (olahraga, bundar, putih, kecil)
+2-bola golf (olahraga, bundar, putih, kecil)
+3-bola golf (olahraga, bundar, putih, kecil)
+1-bola tenis (olahraga, bundar, hijau, sedang)
+2-bola tenis (olahraga, bundar, hijau, sedang)
+3-bola tenis (olahraga, bundar, hijau, sedang)
+1-bola basket (olahraga, bundar, oranye, besar)
+2-bola basket (olahraga, bundar, oranye, besar)
+3-bola basket (olahraga, bundar, oranye, besar)
+1-atap rumah (bangunan, segitiga, merah, besar)
+2-atap rumah (bangunan, segitiga, merah, besar)
+3-atap rumah (bangunan, segitiga, merah, besar)
+1-tenda (bangunan, segitiga, kuning, besar)
+2-tenda (bangunan, segitiga, kuning, besar)
+3-tenda (bangunan, segitiga, kuning, besar)
+1-piramid (bangunan, segitiga, cokelat, besar)
+2-piramid (bangunan, segitiga, cokelat, besar)
+3-piramid (bangunan, segitiga, cokelat, besar)
+1-sepotong kue (makanan, segitiga, oranye, kecil)
+2-sepotong kue (makanan, segitiga, oranye, kecil)
+3-sepotong kue (makanan, segitiga, oranye, kecil)
+1-sepotong pizza (makanan, segitiga, kuning, sedang)
+2-sepotong pizza (makanan, segitiga, kuning, sedang)
+3-sepotong pizza (makanan, segitiga, kuning, sedang)
+1-jeli (makanan, bundar, ungu, kecil)
+2-jeli (makanan, bundar, ungu, kecil)
+3-jeli (makanan, bundar, ungu, kecil)
+1-ponsel (gawai, kotak, hitam, kecil)
+2-ponsel (gawai, kotak, hitam, kecil)
+3-ponsel (gawai, kotak, hitam, kecil)
+1-tv (gawai, kotak, hitam, sedang)
+2-tv (gawai, kotak, hitam, sedang)
+3-tv (gawai, kotak, hitam, sedang)
+1-laptop (gawai, kotak, merah, sedang)
+2-laptop (gawai, kotak, merah, sedang)
+3-laptop (gawai, kotak, merah, sedang)
+1-celana renang (fesyen, segitiga, biru, kecil)
+2-celana renang (fesyen, segitiga, biru, kecil)
+3-celana renang (fesyen, segitiga, biru, kecil)
+1-gantungan baju (fesyen, segitiga, biru, besar)
+2-gantungan baju (fesyen, segitiga, biru, besar)
+3-gantungan baju (fesyen, segitiga, biru, besar)
+1-topi (fesyen, bundar, ungu, sedang)
+2-topi (fesyen, bundar, ungu, sedang)
+3-topi (fesyen, bundar, ungu, sedang)
+1-meja (mebel, kotak, cokelat, sedang)
+2-meja (mebel, kotak, cokelat, sedang)
+3-meja (mebel, kotak, cokelat, sedang)
+1-lemari (mebel, kotak, cokelat, besar)
+2-lemari (mebel, kotak, cokelat, besar)
+3-lemari (mebel, kotak, cokelat, besar)
+1-ranjang (mebel, kotak, putih, besar)
+2-ranjang (mebel, kotak, putih, besar)
+3-ranjang (mebel, kotak, putih, besar)
+1-pesawat kertas (mainan, segitiga, kuning, kecil)
+2-pesawat kertas (mainan, segitiga, kuning, kecil)
+3-pesawat kertas (mainan, segitiga, kuning, kecil)
+1-dadu (mainan, kotak, merah, kecil)
+2-dadu (mainan, kotak, merah, kecil)
+3-dadu (mainan, kotak, merah, kecil)
+1-balok huruf (mainan, kotak, hijau, kecil)
+2-balok huruf (mainan, kotak, hijau, kecil)
+3-balok huruf (mainan, kotak, hijau, kecil)
+1-trikona (musik, segitiga, putih, sedang)
+2-trikona (musik, segitiga, putih, sedang)
+3-trikona (musik, segitiga, putih, sedang)
+1-drum (musik, bundar, biru, sedang)
+2-drum (musik, bundar, biru, sedang)
+3-drum (musik, bundar, biru, sedang)
+1-piano (musik, kotak, hitam, besar)
+2-piano (musik, kotak, hitam, besar)
+3-piano (musik, kotak, hitam, besar)
+wildcard max 1
+wildcard max 2
+wildcard max 3
+wildcard max 4
+wildcard max 5
+wildcard max 6
+wildcard tux 1
+wildcard tux 2
+wildcard tux 3
+wildcard tux 4
+wildcard tux 5
+wildcard tux 6
+wildcard+cut lyx 1
+wildcard+cut lyx 2
+wildcard+cut lyx 3
+wildcard+cut lyx 4
+wildcard+cut lyx 5
+wildcard+cut lyx 6
+
+And aside from that, there are also three wildcard cards, with the following names:
+
+wildcard max 1 wildcard tux 1 wildcard+cut lyx 1
+
+*** The rules of the game
+This game is basically a variant of the Old Maid card game, but instead of card pairs, players discard card trios.
+This game utilizes all object cards. Wildcards are not used.
+Take out the 3-pizza card so total cards used becomes 80.
+Shuffle the cards, deal evenly to all players, face down.
+The goal of the game is to discard all object trio cards and avoid being left with 2-pizza and 2-pizza cards in the end.
+First all players discard all card trios found in their hand, for example: 1-grape 2-grape 3-grape, and so on.
+Then, players take turn taking one card from the next player randomly without looking.
+If the card forms a trio in the player's hand, the card trio can be discarded.
+Continue until only one player is left with the 1-pizza and 2-pizza cards.
+That player loses.
+Note: instead of the 3-pizza card, you can take out 3-cake instead, or other card.
+*** Layout of the screen & appearance
+From top to bottom:
+
+- The top logo+information area: the very top will contain title (use logo file
+  images/logo/logo.png) and game name, and nothing else, The logo positioning
+  should be absolute so it does not move to the left or right whenever there are
+  text being displayed or animation happens. This area occupies about 10% of the
+  vertical space.
+- P1's hand: the P1's hand which will occupy about 30% of vertical space. The
+  cards put in this pile should not overlap or cover the area on top of it or
+  the area below it.
+- Discard pile. which will occupy about 30% of vertical space.
+- P2's hand: the P1's hand which will occupy about 30% of vertical space. The
+  cards put in this pile should not overlap or cover the area on top of it.
+
+Width of card should be 100. The height should be proportional. There should not
+be additional padding for the cards.
+
+Try to conserve vertical space.
+
+The labels for the areas should not be covered by the cards. Maybe put the
+labels far on the right side.
+
+The players' hands will be displayed in accordeon style with fixed spacing
+between cards. The accordeon should maximize all available horizontal space so
+it should adjust the spacing between cards accordingly. The leftmost card will
+be the bottommost card, and subsequent cards on the right are cards that are on
+top of the previous cards (cards to their left).
+
+The discard pile will be displayed as a vertical pile where only the topmost
+card of the pile is shown, face up.
+
+*** The simulation
+Each page load should start with a randomly shuffled cards. P1 and P2 already
+has 40 cards each, face up.
+
+After 2 seconds, the simulation starts.
+
+The simulation starts with P1 and P2 discarding the trios in the hand, serially.
+Each time a trio is discarded, all three cards should be lifted, shown in full and spread apart,
+highlighted for 0.5s, and fly smoothly (60fps animation) towards the discard
+pile simultaneously (animation should take 0.5s). Then another trio is discarded
+the same way, until all trios are exhausted.
+
+Then a delay of 2s.
+
+Then P1's turn. The label for P1 is highlighted. P1 takes a random card from
+P2's hand. That card is lifted, shown in full and highlighted for 0.5s, then
+flies into P1's hand (animation takes 0.5s). Then delay 0.5s. If the card can
+form a trio in P1's hand, all three cards are lifted, shown in full and spread
+apart, highlighted for 0.5s, and fly smoothly towards the discard pile
+simultaneously (animation should take 0.5s).
+
+Then P1's label in unhighlighted.
+
+Then a delay of 1s.
+
+Then P2's turn, much like P1's turn.
+
+Then back to P1's turn and so on, until only one player is left with two cards.
+
+The player that is left with the two card loses. A big message is shown saying
+which player wins, e.g. "P1 WINS".
+
+Then simulation ends.
+*** The images
+the images for the front side of the cards are in images/cards-front/
+subdirectory, with the PNG files named "CARDNAME.png".
+
+The image for the back side of the cards is the images/cards-back/back.png file.
+
+Do not use the hands images. Leave them alone.
+
+*** Options
+i want to be able to set a query parameter 'lang' to 'en' (the default) or 'id'.
+When the parameter is set to 'id', the text should all be in Indonesian instead
+of English. This include "P1 WINS" becoming "P1 MENANG".
+** [2026-07-20 Mon 09:14] session: codex.20260720c-threesome
+*** journal
+**** [2026-07-20 Mon 09:14] start
+*** additional prompts
+the cards still have additional white area/padding around it. also increase the
+width of the cards from 100 to 115. height should be adjusted accordingly.
+
+The accordeon should maximize all available horizontal space so
+it should adjust the spacing between cards accordingly.
+
+# ok good enough
 * game > troika player
 ** [2026-07-15 Wed] prompt 1
 *** Summary

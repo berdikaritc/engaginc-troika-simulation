@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=720, initial-scale=1">
+  <title>Threesome</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="game" aria-label="Threesome card game simulation">
+    <header class="masthead">
+      <img src="images/logo/logo.png" alt="Threesome" class="logo">
+      <h1>THREESOME</h1>
+    </header>
+
+    <section class="zone hand-zone" id="p1-zone">
+      <div class="hand" id="p1-hand"></div>
+      <div class="zone-label" id="p1-label"><b>P1</b><span class="count">40</span></div>
+    </section>
+
+    <section class="zone discard-zone" id="discard-zone">
+      <div id="discard-pile"></div>
+      <p id="status" aria-live="polite"></p>
+      <div class="zone-label muted"><b id="discard-label">DISCARD</b><span id="discard-count">0</span></div>
+    </section>
+
+    <section class="zone hand-zone" id="p2-zone">
+      <div class="hand" id="p2-hand"></div>
+      <div class="zone-label" id="p2-label"><b>P2</b><span class="count">40</span></div>
+    </section>
+
+    <div id="animation-layer"></div>
+    <div id="result" role="status"></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
